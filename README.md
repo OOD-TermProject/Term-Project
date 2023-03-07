@@ -37,8 +37,8 @@ The first iteration consists of:
 Second iteration consists of:
 - [ ] Update class design to include design patterns
 - [ ] Updated class design. Must show:
-      - Pattern implementations
-      - Non-domain features (persistence, UI, etc.)
+  - [ ] Pattern implementations
+  - [ ] Non-domain features (persistence, UI, etc.)
 - [ ] One-page document describing designs
 
 ## Iteration 3 - Implementation

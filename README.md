@@ -28,7 +28,7 @@ You are to create a reservation system for Premium Travel Service. The system wi
 # Project Phases
 ## Iteration 1 - Initial designs
 The first iteration consists of:
-- [ ] Use case diagram showing use cases and actors
+- [X] [Use case diagram showing use cases and actors](https://github.com/OOD-TermProject/Term-Project/blob/main/Iteration1/use_case_diagram.png)
 - [ ] Class design for domain objects
 - [ ] State machine that handles creating a complete trip
 - [ ] One-page document describing designs

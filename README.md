@@ -31,7 +31,7 @@ The first iteration consists of:
 - [X] [Use case diagram showing use cases and actors](https://github.com/OOD-TermProject/Term-Project/blob/main/Iteration1/use_case_diagram.png)
 - [X] Class design for domain objects
 - [X] State machine that handles creating a complete trip
-- [ ] One-page document describing designs
+- [X] One-page document describing designs
 
 ## Iteration 2 - Updated designs
 Second iteration consists of:

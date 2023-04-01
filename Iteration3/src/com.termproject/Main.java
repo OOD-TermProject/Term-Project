@@ -2,9 +2,9 @@ package com.termproject;
 
 public class Main {
     private Trip ActiveTrip;
-    private PackageList Packages;
-    private PersonList People;
-    private AgentList Agents;
+    private final PackageList Packages = PackageList.getInstance();
+    private final PersonList People = PersonList.getInstance();
+    private final AgentList Agents = AgentList.getInstance();
 
     private static String LoadConfigFile() {
         System.out.println("Loading config...");

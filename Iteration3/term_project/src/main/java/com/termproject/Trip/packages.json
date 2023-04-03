@@ -1,0 +1,36 @@
+[
+  {
+    "price": 123.45,
+    "hoursOfTravelTime": 4,
+    "travelsFrom": [
+      {
+        "name": "Barbados"
+      }
+    ],
+    "travelsTo": [
+      {
+        "name": "Cancun"
+      }
+    ],
+    "transport": [
+      {
+        "type": "Helicopter",
+        "arrivalTime": "4:14pm",
+        "arrivalDate": "June 12th",
+        "destination": [
+          {
+            "name": "Cancun"
+          }
+        ],
+        "departTime": "3:00pm",
+        "price": "50.00",
+        "departFrom": [
+          {
+            "name": "Barbados"
+          }
+        ],
+        "departDate": "June 12th"
+      }
+    ]
+  }
+]

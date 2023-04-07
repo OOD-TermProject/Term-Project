@@ -1,16 +1,16 @@
 package com.termproject.Singleton;
 
-import com.google.gson.Gson;
+import com.termproject.People.TravelAgent;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AgentList {
     private static final AgentList uniqueInstance = new AgentList();
-    private static final String agentsFile = "term_project/src/main/java/com/termproject/Singleton/agents.json";
-    ArrayList<String> agentList;
+    private static final String agentsFile = "term_project/src/main/java/com/termproject/Singleton/agents.txt";
+    ArrayList<TravelAgent> agentList = new ArrayList<>();
 
     private AgentList() {
         loadAgentsFile();
@@ -20,20 +20,25 @@ public class AgentList {
         return uniqueInstance;
     }
 
+    /**
+     * Loads information for each TravelAgent object from disk and adds it to an ArrayList
+     */
     private void loadAgentsFile() {
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(agentsFile));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        try (BufferedReader br = new BufferedReader(new FileReader(agentsFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                String name = data[0];
+                String mobilePhone = data[1];
+                String username = data[2];
+                agentList.add(new TravelAgent(name, mobilePhone, username));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        Gson gson = new Gson();
-
-        agentList = gson.fromJson(reader, ArrayList.class);
     }
 
-    public ArrayList<String> getAgentList() {
+    public ArrayList<TravelAgent> getAgentList() {
         return agentList;
     }
 }

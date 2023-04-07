@@ -1,0 +1,9 @@
+Akira Nakamura,555-123-4567,anakamura
+Amara Diallo,555-234-5678,adiallo
+Amina Ali,555-345-6789,aali
+Bruno Rossi,555-456-7890,brossi
+Faisal Al-Abdullah,555-567-8901,falabdullah
+Hana Kim,555-678-9012,hkim
+Kai Wong,555-789-0123,kwong
+Maya Patel,555-890-1234,mpatel
+Omar Khan,555-901-2345,okhan

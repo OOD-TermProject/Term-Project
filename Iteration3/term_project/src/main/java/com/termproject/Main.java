@@ -1,5 +1,6 @@
 package com.termproject;
 
+import com.termproject.People.TravelAgent;
 import com.termproject.Singleton.AgentList;
 import com.termproject.Singleton.PackageList;
 import com.termproject.Singleton.PersonList;
@@ -34,7 +35,7 @@ public class Main {
     static ArrayList<Package> listOfPackages = packages.getPackageList();
     private final PersonList people = PersonList.getInstance();
     private static final AgentList agents = AgentList.getInstance();
-    static ArrayList<String> listOfAgents = agents.getAgentList();
+    static ArrayList<TravelAgent> listOfAgents = agents.getAgentList();
     private static final String configPath = "term_project/src/main/java/com/termproject/config.properties";
     private static final Scanner scan = new Scanner(System.in);
     private static String currentAgent;
@@ -62,23 +63,23 @@ public class Main {
      *
      */
     private static void logIn(){
-        System.out.println("Welcome to the Booking System!\n");
+        System.out.println("Welcome to the Booking System!");
         while (true) {
-            System.out.println("Enter your name: ");
-            String name = scan.nextLine();
-
-            if (name.equalsIgnoreCase("list")) {
-                System.out.println("Registered users:");
-                for (String agent : listOfAgents) {
-                    System.out.println("\t" + agent);
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Please enter your username or type 'list' to see all users:");
+            String username = scan.nextLine();
+            if (username.equals("list")){
+                for (TravelAgent agent : listOfAgents){
+                    System.out.println(agent.getName() + ": " + agent.getUsername());
                 }
-                System.out.println("\n");
-            } else if (listOfAgents.contains(name)) {
-                currentAgent = name;
-                System.out.println("Welcome, " + currentAgent + "!");
-                break;
             } else {
-                System.out.println("User not found. Please try again or type 'list' to see a list of registered users.");
+                for (TravelAgent agent : listOfAgents) {
+                    if (agent.getUsername().equals(username)) {
+                        System.out.println("Welcome, " + agent.getName() + "!");
+                        return;
+                    }
+                }
+                System.out.println("Username not found. Please try again.");
             }
         }
     }

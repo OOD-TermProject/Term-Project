@@ -12,7 +12,7 @@ public class TravelAgent extends Person {
     /**
      * Phone number for the travel agent
      */
-    private final int mobilePhone;
+    private final String mobilePhone;
     /**
      * Username which the agent will use to log into the system
      */
@@ -25,7 +25,7 @@ public class TravelAgent extends Person {
      * @param mobilePhone The cellphone number of the travel agent.
      * @param username The login of the travel agent.
      */
-    public TravelAgent(String name, int mobilePhone, String username){
+    public TravelAgent(String name, String mobilePhone, String username){
         this.name = name;
         this.mobilePhone = mobilePhone;
         this.username = username;
@@ -45,7 +45,7 @@ public class TravelAgent extends Person {
      *
      * @return The travel agent's cellphone number
      */
-    public int getMobilePhone() {
+    public String getMobilePhone() {
         return mobilePhone;
     }
 

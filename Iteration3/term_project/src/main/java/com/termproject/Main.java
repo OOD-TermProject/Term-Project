@@ -38,7 +38,7 @@ public class Main {
     static ArrayList<TravelAgent> listOfAgents = agents.getAgentList();
     private static final String configPath = "term_project/src/main/java/com/termproject/config.properties";
     private static final Scanner scan = new Scanner(System.in);
-    private static String currentAgent;
+    private static String currentAgent = null;
 
     /**
      * Loads the system's config file (config.properties) to determine the file format
@@ -75,7 +75,8 @@ public class Main {
             } else {
                 for (TravelAgent agent : listOfAgents) {
                     if (agent.getUsername().equals(username)) {
-                        System.out.println("Welcome, " + agent.getName() + "!");
+                        currentAgent = agent.getName();
+                        System.out.println("Welcome, " + currentAgent + "!");
                         return;
                     }
                 }
@@ -85,9 +86,45 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        String line = "==============================";
         String format = loadConfigFile();
         System.out.println("Loaded config: " + format);
 
         logIn();
+        if (currentAgent == null) {
+            doExit("Login failed. Aborting.");
+        }
+        System.out.println(line);
+        int newOrExisting = mainMenu();
+        if (newOrExisting == 1) {
+            System.out.println("TODO: Call method to create a new trip");
+        } else if (newOrExisting == 2) {
+            System.out.println("TODO: Call method to load existing trip");
+        } else {
+            doExit("Invalid value for newOrExisting. Aborting.");
+        }
+    }
+
+    private static void doExit(String message) {
+        System.out.println(message);
+        scan.close();
+        System.exit(-1);
+    }
+
+    private static int mainMenu() {
+        while (true) {
+            System.out.println("Please select an option below:\n");
+            System.out.println("\t1. Start a new trip");
+            System.out.println("\t2. Work on an existing trip");
+            String selection = scan.nextLine();
+
+            if (selection.equals("1")) {
+                return 1;
+            } else if (selection.equals("2")) {
+                return 2;
+            } else {
+                System.out.println("Invalid selection. Try again.");
+            }
+        }
     }
 }

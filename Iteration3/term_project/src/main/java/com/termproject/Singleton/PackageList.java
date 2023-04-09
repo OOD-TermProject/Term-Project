@@ -21,7 +21,7 @@ public class PackageList {
     /**
     * Path to the packages file.
     */
-    private static final String packagesFile = "term_project/src/main/java/com/termproject/Trip/packages.txt";
+    private static final String packagesFile = "term_project/src/main/java/com/termproject/Singleton/packages.txt";
     /**
      * List of travel packages
      */

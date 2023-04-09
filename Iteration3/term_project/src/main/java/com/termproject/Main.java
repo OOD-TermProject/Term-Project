@@ -38,7 +38,7 @@ public class Main {
     static ArrayList<TravelAgent> listOfAgents = agents.getAgentList();
     private static final String configPath = "term_project/src/main/java/com/termproject/config.properties";
     private static final Scanner scan = new Scanner(System.in);
-    private static String currentAgent = null;
+    private static TravelAgent currentAgent = null;
 
     /**
      * Loads the system's config file (config.properties) to determine the file format
@@ -65,7 +65,6 @@ public class Main {
     private static void logIn(){
         System.out.println("Welcome to the Booking System!");
         while (true) {
-            Scanner scan = new Scanner(System.in);
             System.out.println("Please enter your username or type 'list' to see all users:");
             String username = scan.nextLine();
             if (username.equals("list")){
@@ -75,8 +74,8 @@ public class Main {
             } else {
                 for (TravelAgent agent : listOfAgents) {
                     if (agent.getUsername().equals(username)) {
-                        currentAgent = agent.getName();
-                        System.out.println("Welcome, " + currentAgent + "!");
+                        currentAgent = agent;
+                        System.out.println("Welcome, " + currentAgent.getName() + "!");
                         return;
                     }
                 }
@@ -88,7 +87,7 @@ public class Main {
     public static void main(String[] args) {
         String line = "==============================";
         String format = loadConfigFile();
-        System.out.println("Loaded config: " + format);
+        System.out.println("Using config method \"" + format + "\"");
 
         logIn();
         if (currentAgent == null) {

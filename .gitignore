@@ -23,9 +23,3 @@
 hs_err_pid*
 *.dtmp
 *.bkp
-
-# Idea files
-.idea/
-
-# IML files (?)
-*.iml

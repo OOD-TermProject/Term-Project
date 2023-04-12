@@ -1,4 +1,11 @@
 package com.termproject.Decorator;
 
-public class Itinerary {
+public abstract class Itinerary {
+
+	String itinerary = "";
+	
+	public String getItinerary() {
+		return itinerary;
+	}
+	
 }

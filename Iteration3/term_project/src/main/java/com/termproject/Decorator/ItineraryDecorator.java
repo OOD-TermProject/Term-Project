@@ -1,4 +1,7 @@
 package com.termproject.Decorator;
 
-public class ItineraryDecorator {
+public abstract class ItineraryDecorator extends Itinerary {
+
+	public abstract String getItinerary();
+	
 }

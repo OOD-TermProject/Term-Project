@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.Timer;
 
 /**
  * @file Main.java
@@ -28,7 +29,7 @@ public class Main {
      *
      * @param activeTrip The trip being modified
      */
-    private Trip activeTrip;
+    private static Trip activeTrip;
     /**
      * Singleton for retrieving all current packages available in the system
      *
@@ -42,8 +43,8 @@ public class Main {
     private static final String configPath = "term_project/src/main/java/com/termproject/config.properties";
     private static final Scanner scan = new Scanner(System.in);
     private static TravelAgent currentAgent = null;
-    private static ReadFactory readFactory = new ReadFactory();
-    private static WriteFactory writeFactory = new WriteFactory();
+    private static final ReadFactory readFactory = new ReadFactory();
+    private static final WriteFactory writeFactory = new WriteFactory();
     private static RWStrategy readStrategy;
     private static RWStrategy writeStrategy;
     private static String dataFormat;
@@ -104,9 +105,12 @@ public class Main {
         System.out.println(line);
         int newOrExisting = mainMenu();
         if (newOrExisting == 1) {
-            System.out.println("TODO: Call method to create a new trip");
+//            System.out.println("TODO: Call method to create a new trip");
+            activeTrip = new Trip();
+
         } else if (newOrExisting == 2) {
-            System.out.println("TODO: Call method to load existing trip");
+//            System.out.println("TODO: Call method to load existing trip");
+            activeTrip = getTripFromList();
         } else {
             doExit("Invalid value for newOrExisting. Aborting.");
         }
@@ -134,4 +138,11 @@ public class Main {
             }
         }
     }
+    private static Trip getTripFromList() {
+    // ask user for trip ID
+    // allow them to see a list of all trips
+    // go back?
+    return null;
+    }
+
 }

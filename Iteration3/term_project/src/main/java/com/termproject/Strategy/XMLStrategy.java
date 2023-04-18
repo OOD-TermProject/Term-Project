@@ -2,12 +2,32 @@ package com.termproject.Strategy;
 
 import com.termproject.Trip.Trip;
 
+import java.util.ArrayList;
+
 public class XMLStrategy extends RWStrategy {
-    public void SaveData() {
+
+    /**
+     * @param tripID
+     */
+    @Override
+    void saveTrip(int tripID) {
 
     }
 
-    public Trip ReadData() {
-        return new Trip();
+    /**
+     * @param tripID
+     * @return
+     */
+    @Override
+    Trip loadTrip(int tripID) {
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    ArrayList<Trip> loadAllTrips() {
+        return null;
     }
 }

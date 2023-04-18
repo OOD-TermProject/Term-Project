@@ -2,7 +2,10 @@ package com.termproject.Strategy;
 
 import com.termproject.Trip.Trip;
 
+import java.util.ArrayList;
+
 public abstract class RWStrategy {
-  abstract void SaveData();
-  abstract Trip ReadData();
+  abstract void saveTrip(int tripID);
+  abstract Trip loadTrip(int tripID);
+  abstract ArrayList<Trip> loadAllTrips();
 }

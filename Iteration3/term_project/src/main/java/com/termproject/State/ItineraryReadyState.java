@@ -1,23 +1,23 @@
 package com.termproject.State;
 
-public class AwaitThankYouState implements State {
+public class ItineraryReadyState implements State {
 	
 	Object object;
 	
-	public AwaitThankYouState(Object object) {
+	public ItineraryReadyState(Object object) {
 		
 		this.object = object;
 		
 	}
 	
 	@Override
-	public void AddThankYouNote(String note) {
+	public String GenerateItinerary() {
 		
-		String thankYouNote = note;
+		return "Itinerary";
 		
 	}
 	
-	//**********************************************************
+	//***********************************
 
 	@Override
 	public void CreateTrip() {
@@ -44,9 +44,9 @@ public class AwaitThankYouState implements State {
 	}
 
 	@Override
-	public String GenerateItinerary() {
+	public void AddThankYouNote(String note) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override

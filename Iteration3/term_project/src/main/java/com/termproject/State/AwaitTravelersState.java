@@ -4,9 +4,7 @@ public class AwaitTravelersState implements State {
 	
 	Object object;
 	
-	public AwaitTravelersState(Object object) {
-		
-		this.object = object;
+	public AwaitTravelersState() {
 		
 	}
 	

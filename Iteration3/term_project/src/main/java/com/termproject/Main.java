@@ -1,9 +1,12 @@
 package com.termproject;
 
+import com.termproject.Factory.ReadFactory;
+import com.termproject.Factory.WriteFactory;
 import com.termproject.People.TravelAgent;
 import com.termproject.Singleton.AgentList;
 import com.termproject.Singleton.PackageList;
 import com.termproject.Singleton.PersonList;
+import com.termproject.Strategy.RWStrategy;
 import com.termproject.Trip.Package;
 import com.termproject.Trip.Trip;
 
@@ -39,23 +42,29 @@ public class Main {
     private static final String configPath = "term_project/src/main/java/com/termproject/config.properties";
     private static final Scanner scan = new Scanner(System.in);
     private static TravelAgent currentAgent = null;
-
+    private static ReadFactory readFactory = new ReadFactory();
+    private static WriteFactory writeFactory = new WriteFactory();
+    private static RWStrategy readStrategy;
+    private static RWStrategy writeStrategy;
+    private static String dataFormat;
+    private static final String line = "==============================";
     /**
      * Loads the system's config file (config.properties) to determine the file format
      * used for reading/writing Trip data to disk
      *
      * @return data format as a string ("json" or "xml"). If an error occurs, returns null
      */
-    private static String loadConfigFile() {
+    private static void loadConfigFile() {
         try {
             FileInputStream persistenceFormat = new FileInputStream(configPath);
             Properties props = new Properties();
             props.load(persistenceFormat);
-            return props.getProperty("PERSISTENCE_FORMAT");
+            dataFormat = props.getProperty("PERSISTENCE_FORMAT");
+            readStrategy = readFactory.createStrategy(dataFormat);
+            writeStrategy = writeFactory.createStrategy(dataFormat);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
     }
 
     /**
@@ -85,9 +94,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String line = "==============================";
-        String format = loadConfigFile();
-        System.out.println("Using config method \"" + format + "\"");
+        loadConfigFile();
+        System.out.println("System configured to use " + dataFormat);
 
         logIn();
         if (currentAgent == null) {

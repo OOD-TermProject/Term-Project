@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class JSONStrategy extends RWStrategy {
 
+    private static String filePath = "term_project/src/main/java/com/termproject/trips.json";
+
     /**
      * @param tripID
      */

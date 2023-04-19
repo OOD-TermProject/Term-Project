@@ -1,18 +1,21 @@
 package com.termproject.Trip;
 
+import com.termproject.Payment.Bill;
 import com.termproject.People.TravelAgent;
 import com.termproject.People.Traveler;
 import com.termproject.State.AwaitTravelersState;
 import com.termproject.State.State;
 
+import java.util.ArrayList;
+
 public class Trip {
-    public int UniqueId;
-    public String ThankYouNote;
-    public TravelAgent Agent;
-    public Traveler[] Travelers;
-    public Itinerary Itinerary;
-    public Reservation[] Reservations;
-    public com.termproject.Payment.Bill Bill;
+    public int uniqueId;
+    public String thankYouNote;
+    public TravelAgent agent;
+    public ArrayList<Traveler> travelers;
+    public Itinerary itinerary;
+    public ArrayList<Reservation> reservations;
+    public Bill bill;
     private State state;
     public void setState(State state) {
         this.state = state;

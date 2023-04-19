@@ -47,6 +47,7 @@ public class Main {
     private static RWStrategy readStrategy;
     private static RWStrategy writeStrategy;
     private static String dataFormat;
+    private static ArrayList<Trip> tripList;
     private static final String line = "==============================";
     /**
      * Loads the system's config file (config.properties) to determine the file format
@@ -105,11 +106,9 @@ public class Main {
         System.out.println(line);
         int newOrExisting = mainMenu();
         if (newOrExisting == 1) {
-//            System.out.println("TODO: Call method to create a new trip");
-            activeTrip = new Trip();
-
+            // Create a new Trip object with a unique ID number
+            activeTrip = new Trip(readStrategy.getMaxTripID() + 1);
         } else if (newOrExisting == 2) {
-//            System.out.println("TODO: Call method to load existing trip");
             activeTrip = getTripFromList();
         } else {
             doExit("Invalid value for newOrExisting. Aborting.");
@@ -139,10 +138,35 @@ public class Main {
         }
     }
     private static Trip getTripFromList() {
-    // ask user for trip ID
-    // allow them to see a list of all trips
-    // go back?
-    return null;
+        while (true) {
+            // Ask user for trip ID or if they'd like to see a list of trips
+            System.out.println("Please enter the ID of the trip you'd like to load, or type 'list' to see all trips:");
+            // See whether we got an integer
+            if (scan.hasNextInt()) {
+                int tripInput = scan.nextInt();
+                // Run through the trip list and see whether we got a match on the ID
+                for (Trip trip : tripList) {
+                    // If we found a match, return the corresponding Trip object
+                    if (trip.getUniqueId() == tripInput) {
+                        return trip;
+                    }
+                }
+            } else {
+                String tripInput = scan.nextLine();
+                if (tripInput.equalsIgnoreCase("list")) {
+                    // Update the trip list, just in case something changed
+                    tripList = readStrategy.getAllTrips();
+                    System.out.println(line);
+                    System.out.println("Available trips:");
+                    // Print out each trip
+                    for (Trip trip : tripList) {
+                        System.out.println(trip);
+                    }
+                } else {
+                    System.out.println("Invalid entry. Please try again.");
+                }
+            }
+        }
     }
 
 }

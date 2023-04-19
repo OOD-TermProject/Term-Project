@@ -27,7 +27,11 @@ public class JSONStrategy extends RWStrategy {
      * @return
      */
     @Override
-    ArrayList<Trip> loadAllTrips() {
+    public ArrayList<Trip> getAllTrips() {
         return null;
+    }
+
+    public int getMaxTripID() {
+        return 0;
     }
 }

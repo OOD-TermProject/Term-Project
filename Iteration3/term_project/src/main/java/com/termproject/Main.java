@@ -62,6 +62,7 @@ public class Main {
             dataFormat = props.getProperty("PERSISTENCE_FORMAT");
             readStrategy = readFactory.createStrategy(dataFormat);
             writeStrategy = writeFactory.createStrategy(dataFormat);
+            tripList = readStrategy.getAllTrips();
         } catch (IOException e) {
             e.printStackTrace();
         }

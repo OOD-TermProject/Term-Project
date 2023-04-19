@@ -7,5 +7,7 @@ import java.util.ArrayList;
 public abstract class RWStrategy {
   abstract void saveTrip(int tripID);
   abstract Trip loadTrip(int tripID);
-  abstract ArrayList<Trip> loadAllTrips();
+  public abstract ArrayList<Trip> getAllTrips();
+
+  public abstract int getMaxTripID();
 }

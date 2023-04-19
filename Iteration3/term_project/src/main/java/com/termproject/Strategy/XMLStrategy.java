@@ -27,7 +27,15 @@ public class XMLStrategy extends RWStrategy {
      * @return
      */
     @Override
-    ArrayList<Trip> loadAllTrips() {
+    public ArrayList<Trip> getAllTrips() {
         return null;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public int getMaxTripID() {
+        return 0;
     }
 }

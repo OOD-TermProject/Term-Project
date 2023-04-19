@@ -21,8 +21,31 @@ public class Trip {
         this.state = state;
     }
 
-    public Trip() {
+    public Trip(int uniqueId) {
         this.setState(new AwaitTravelersState());
+        this.uniqueId = uniqueId;
+    }
+
+    public int getUniqueId() {
+        return uniqueId;
+    }
+
+    public TravelAgent getAgent() {
+        return agent;
+    }
+
+    public ArrayList<Traveler> getTravelers() {
+        return travelers;
+    }
+
+    @Override
+    public String toString() {
+        String completedString = String.format("%s:\tAgent: %s. %s travelers: ", uniqueId, agent.getName(), travelers.size());
+        for (int i = 0; i < (travelers.size() - 1); i++) {
+            completedString = completedString + travelers.get(i) + ", ";
+        }
+        completedString = completedString + travelers.get(travelers.size() - 1);
+        return completedString;
     }
 
     public boolean AddReservation(Reservation rsv) {

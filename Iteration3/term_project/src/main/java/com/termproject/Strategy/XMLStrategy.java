@@ -19,7 +19,7 @@ public class XMLStrategy extends RWStrategy {
      * @return
      */
     @Override
-    Trip loadTrip(int tripID) {
+    public Trip loadTrip(int tripID) {
         return null;
     }
 

@@ -7,12 +7,12 @@ public class TravelAgent extends Person {
     /**
      * Name of the travel agent to be used when generating the itinerary
      */
-    private final String name;
+//    private final String name;
 
     /**
      * Phone number for the travel agent
      */
-    private final String mobilePhone;
+//    private final String mobilePhone;
     /**
      * Username which the agent will use to log into the system
      */

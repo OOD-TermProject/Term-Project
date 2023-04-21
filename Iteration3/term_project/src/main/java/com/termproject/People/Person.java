@@ -1,8 +1,8 @@
 package com.termproject.People;
 
 public abstract class Person {
-    private String name;
-    private int MobilePhone;
+    public String name;
+    public String mobilePhone;
 
     public String getName() {
         return name;

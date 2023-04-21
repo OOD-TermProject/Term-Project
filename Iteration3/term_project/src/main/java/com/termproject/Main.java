@@ -11,6 +11,7 @@ import com.termproject.Trip.Package;
 import com.termproject.Trip.Trip;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -148,7 +149,12 @@ public class Main {
                 for (Trip trip : tripList) {
                     // If we found a match, return the corresponding Trip object
                     if (trip.getUniqueId() == tripInput) {
-                        return trip;
+                        try {
+                            activeTrip = readStrategy.loadTrip(tripInput);
+                        } catch (FileNotFoundException e) {
+                            doExit("Unable to load trips file! Aborting.");
+                        }
+
                     }
                 }
             } else {

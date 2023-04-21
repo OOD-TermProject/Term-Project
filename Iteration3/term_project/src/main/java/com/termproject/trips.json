@@ -10,12 +10,12 @@
     "travelers": [
       {
         "name": "Jane Doe",
-        "mobilePhone": 1234567890,
+        "mobilePhone": "1234567890",
         "favoriteDrink": "apple juice"
       },
       {
         "name": "Jack Smith",
-        "mobilePhone": 8690434100,
+        "mobilePhone": "8690434100",
         "favoriteDrink": "Coca Cola"
       }
     ],
@@ -28,16 +28,28 @@
           {
             "price": 2000.07,
             "hoursOfTravelTime": 14,
-            "travelsFrom": "San Francisco",
-            "travelsTo": "Tokyo",
-            "transport": "PrivateJet"
+            "travelsFrom": {
+              "name": "San Francisco"
+            },
+            "travelsTo": {
+              "name": "Tokyo"
+            },
+            "transport": {
+              "class": "PrivateJet"
+            }
           },
           {
             "price": 2000.05,
             "hoursOfTravelTime": 17,
-            "travelsFrom": "Tokyo",
-            "travelsTo": "New York",
-            "transport": "PrivateJet"
+            "travelsFrom": {
+              "name": "Tokyo"
+            },
+            "travelsTo": {
+              "name": "New York"
+            },
+            "transport": {
+              "class": "PrivateJet"
+            }
           }
         ]
       }
@@ -46,15 +58,16 @@
       "totalPrice": 4000.12,
       "isPaidInFull": false,
       "payment": {
-        "type": "CreditCard",
-        "data": {
-          "amount": 2000.10,
-          "cardNumber": 478025791023143,
-          "expDate": "05/12/24"
-        }
+        "class": "CreditCard",
+        "amount": 2000.10,
+        "cardNumber": 478025791023143,
+        "expDate": "05/12/24"
+
       }
     },
-    "state": "AwaitPaymentState"
+    "state": {
+      "class": "AwaitPaymentState"
+    }
   },
   {
     "uniqueID": 2,
@@ -67,12 +80,12 @@
     "travelers": [
       {
         "name": "Larry Byrd",
-        "mobilePhone": 1234567890,
+        "mobilePhone": "1234567890",
         "favoriteDrink": "champagne"
       },
       {
         "name": "Ruth Chris",
-        "mobilePhone": 8690434100,
+        "mobilePhone": "8690434100",
         "favoriteDrink": "red wine"
       }
     ],
@@ -80,21 +93,33 @@
     "reservations": [
       {
         "departingOn": "09/01/23",
-        "arrivingOn": "009/03/23",
+        "arrivingOn": "09/03/23",
         "packages": [
           {
             "price": 2000.07,
             "hoursOfTravelTime": 14,
-            "travelsFrom": "San Francisco",
-            "travelsTo": "Tokyo",
-            "transport": "PrivateJet"
+            "travelsFrom": {
+              "name": "San Francisco"
+            },
+            "travelsTo": {
+              "name": "Tokyo"
+            },
+            "transport": {
+              "class": "PrivateJet"
+            }
           },
           {
             "price": 2000.05,
             "hoursOfTravelTime": 17,
-            "travelsFrom": "Tokyo",
-            "travelsTo": "New York",
-            "transport": "PrivateJet"
+            "travelsFrom": {
+              "name": "Tokyo"
+            },
+            "travelsTo": {
+              "name": "New York"
+            },
+            "transport": {
+              "class": "PrivateJet"
+            }
           }
         ]
       }
@@ -103,14 +128,14 @@
       "totalPrice": 4000.12,
       "isPaidInFull": false,
       "payment": {
-        "type": "CreditCard",
-        "data": {
-          "amount": 2000.10,
-          "cardNumber": 478025791023143,
-          "expDate": "05/12/24"
-        }
+        "class": "CreditCard",
+        "amount": 2000.10,
+        "cardNumber": 478025791023143,
+        "expDate": "05/12/24"
       }
     },
-    "state": "AwaitPaymentState"
+    "state": {
+      "class": "AwaitPaymentState"
+    }
   }
 ]

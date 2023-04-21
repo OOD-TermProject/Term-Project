@@ -1,16 +1,18 @@
 package com.termproject.Trip;
 
-public class Reservation {
-    public String DepartingOn;
-    public String ArrivingOn;
-    public Package[] Packages;
+import java.util.ArrayList;
 
-    public boolean AddPackage(Package pkg) {
+public class Reservation {
+    public String departingOn;
+    public String arrivingOn;
+    public ArrayList<Package> packages;
+
+    public boolean addPackage(Package pkg) {
         // Return true if package addition was successful
         return true;
     }
 
-    public void RemovePackage(Package pkg) {
+    public void removePackage(Package pkg) {
 
     }
 }

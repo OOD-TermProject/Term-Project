@@ -8,5 +8,5 @@ PrivateJet,8000,30,Tokyo,New York,7:00,2023-05-07,4:00,2023-05-07
 Yacht,3500,17,Miami,London,18:00,2023-05-08,15:00,2023-05-08
 Limousine,1800,6,Paris,Madrid,10:00,2023-05-09,9:00,2023-05-09
 Helicopter,4000,18,London,Moscow,13:00,2023-05-10,11:00,2023-05-10
-PrivateJet,2000.07,14,San Francisco,Tokyo,16:00 2023-06-23,06:00 2023-06-24
-PrivateJet,2000.05,17,Tokyo,New York,05:30 2023-07-01, 23:30 2023-07-01
+PrivateJet,2000.07,14,San Francisco,Tokyo,16:00,2023-06-23,06:00,2023-06-24
+PrivateJet,2000.05,17,Tokyo,New York,05:30,2023-07-01,23:30,2023-07-01

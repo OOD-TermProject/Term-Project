@@ -1,0 +1,116 @@
+[
+  {
+    "uniqueID": 1,
+    "thankYouNote": "Thank you for choosing our services!",
+    "agent": {
+      "name": "Hana Kim",
+      "mobilePhone": "(412) 678-1298",
+      "username": "hkim"
+    },
+    "travelers": [
+      {
+        "name": "Jane Doe",
+        "mobilePhone": 1234567890,
+        "favoriteDrink": "apple juice"
+      },
+      {
+        "name": "Jack Smith",
+        "mobilePhone": 8690434100,
+        "favoriteDrink": "Coca Cola"
+      }
+    ],
+    "itinerary": null,
+    "reservations": [
+      {
+        "departingOn": "06/23/23",
+        "arrivingOn": "06/24/23",
+        "packages": [
+          {
+            "price": 2000.07,
+            "hoursOfTravelTime": 14,
+            "travelsFrom": "San Francisco",
+            "travelsTo": "Tokyo",
+            "transport": "PrivateJet"
+          },
+          {
+            "price": 2000.05,
+            "hoursOfTravelTime": 17,
+            "travelsFrom": "Tokyo",
+            "travelsTo": "New York",
+            "transport": "PrivateJet"
+          }
+        ]
+      }
+    ],
+    "bill": {
+      "totalPrice": 4000.12,
+      "isPaidInFull": false,
+      "payment": {
+        "type": "CreditCard",
+        "data": {
+          "amount": 2000.10,
+          "cardNumber": 478025791023143,
+          "expDate": "05/12/24"
+        }
+      }
+    },
+    "state": "AwaitPaymentState"
+  },
+  {
+    "uniqueID": 2,
+    "thankYouNote": "Thank you for choosing our services!",
+    "agent": {
+      "name": "Omar Khan",
+      "mobilePhone": "(644) 984-8675",
+      "username": "okhan"
+    },
+    "travelers": [
+      {
+        "name": "Larry Byrd",
+        "mobilePhone": 1234567890,
+        "favoriteDrink": "champagne"
+      },
+      {
+        "name": "Ruth Chris",
+        "mobilePhone": 8690434100,
+        "favoriteDrink": "red wine"
+      }
+    ],
+    "itinerary": null,
+    "reservations": [
+      {
+        "departingOn": "09/01/23",
+        "arrivingOn": "009/03/23",
+        "packages": [
+          {
+            "price": 2000.07,
+            "hoursOfTravelTime": 14,
+            "travelsFrom": "San Francisco",
+            "travelsTo": "Tokyo",
+            "transport": "PrivateJet"
+          },
+          {
+            "price": 2000.05,
+            "hoursOfTravelTime": 17,
+            "travelsFrom": "Tokyo",
+            "travelsTo": "New York",
+            "transport": "PrivateJet"
+          }
+        ]
+      }
+    ],
+    "bill": {
+      "totalPrice": 4000.12,
+      "isPaidInFull": false,
+      "payment": {
+        "type": "CreditCard",
+        "data": {
+          "amount": 2000.10,
+          "cardNumber": 478025791023143,
+          "expDate": "05/12/24"
+        }
+      }
+    },
+    "state": "AwaitPaymentState"
+  }
+]

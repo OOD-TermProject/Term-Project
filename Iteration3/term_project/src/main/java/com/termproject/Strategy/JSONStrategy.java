@@ -14,11 +14,15 @@ import com.termproject.State.State;
 import com.termproject.Transport.PrivateJet;
 import com.termproject.Transport.TransportType;
 import com.termproject.Trip.Trip;
-import java.util.ArrayList;
 
 public class JSONStrategy extends RWStrategy {
-
+    // Path to the JSON file of trips
     private static final String filePath = "term_project/src/main/java/com/termproject/trips.json";
+    private static ArrayList<Trip> tripList;
+
+    public JSONStrategy() {
+        tripList = loadAllTrips();
+    }
 
     /**
      * @param tripID
@@ -49,15 +53,18 @@ public class JSONStrategy extends RWStrategy {
     /**
      * @return
      */
-    @Override
-    public ArrayList<Trip> getAllTrips() {
+    private ArrayList<Trip> loadAllTrips() {
         System.out.println("Loading all trips from JSON...");
+        // New ArrayList to hold all of the loaded trips
         ArrayList<Trip> tripList = new ArrayList<>();
+
+        // Since we have to define custom deserializers, create a GsonBuilder and register them
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(TransportType.class, new TransportTypeDeserializer());
         builder.registerTypeAdapter(State.class, new StateDeserializer());
         Gson gsonParser = builder.create();
 
+        // Load the data from the JSON file
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
             ArrayList<Trip> parsedTrips;
             parsedTrips = gsonParser.fromJson(reader, new TypeToken<ArrayList<Trip>>() {}.getType());
@@ -103,5 +110,9 @@ public class JSONStrategy extends RWStrategy {
 
     public int getMaxTripID() {
         return 0;
+    }
+
+    public ArrayList<Trip> getAllTrips() {
+        return tripList;
     }
 }

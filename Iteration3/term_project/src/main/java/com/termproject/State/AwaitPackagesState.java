@@ -3,6 +3,8 @@ package com.termproject.State;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.termproject.Trip.Package;
+
 public class AwaitPackagesState implements State {
 	
 	private List<Package> pkgs;

@@ -105,12 +105,15 @@ public class Main {
             doExit("Login failed. Aborting.");
         }
         System.out.println(line);
+        // Send the user to the main menu
         int newOrExisting = mainMenu();
+        // Continue based on the user's choice of "new trip" or "existing trip"
         if (newOrExisting == 1) {
             // Create a new Trip object with a unique ID number
             activeTrip = new Trip(readStrategy.getMaxTripID() + 1);
         } else if (newOrExisting == 2) {
-            activeTrip = getTripFromList();
+            // Send the user to the "trip select" screen
+            tripSelect();
         } else {
             doExit("Invalid value for newOrExisting. Aborting.");
         }
@@ -121,7 +124,6 @@ public class Main {
         scan.close();
         System.exit(-1);
     }
-
     private static int mainMenu() {
         while (true) {
             System.out.println("Please select an option below:\n");
@@ -138,7 +140,7 @@ public class Main {
             }
         }
     }
-    private static Trip getTripFromList() {
+    private static void tripSelect() {
         while (true) {
             // Ask user for trip ID or if they'd like to see a list of trips
             System.out.println("Please enter the ID of the trip you'd like to load, or type 'list' to see all trips:");
@@ -147,14 +149,10 @@ public class Main {
                 int tripInput = scan.nextInt();
                 // Run through the trip list and see whether we got a match on the ID
                 for (Trip trip : tripList) {
-                    // If we found a match, return the corresponding Trip object
+                    // If we found a match, set activeTrip and return
                     if (trip.getUniqueId() == tripInput) {
-                        try {
-                            activeTrip = readStrategy.loadTrip(tripInput);
-                        } catch (FileNotFoundException e) {
-                            doExit("Unable to load trips file! Aborting.");
-                        }
-
+                        activeTrip = trip;
+                        return;
                     }
                 }
             } else {

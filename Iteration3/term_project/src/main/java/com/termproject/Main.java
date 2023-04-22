@@ -97,10 +97,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        // Do application setup tasks
         loadConfigFile();
         System.out.println("System configured to use " + dataFormat);
 
+        // Send user to the login screen
         logIn();
+        // If login failed for some reason, abort
         if (currentAgent == null) {
             doExit("Login failed. Aborting.");
         }
@@ -182,7 +185,6 @@ public class Main {
             }
         }
     }
-
     private static void modifyTrip() {
         System.out.println(line);
         while (true) {
@@ -197,9 +199,9 @@ public class Main {
 
             String userInput = scan.nextLine();
             if (userInput.equals("1")) {
-                System.out.println("TODO: call the method to add whatever the trip needs");
+                System.out.println("TODO: do the action for the current state");
             } else if (userInput.equals("2")) {
-                activeTrip.getState().advanceState();
+                activeTrip.advanceState();
             } else if (userInput.equals("3")) {
                 System.out.println("TODO: Use writeStrategy to write the trip to disk");
             } else if (userInput.equals("4")) {

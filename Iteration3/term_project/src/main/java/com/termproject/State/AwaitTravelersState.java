@@ -45,4 +45,9 @@ public class AwaitTravelersState implements State {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Awaiting travellers";
+	}
+
 }

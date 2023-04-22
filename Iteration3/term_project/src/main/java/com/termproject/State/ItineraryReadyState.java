@@ -30,5 +30,10 @@ public class ItineraryReadyState implements State {
 		return this;					//New trip should be created after reaching this state
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Trip complete. Itinerary ready!";
+	}
 	
 }

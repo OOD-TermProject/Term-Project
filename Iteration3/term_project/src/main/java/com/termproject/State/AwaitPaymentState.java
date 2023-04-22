@@ -30,6 +30,9 @@ public class AwaitPaymentState implements State {
 		
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Awaiting payment";
+	}
 	
 }

@@ -30,6 +30,9 @@ public class AwaitThankYouState implements State {
 		
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Awaiting thank you note";
+	}
 
 }

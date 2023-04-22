@@ -39,6 +39,9 @@ public class AwaitPackagesState implements State {
 		
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Awaiting packages";
+	}
 	
 }

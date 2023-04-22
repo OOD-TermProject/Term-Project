@@ -19,8 +19,9 @@ public class ItineraryReadyState implements State {
 
 	@Override
 	public State resume() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return this;
+		
 	}
 
 	@Override

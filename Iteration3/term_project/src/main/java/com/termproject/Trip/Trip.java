@@ -59,4 +59,8 @@ public class Trip {
         return true;
     }
 
+    public void advanceState() {
+        this.state = state.advanceState();
+    }
+
 }

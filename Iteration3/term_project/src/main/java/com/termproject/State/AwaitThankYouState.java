@@ -2,63 +2,34 @@ package com.termproject.State;
 
 public class AwaitThankYouState implements State {
 	
-	Object object;
+	private String thankYouNote;
 	
-	public AwaitThankYouState(Object object) {
+	public void addThankYouNote (String note) {
 		
-		this.object = object;
+		thankYouNote = note;
+		
+	}
+
+	@Override
+	public void save() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public State resume() {
+
+		return this;
+		
+	}
+
+	@Override
+	public State advanceState() {
+		
+		return new ItineraryReadyState();
 		
 	}
 	
-	@Override
-	public void AddThankYouNote(String note) {
-		
-		String thankYouNote = note;
-		
-	}
 	
-	//**********************************************************
-
-	@Override
-	public void CreateTrip() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void AddTraveler(Object traveler) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean AddPackage(Object pkg) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void ApplyPayment(Object bill) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String GenerateItinerary() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void Save(Object trip) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Object Resume() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

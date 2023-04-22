@@ -1,61 +1,45 @@
 package com.termproject.State;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AwaitTravelersState implements State {
 	
-	Object object;
+	private Trip savedTrip;
+	
+	private List<Traveler> travelers;
 	
 	public AwaitTravelersState() {
 		
-	}
-	
-	@Override
-	public void AddTraveler(Object traveler) {
-		// TODO Auto-generated method stub
+		travelers = new ArrayList<>();
 		
 	}
 	
-	//***************************************************
-
-	@Override
-	public void CreateTrip() {
-		// TODO Auto-generated method stub
+	public void addTraveler(Traveler traveler) {
+		
+		travelers.add(traveler);
 		
 	}
 
 	@Override
-	public boolean AddPackage(Object pkg) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void ApplyPayment(Object bill) {
-		// TODO Auto-generated method stub
+	public void save() {		//Write to disk?
+		
+		//TODO
 		
 	}
 
 	@Override
-	public void AddThankYouNote(String note) {
-		// TODO Auto-generated method stub
+	public State resume() {
+		
+		return this;
 		
 	}
 
 	@Override
-	public String GenerateItinerary() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public State advanceState() {
 
-	@Override
-	public void Save(Object trip) {
-		// TODO Auto-generated method stub
+		return new AwaitPackagesState();
 		
-	}
-
-	@Override
-	public Object Resume() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

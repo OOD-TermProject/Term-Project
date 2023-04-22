@@ -2,63 +2,33 @@ package com.termproject.State;
 
 public class ItineraryReadyState implements State {
 	
-	Object object;
+	private String itinerary;
 	
-	public ItineraryReadyState(Object object) {
+	
+	public String generateItinerary() {
 		
-		this.object = object;
+		return itinerary;
+		
+	}
+
+	@Override
+	public void save() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public State resume() {
+
+		return this;
+		
+	}
+
+	@Override
+	public State advanceState() {		//Last state, should not advance any further;
+		
+		return this;					//New trip should be created after reaching this state
 		
 	}
 	
-	@Override
-	public String GenerateItinerary() {
-		
-		return "Itinerary";
-		
-	}
-	
-	//***********************************
-
-	@Override
-	public void CreateTrip() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void AddTraveler(Object traveler) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean AddPackage(Object pkg) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void ApplyPayment(Object bill) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void AddThankYouNote(String note) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void Save(Object trip) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Object Resume() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

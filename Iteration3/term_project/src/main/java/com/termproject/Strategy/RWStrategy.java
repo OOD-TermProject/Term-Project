@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public abstract class RWStrategy {
-  abstract void saveTrip(int tripID);
+
+  public abstract void saveTrip(Trip tripToSave);
+
   public abstract Trip loadTrip(int tripID) throws FileNotFoundException;
   public abstract ArrayList<Trip> getAllTrips();
 

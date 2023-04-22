@@ -1,8 +1,8 @@
 package com.termproject.Strategy;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -20,15 +20,31 @@ public class JSONStrategy extends RWStrategy {
     private static final String filePath = "term_project/src/main/java/com/termproject/trips.json";
     private static ArrayList<Trip> tripList;
 
-    public JSONStrategy() {
-//        tripList = loadAllTrips();
-    }
-
-    /**
-     * @param tripID
+    /**Saves trip to disk
+     * @param tripToSave
      */
     @Override
-    void saveTrip(int tripID) {
+    public void saveTrip(Trip tripToSave) {
+        System.out.println("Attempting to save trip!");
+        Gson objectParser = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
+
+        // Loop over each trip in the tripList
+        for (Trip trip : tripList) {
+            // If we find a trip with the same unique ID, delete it
+            if (trip.getUniqueId() == tripToSave.getUniqueId()) {
+                tripList.remove(tripList.indexOf(trip));
+                break;
+            }
+        }
+
+        // Next add the passed-in Trip object to the ArrayList
+        tripList.add(tripToSave);
+
+        // Convert the ArrayList to a string
+        String rawJSON = objectParser.toJson(tripList);
+
+        System.out.println("Created JSON");
+        System.out.println(rawJSON);
 
     }
 
@@ -39,15 +55,12 @@ public class JSONStrategy extends RWStrategy {
     @Override
     public Trip loadTrip(int tripID) {
         System.out.println("[JSONStrategy] Attempting to load trip #" + tripID);
-        Gson gsonParser = new Gson();
-        try {
-            Trip thisTrip = gsonParser.fromJson(new FileReader(filePath), Trip.class);
-            System.out.println(thisTrip);
-            return thisTrip;
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
-            return null;
+        for (Trip trip : tripList) {
+            if (trip.getUniqueId() == tripID) {
+                return trip;
+            }
         }
+        return null;
     }
 
     /**
@@ -120,8 +133,4 @@ public class JSONStrategy extends RWStrategy {
         }
         return x;
     }
-
-//    public ArrayList<Trip> getAllTrips() {
-//        return tripList;
-//    }
 }

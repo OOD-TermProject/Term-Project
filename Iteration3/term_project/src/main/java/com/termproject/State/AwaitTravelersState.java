@@ -1,5 +1,8 @@
 package com.termproject.State;
 
+import com.termproject.People.Traveler;
+import com.termproject.Trip.Trip;
+
 import java.util.ArrayList;
 import java.util.List;
 

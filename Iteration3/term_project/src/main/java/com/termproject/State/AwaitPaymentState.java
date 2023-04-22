@@ -1,5 +1,7 @@
 package com.termproject.State;
 
+import com.termproject.Payment.Bill;
+
 public class AwaitPaymentState implements State {
 	
 	public void applyPayment(Bill bill) {

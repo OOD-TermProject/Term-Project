@@ -50,6 +50,7 @@ public class Main {
     private static String dataFormat;
     private static ArrayList<Trip> tripList;
     private static final String line = "==============================";
+
     /**
      * Loads the system's config file (config.properties) to determine the file format
      * used for reading/writing Trip data to disk
@@ -105,8 +106,10 @@ public class Main {
             doExit("Login failed. Aborting.");
         }
         System.out.println(line);
+
         // Send the user to the main menu
         int newOrExisting = mainMenu();
+
         // Continue based on the user's choice of "new trip" or "existing trip"
         if (newOrExisting == 1) {
             // Create a new Trip object with a unique ID number
@@ -115,7 +118,7 @@ public class Main {
             // Send the user to the "trip select" screen
             tripSelect();
         } else {
-            doExit("Invalid value for newOrExisting. Aborting.");
+            doExit("Invalid value for newOrExisting. This should not happen. Aborting.");
         }
     }
 
@@ -127,8 +130,8 @@ public class Main {
     private static int mainMenu() {
         while (true) {
             System.out.println("Please select an option below:\n");
-            System.out.println("\t1. Start a new trip");
-            System.out.println("\t2. Work on an existing trip");
+            System.out.println("\t1) Start a new trip");
+            System.out.println("\t2) Work on an existing trip");
             String selection = scan.nextLine();
 
             if (selection.equals("1")) {
@@ -155,6 +158,7 @@ public class Main {
                         return;
                     }
                 }
+                System.out.println("No trip with that ID. Please try again.\n");
             } else {
                 String tripInput = scan.nextLine();
                 if (tripInput.equalsIgnoreCase("list")) {

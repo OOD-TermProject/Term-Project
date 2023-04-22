@@ -111,7 +111,14 @@ public class JSONStrategy extends RWStrategy {
 
 
     public int getMaxTripID() {
-        return 0;
+        int x = 0;
+        for (Trip trip : tripList) {
+            int thisTripID = trip.getUniqueId();
+            if (thisTripID > x) {
+                x = thisTripID;
+            }
+        }
+        return x;
     }
 
 //    public ArrayList<Trip> getAllTrips() {

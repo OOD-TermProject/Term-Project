@@ -16,6 +16,11 @@ public class Trip {
     public Itinerary itinerary;
     public ArrayList<Reservation> reservations;
     public Bill bill;
+
+    public State getState() {
+        return state;
+    }
+
     private State state;
     public void setState(State state) {
         this.state = state;
@@ -44,7 +49,8 @@ public class Trip {
         for (int i = 0; i < (travelers.size() - 1); i++) {
             completedString = completedString + travelers.get(i) + ", ";
         }
-        completedString = completedString + travelers.get(travelers.size() - 1);
+        completedString = completedString + travelers.get(travelers.size() - 1) + ". ";
+        completedString = completedString + "State: " + state;
         return completedString;
     }
 

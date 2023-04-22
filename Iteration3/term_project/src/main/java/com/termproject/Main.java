@@ -11,7 +11,6 @@ import com.termproject.Trip.Package;
 import com.termproject.Trip.Trip;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -120,6 +119,13 @@ public class Main {
         } else {
             doExit("Invalid value for newOrExisting. This should not happen. Aborting.");
         }
+
+        // Ensure we have an active trip. If so, allow the user to modify it. If not, abort
+        if (activeTrip != null) {
+            modifyTrip();
+        } else {
+            doExit("Active trip improperly set. Aborting.");
+        }
     }
 
     private static void doExit(String message) {
@@ -177,4 +183,28 @@ public class Main {
         }
     }
 
+    private static void modifyTrip() {
+        System.out.println(line);
+        while (true) {
+            System.out.println("Working on trip #" + activeTrip.getUniqueId());
+            System.out.println("Current state: " + activeTrip.getState());
+            System.out.println(line + "\n");
+            System.out.println("Options:");
+            System.out.println("\t1) *do something from the state?*");
+            System.out.println("\t2) Done adding *the thing the state needs?*");
+            System.out.println("\t3) Save this trip");
+            System.out.println("\t4) Quit without saving");
+
+            String userInput = scan.nextLine();
+            if (userInput.equals("1")) {
+                System.out.println("TODO: call the method to add whatever the trip needs");
+            } else if (userInput.equals("2")) {
+                activeTrip.getState().advanceState();
+            } else if (userInput.equals("3")) {
+                System.out.println("TODO: Use writeStrategy to write the trip to disk");
+            } else if (userInput.equals("4")) {
+                doExit("Thank you for using the reservation system. Goodbye!");
+            }
+        }
+    }
 }

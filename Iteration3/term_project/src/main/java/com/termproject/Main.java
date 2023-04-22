@@ -116,6 +116,8 @@ public class Main {
         if (newOrExisting == 1) {
             // Create a new Trip object with a unique ID number
             activeTrip = new Trip(readStrategy.getMaxTripID() + 1);
+            // Set the new trip's agent to the one that's currently logged in
+            activeTrip.setAgent(currentAgent);
         } else if (newOrExisting == 2) {
             // Send the user to the "trip select" screen
             tripSelect();
@@ -203,7 +205,7 @@ public class Main {
             } else if (userInput.equals("2")) {
                 activeTrip.advanceState();
             } else if (userInput.equals("3")) {
-                System.out.println("TODO: Use writeStrategy to write the trip to disk");
+                writeStrategy.saveTrip(activeTrip);
             } else if (userInput.equals("4")) {
                 doExit("Thank you for using the reservation system. Goodbye!");
             }

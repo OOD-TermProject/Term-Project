@@ -21,7 +21,7 @@ public class JSONStrategy extends RWStrategy {
     private static ArrayList<Trip> tripList;
 
     public JSONStrategy() {
-        tripList = loadAllTrips();
+//        tripList = loadAllTrips();
     }
 
     /**
@@ -53,8 +53,7 @@ public class JSONStrategy extends RWStrategy {
     /**
      * @return
      */
-    private ArrayList<Trip> loadAllTrips() {
-        System.out.println("Loading all trips from JSON...");
+    public ArrayList<Trip> getAllTrips() {
         // New ArrayList to hold all of the loaded trips
         ArrayList<Trip> tripList = new ArrayList<>();
 
@@ -74,6 +73,9 @@ public class JSONStrategy extends RWStrategy {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        // Set the tripList for this class
+        JSONStrategy.tripList = tripList;
+        // Return the results
         return tripList;
     }
 
@@ -112,7 +114,7 @@ public class JSONStrategy extends RWStrategy {
         return 0;
     }
 
-    public ArrayList<Trip> getAllTrips() {
-        return tripList;
-    }
+//    public ArrayList<Trip> getAllTrips() {
+//        return tripList;
+//    }
 }

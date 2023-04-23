@@ -193,6 +193,7 @@ public class Main {
             System.out.println("Working on trip #" + activeTrip.getUniqueId());
             System.out.println("Current state: " + activeTrip.getState());
             System.out.println(line + "\n");
+            System.out.println(activeTrip.getState().getStateInfo());
             System.out.println("Options:");
             System.out.println("\t1) " + activeTrip.getState().getFutureVerb());
             System.out.println("\t2) " + activeTrip.getState().getPastVerb());
@@ -201,7 +202,8 @@ public class Main {
 
             String userInput = scan.nextLine();
             if (userInput.equals("1")) {
-                System.out.println("TODO: do the action for the current state");
+                // Call the doAction() method for each state. Pass a ref to our Scanner obj so it can read input
+                activeTrip.getState().doAction(scan);
             } else if (userInput.equals("2")) {
                 activeTrip.advanceState();
             } else if (userInput.equals("3")) {

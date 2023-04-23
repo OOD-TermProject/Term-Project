@@ -111,11 +111,18 @@ public class JSONStrategy extends RWStrategy {
         @Override
         public State deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject jsonObject = json.getAsJsonObject();
-            String stateClass = jsonObject.get("class").getAsString();
+            String stateClass = jsonObject.get("className").getAsString();
             switch (stateClass) {
                 case "AwaitPaymentState":
                     return context.deserialize(json, AwaitPaymentState.class);
-                // add more cases for other subclasses of State as needed
+                case "AwaitTravelersState":
+                    return context.deserialize(json, AwaitTravelersState.class);
+                case "AwaitPackagesState":
+                    return context.deserialize(json, AwaitPackagesState.class);
+                case "AwaitThankYouState":
+                    return context.deserialize(json, AwaitThankYouState.class);
+                case "ItineraryReadyState":
+                    return context.deserialize(json, ItineraryReadyState.class);
                 default:
                     throw new JsonParseException("Unknown state class: " + stateClass);
             }

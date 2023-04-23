@@ -1,15 +1,7 @@
 package com.termproject.People;
 
 public class Traveler extends Customer {
-    /**
-     * Name of the traveler
-     */
-    private final String name;
 
-    /**
-     * Phone number for this traveler
-     */
-    private final String mobilePhone;
     /**
      * Traveler's favorite drink
      */

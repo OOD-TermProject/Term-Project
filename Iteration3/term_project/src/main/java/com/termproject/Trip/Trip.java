@@ -115,11 +115,28 @@ public class Trip {
     }
     @Override
     public String toString() {
-        String completedString = String.format("%s:\tAgent: %s. %s travelers: ", uniqueId, agent.getName(), travelers.size());
-        for (int i = 0; i < (travelers.size() - 1); i++) {
-            completedString = completedString + travelers.get(i) + ", ";
+        // Begin string with unique ID # and agent's name
+        String completedString = String.format("%s:\tAgent: %s. ", uniqueId, agent.getName());
+        // If the trip has travellers already, display them.
+        if (this.travelers.size() > 0) {
+            // Show the number of travelers
+            completedString += String.format("%s traveler", this.travelers.size());
+            // Add an 's' to the end of 'traveler' to show it's plural
+            if (this.travelers.size() > 1) {
+                completedString += "s";
+            }
+            // Add colon before name list
+            completedString += ": ";
+            // Add the name of each traveler to the string
+            for (int i = 0; i < (travelers.size()); i++) {
+                // Append each traveler's name and a comma
+                completedString = completedString + travelers.get(i) + ", ";
+            }
+            // Remove the comma after the last traveler's name and add a period
+            completedString = completedString.substring(0, completedString.length() -1) + ". ";
+        } else {
+            completedString += "No travelers added. ";
         }
-        completedString = completedString + travelers.get(travelers.size() - 1) + ". ";
         completedString = completedString + "State: " + state;
         return completedString;
     }

@@ -7,11 +7,10 @@ import java.util.ArrayList;
 
 public class AwaitTravelersState implements State {
 	
-	private Trip thisTrip;
-	
+	private transient Trip thisTrip;
 	private ArrayList<Traveler> travelers;
-	public static final String className = "AwaitTravelersState";
-	private static final String futureVerb = "Add Travelers to trip";
+	public final String className = "AwaitTravelersState";
+	private static final String futureVerb = "Add travelers to trip";
 	private static final String pastVerb = "Done adding travelers";
 	
 	public AwaitTravelersState(Trip currentTrip) {

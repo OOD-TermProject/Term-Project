@@ -8,9 +8,9 @@ import com.termproject.Trip.Trip;
 
 public class AwaitPackagesState implements State {
 	
-	private Trip thisTrip;
+	private transient Trip thisTrip;
 	private List<Package> pkgs;
-	public static final String className = "AwaitPackagesState";
+	public final String className = "AwaitPackagesState";
 	private static final String futureVerb = "Add packages to trip";
 	private static final String pastVerb = "Done adding packages";
 	

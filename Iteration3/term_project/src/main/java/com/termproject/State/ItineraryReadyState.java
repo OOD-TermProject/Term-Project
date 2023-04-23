@@ -4,9 +4,9 @@ import com.termproject.Trip.Trip;
 
 public class ItineraryReadyState implements State {
 	
-	private Trip thisTrip;
+	private transient Trip thisTrip;
 	private String itinerary;
-	public static final String className = "ItineraryReadyState";
+	public final String className = "ItineraryReadyState";
 	private static final String futureVerb = "Generate itinerary";
 	private static final String pastVerb = "Mark trip as completed and exit";
 

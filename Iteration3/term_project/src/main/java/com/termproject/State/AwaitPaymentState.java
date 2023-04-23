@@ -4,9 +4,9 @@ import com.termproject.Trip.Trip;
 
 public class AwaitPaymentState implements State {
 
-	private Trip thisTrip;
+	private transient Trip thisTrip;
 	private Bill bill;
-	public static final String className = "AwaitPaymentState";
+	public final String className = "AwaitPaymentState";
 	private static final String futureVerb = "Add payment info to trip";
 	private static final String pastVerb = "Done with payment info";
 

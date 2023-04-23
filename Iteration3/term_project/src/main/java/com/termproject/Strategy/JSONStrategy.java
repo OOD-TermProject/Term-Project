@@ -17,7 +17,7 @@ import com.termproject.Trip.Trip;
 public class JSONStrategy extends RWStrategy {
     // Path to the JSON file of trips
     private static final String filePath = "term_project/src/main/java/com/termproject/trips.json";
-    private static ArrayList<Trip> tripList;
+    private static ArrayList<Trip> tripList = new ArrayList<>();
 
     /**Saves trip to disk
      * @param tripToSave
@@ -75,8 +75,11 @@ public class JSONStrategy extends RWStrategy {
      * @return
      */
     public ArrayList<Trip> getAllTrips() {
-        // New ArrayList to hold all of the loaded trips
-        ArrayList<Trip> tripList = new ArrayList<>();
+        // Clear the existing list of trips
+        tripList.clear();
+
+        // Empty ArrayList to hold any trips we find in the JSON file
+        ArrayList<Trip> parsedTrips = new ArrayList<>();
 
         // Since we have to define custom deserializers, create a GsonBuilder and register them
         GsonBuilder builder = new GsonBuilder();
@@ -86,16 +89,15 @@ public class JSONStrategy extends RWStrategy {
 
         // Load the data from the JSON file
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
-            ArrayList<Trip> parsedTrips;
             parsedTrips = gsonParser.fromJson(reader, new TypeToken<ArrayList<Trip>>() {}.getType());
-            for (Trip trip : parsedTrips) {
-                tripList.add(trip);
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // Set the tripList for this class
-        JSONStrategy.tripList = tripList;
+        if (tripList != null) {
+            for (Trip trip : parsedTrips) {
+                tripList.add(trip);
+            }
+        }
         // Return the results
         return tripList;
     }

@@ -3,9 +3,9 @@ import com.termproject.Trip.Trip;
 
 public class AwaitThankYouState implements State {
 
-	private Trip thisTrip;
+	private transient Trip thisTrip;
 	private String thankYouNote;
-	public static final String className = "AwaitThankYouState";
+	public final String className = "AwaitThankYouState";
 	private static final String futureVerb = "Add Thank You note to trip";
 	private static final String pastVerb = "Done with Thank You note";
 

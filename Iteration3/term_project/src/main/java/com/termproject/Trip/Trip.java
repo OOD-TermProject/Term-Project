@@ -126,11 +126,11 @@ public class Trip {
                 completedString += "s";
             }
             // Add colon before name list
-            completedString += ": ";
+            completedString += ":";
             // Add the name of each traveler to the string
             for (int i = 0; i < (travelers.size()); i++) {
                 // Append each traveler's name and a comma
-                completedString = completedString + travelers.get(i) + ", ";
+                completedString = completedString + " " + travelers.get(i) + ",";
             }
             // Remove the comma after the last traveler's name and add a period
             completedString = completedString.substring(0, completedString.length() -1) + ". ";

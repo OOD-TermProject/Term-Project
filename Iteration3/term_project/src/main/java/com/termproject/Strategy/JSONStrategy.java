@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import com.google.gson.*;
 
 import com.google.gson.reflect.TypeToken;
-import com.termproject.State.AwaitPaymentState;
-import com.termproject.State.State;
+import com.termproject.State.*;
 import com.termproject.Transport.PrivateJet;
 import com.termproject.Transport.TransportType;
 import com.termproject.Trip.Trip;
@@ -42,9 +41,18 @@ public class JSONStrategy extends RWStrategy {
 
         // Convert the ArrayList to a string
         String rawJSON = objectParser.toJson(tripList);
-
         System.out.println("Created JSON");
-        System.out.println(rawJSON);
+
+        // Write the new JSON string to the file
+        try {
+            FileWriter writer = new FileWriter(filePath);
+            writer.write(rawJSON);
+            System.out.println("Wrote JSON to file");
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 

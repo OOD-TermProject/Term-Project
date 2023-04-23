@@ -194,10 +194,10 @@ public class Main {
             System.out.println("Current state: " + activeTrip.getState());
             System.out.println(line + "\n");
             System.out.println("Options:");
-            System.out.println("\t1) *do something from the state?*");
-            System.out.println("\t2) Done adding *the thing the state needs?*");
+            System.out.println("\t1) " + activeTrip.getState().getFutureVerb());
+            System.out.println("\t2) " + activeTrip.getState().getPastVerb());
             System.out.println("\t3) Save this trip");
-            System.out.println("\t4) Quit without saving");
+            System.out.println("\t4) Quit");
 
             String userInput = scan.nextLine();
             if (userInput.equals("1")) {

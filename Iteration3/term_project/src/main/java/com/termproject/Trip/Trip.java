@@ -11,6 +11,11 @@ import java.util.ArrayList;
 public class Trip {
     public int uniqueId;
     public String thankYouNote;
+
+    public void setAgent(TravelAgent agent) {
+        this.agent = agent;
+    }
+
     public TravelAgent agent;
     public ArrayList<Traveler> travelers;
     public Itinerary itinerary;

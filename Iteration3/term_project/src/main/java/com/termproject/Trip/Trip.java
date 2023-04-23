@@ -11,43 +11,108 @@ import java.util.ArrayList;
 public class Trip {
     public int uniqueId;
     public String thankYouNote;
-
-    public void setAgent(TravelAgent agent) {
-        this.agent = agent;
-    }
-
     public TravelAgent agent;
     public ArrayList<Traveler> travelers;
     public Itinerary itinerary;
     public ArrayList<Reservation> reservations;
     public Bill bill;
-
-    public State getState() {
-        return state;
-    }
-
     private State state;
-    public void setState(State state) {
-        this.state = state;
-    }
 
     public Trip(int uniqueId) {
-        this.setState(new AwaitTravelersState());
+        this.setState(new AwaitTravelersState(this));
         this.uniqueId = uniqueId;
     }
 
     public int getUniqueId() {
         return uniqueId;
     }
-
+    public String getThankYouNote() {
+        return this.thankYouNote;
+    }
+    public void setThankYouNote(String noteToAdd) {
+        this.thankYouNote = noteToAdd;
+    }
     public TravelAgent getAgent() {
         return agent;
     }
-
+    public void setAgent(TravelAgent agent) {
+        this.agent = agent;
+    }
     public ArrayList<Traveler> getTravelers() {
         return travelers;
     }
-
+    public void setTravelers(ArrayList<Traveler> travelers) {
+        this.travelers = travelers;
+    }
+    public void addTraveler(Traveler traveler) {
+        // Get the name of the passed-in traveler we'd like to add
+        String thisName = traveler.getName();
+        // Loop over each traveler in the list. If it's already there, return
+        for (Traveler alreadyIncluded : travelers) {
+            if (alreadyIncluded.getName().equalsIgnoreCase(thisName)) {
+                return;
+            }
+        }
+        // If we haven't returned by now, this traveler must not be in the list. Add them and return
+        travelers.add(traveler);
+    }
+    public void removeTraveler(Traveler traveler) {
+        // Loop over each traveler in the travelers list and look for a matching name
+        for (Traveler alreadyIncluded : travelers) {
+            if (alreadyIncluded.getName().equalsIgnoreCase(traveler.getName())) {
+                // If we found a matching name, remove it from the list
+                travelers.remove(alreadyIncluded);
+                return;
+            }
+        }
+    }
+    public Itinerary getItinerary() {
+        return this.itinerary;
+    }
+    public void setItinerary(Itinerary itineraryToAdd) {
+        if (this.itinerary != null) {
+            removeItinerary();
+        }
+        this.itinerary = itineraryToAdd;
+    }
+    public void removeItinerary() {
+        this.itinerary = null;
+    }
+    public ArrayList<Reservation> getReservations() {
+        return this.reservations;
+    }
+    public void setReservations(ArrayList<Reservation> newReservations) {
+        this.reservations = newReservations;
+    }
+    public void addReservation(Reservation reservationToAdd) {
+        this.reservations.add(reservationToAdd);
+    }
+    public void removeReservation(Reservation reservationToRemove) {
+        if (reservations.contains(reservationToRemove)) {
+            reservations.remove(reservationToRemove);
+        }
+    }
+    public void clearAllReservations() {
+        this.reservations = null;
+    }
+    public Bill getBill(){
+        return this.bill;
+    }
+    public void setBill(Bill newBill){
+        this.bill = newBill;
+    }
+    public void removeBill() {
+        this.bill = null;
+    }
+    public State getState() {
+        return this.state;
+    }
+    public void setState(State state) {
+        this.state = state;
+    }
+    public void advanceState() {
+        this.state = state.advanceState();
+    }
     @Override
     public String toString() {
         String completedString = String.format("%s:\tAgent: %s. %s travelers: ", uniqueId, agent.getName(), travelers.size());
@@ -58,14 +123,4 @@ public class Trip {
         completedString = completedString + "State: " + state;
         return completedString;
     }
-
-    public boolean AddReservation(Reservation rsv) {
-        // If reservation was successful, return true
-        return true;
-    }
-
-    public void advanceState() {
-        this.state = state.advanceState();
-    }
-
 }

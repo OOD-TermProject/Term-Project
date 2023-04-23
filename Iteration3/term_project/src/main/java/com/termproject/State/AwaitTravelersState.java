@@ -4,15 +4,18 @@ import com.termproject.People.Traveler;
 import com.termproject.Trip.Trip;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AwaitTravelersState implements State {
 	
-	private Trip savedTrip;
+	private Trip thisTrip;
 	
-	private List<Traveler> travelers;
+	private ArrayList<Traveler> travelers;
+	public static final String className = "AwaitTravelersState";
+	private static final String futureVerb = "Add Travelers to trip";
+	private static final String pastVerb = "Done adding travelers";
 	
-	public AwaitTravelersState() {
+	public AwaitTravelersState(Trip currentTrip) {
+		thisTrip = currentTrip;
 		travelers = new ArrayList<>();
 	}
 	
@@ -32,12 +35,20 @@ public class AwaitTravelersState implements State {
 
 	@Override
 	public State advanceState() {
-		return new AwaitPackagesState();
+		thisTrip.setTravelers(travelers);
+		return new AwaitPackagesState(thisTrip);
 	}
 
 	@Override
 	public String toString() {
 		return "Awaiting travellers";
 	}
-
+	@Override
+	public String getFutureVerb() {
+		return futureVerb;
+	}
+	@Override
+	public String getPastVerb() {
+		return pastVerb;
+	}
 }

@@ -179,7 +179,7 @@ public class Main {
                     System.out.println("Available trips:");
                     // Print out each trip
                     for (Trip trip : tripList) {
-                        System.out.println(trip);
+                        System.out.println("\t" + trip);
                     }
                 } else {
                     System.out.println("Invalid entry. Please try again.");

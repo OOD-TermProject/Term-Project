@@ -114,10 +114,7 @@ public class Main {
 
         // Continue based on the user's choice of "new trip" or "existing trip"
         if (newOrExisting == 1) {
-            // Create a new Trip object with a unique ID number
-            activeTrip = new Trip(readStrategy.getMaxTripID() + 1);
-            // Set the new trip's agent to the one that's currently logged in
-            activeTrip.setAgent(currentAgent);
+            startNewTrip();
         } else if (newOrExisting == 2) {
             // Send the user to the "trip select" screen
             tripSelect();
@@ -132,7 +129,6 @@ public class Main {
             doExit("Active trip improperly set. Aborting.");
         }
     }
-
     private static void doExit(String message) {
         System.out.println(message);
         scan.close();
@@ -157,9 +153,15 @@ public class Main {
         }
     }
     private static void tripSelect() {
+        // Update the trip list, just in case something changed
+        tripList = readStrategy.getAllTrips();
+
         while (true) {
-            // Ask user for trip ID or if they'd like to see a list of trips
-            System.out.print("\n" + line + "\nPlease enter the ID of the trip you'd like to load, or type 'list' to see all trips: ");
+            // Print list of available trips
+            printTrips();
+
+            // Ask user for trip ID or let them start a new trip
+            System.out.print("\n" + line + "\nPlease enter the ID of the trip you'd like to load, or type 'new' to start a new trip: ");
             // See whether we got an integer
             if (scan.hasNextInt()) {
                 int tripInput = scan.nextInt();
@@ -176,16 +178,9 @@ public class Main {
                 System.out.println("No trip with that ID. Please try again.\n");
             } else {
                 String tripInput = scan.nextLine();
-                if (tripInput.equalsIgnoreCase("list")) {
-                    // Update the trip list, just in case something changed
-                    tripList = readStrategy.getAllTrips();
-                    System.out.println(line);
-                    System.out.println("Available trips:\n");
-                    // Print out each trip
-                    for (Trip trip : tripList) {
-                        System.out.println("\t" + trip);
-                    }
-//                    System.out.println("\n" + line);
+                if (tripInput.equalsIgnoreCase("new")) {
+                    startNewTrip();
+                    return;
                 } else {
                     System.out.println("Invalid entry. Please try again.");
                 }
@@ -230,5 +225,20 @@ public class Main {
                     break;
             }
         }
+    }
+
+    private static void printTrips() {
+        System.out.println(line);
+        System.out.println("Available trips:\n");
+        // Print out each trip
+        for (Trip trip : tripList) {
+            System.out.println("\t" + trip);
+        }
+    }
+    private static void startNewTrip() {
+        // Create a new Trip object with a unique ID number
+        activeTrip = new Trip(readStrategy.getMaxTripID() + 1);
+        // Set the new trip's agent to the one that's currently logged in
+        activeTrip.setAgent(currentAgent);
     }
 }

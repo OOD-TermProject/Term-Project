@@ -21,16 +21,6 @@ public class AwaitPaymentState implements State {
 	}
 
 	@Override
-	public void save() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public State resume() {
-		return this;
-	}
-
-	@Override
 	public State advanceState() {
 		// Do not let user advance the state if they haven't added payment info
 		if (this.bill == null) {

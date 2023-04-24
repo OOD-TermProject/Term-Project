@@ -1,7 +1,6 @@
 package com.termproject.State;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import com.termproject.Trip.Package;
@@ -10,7 +9,7 @@ import com.termproject.Trip.Trip;
 public class AwaitPackagesState implements State {
 
 	private transient Trip thisTrip;
-	private List<Package> pkgs;
+	private ArrayList<Package> pkgs;
 	public final String className = "AwaitPackagesState";
 	private static final String futureVerb = "Add packages to trip";
 	private static final String pastVerb = "Done adding packages";
@@ -22,16 +21,6 @@ public class AwaitPackagesState implements State {
 
 	public void addPackage(Package pkg) {
 		pkgs.add(pkg);
-	}
-
-	@Override
-	public void save() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public State resume() {
-		return this;
 	}
 
 	@Override
@@ -49,7 +38,15 @@ public class AwaitPackagesState implements State {
 	 */
 	@Override
 	public String getStateInfo() {
-		return null;
+		if ((pkgs != null) && (pkgs.size() > 0)) {
+			String completedString = String.format("%s packages:\n", pkgs.size());
+			for (Package pkg : pkgs) {
+				completedString += "\t" + pkg + "\n";
+			}
+			return completedString;
+		} else {
+			return "No packages yet!";
+		}
 	}
 
 	@Override
@@ -59,12 +56,12 @@ public class AwaitPackagesState implements State {
 
 	@Override
 	public String getFutureVerb() {
-		return this.futureVerb;
+		return futureVerb;
 	}
 
 	@Override
 	public String getPastVerb() {
-		return this.pastVerb;
+		return pastVerb;
 	}
 
 	/**

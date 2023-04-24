@@ -38,16 +38,6 @@ public class AwaitTravelersState implements State {
 	}
 
 	@Override
-	public void save() {        //Write to disk?
-		//TODO
-	}
-
-	@Override
-	public State resume() {
-		return this;
-	}
-
-	@Override
 	public State advanceState() {
 		// Do not let user advance the state if they haven't added any travelers
 		if (!(this.travelers.size() > 1)) {
@@ -72,6 +62,7 @@ public class AwaitTravelersState implements State {
 	public String getPastVerb() {
 		return pastVerb;
 	}
+
 	public String getStateInfo(){
 		if ((travelers != null) && (travelers.size() > 0)) {
 			String completedString = String.format("%s travelers:\n", travelers.size());

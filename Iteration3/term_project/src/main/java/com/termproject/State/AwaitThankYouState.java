@@ -20,16 +20,6 @@ public class AwaitThankYouState implements State {
 	}
 
 	@Override
-	public void save() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public State resume() {
-		return this;
-	}
-
-	@Override
 	public State advanceState() {
 		// Do not let user advance the state if they haven't added the Thank You note
 		if ((this.thankYouNote == null) || this.thankYouNote.length() < 1) {

@@ -8,10 +8,6 @@ public interface State {
 	public String getFutureVerb();
 	public String getPastVerb();
 	public void doAction(Scanner scanner);
-
-	public void save();
-	
-	public State resume();
 	
 	public State advanceState();
 

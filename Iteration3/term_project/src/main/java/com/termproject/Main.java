@@ -75,9 +75,9 @@ public class Main {
      *
      */
     private static void logIn(){
-        System.out.println("Welcome to the Booking System!");
+        System.out.println("\n\n" + line + "\nWelcome to the Booking System!\n");
         while (true) {
-            System.out.println("Please enter your username or type 'list' to see all users:");
+            System.out.print("Please enter your username or type 'list' to see all users: ");
             String username = scan.nextLine();
             if (username.equals("list")){
                 for (TravelAgent agent : listOfAgents){
@@ -87,7 +87,7 @@ public class Main {
                 for (TravelAgent agent : listOfAgents) {
                     if (agent.getUsername().equals(username)) {
                         currentAgent = agent;
-                        System.out.println("Welcome, " + currentAgent.getName() + "!");
+                        System.out.println("\n\nWelcome, " + currentAgent.getName() + "!");
                         return;
                     }
                 }
@@ -143,6 +143,8 @@ public class Main {
             System.out.println("Please select an option below:\n");
             System.out.println("\t1) Start a new trip");
             System.out.println("\t2) Work on an existing trip");
+            System.out.println("\n" + line);
+            System.out.print("Enter an option: ");
             String selection = scan.nextLine();
 
             if (selection.equals("1")) {
@@ -157,10 +159,12 @@ public class Main {
     private static void tripSelect() {
         while (true) {
             // Ask user for trip ID or if they'd like to see a list of trips
-            System.out.println("Please enter the ID of the trip you'd like to load, or type 'list' to see all trips:");
+            System.out.print("\n" + line + "\nPlease enter the ID of the trip you'd like to load, or type 'list' to see all trips: ");
             // See whether we got an integer
             if (scan.hasNextInt()) {
                 int tripInput = scan.nextInt();
+                // Call nextLine again to prevent the newline character from causing the next nextLine to be empty
+                scan.nextLine();
                 // Run through the trip list and see whether we got a match on the ID
                 for (Trip trip : tripList) {
                     // If we found a match, set activeTrip and return
@@ -176,11 +180,12 @@ public class Main {
                     // Update the trip list, just in case something changed
                     tripList = readStrategy.getAllTrips();
                     System.out.println(line);
-                    System.out.println("Available trips:");
+                    System.out.println("Available trips:\n");
                     // Print out each trip
                     for (Trip trip : tripList) {
                         System.out.println("\t" + trip);
                     }
+//                    System.out.println("\n" + line);
                 } else {
                     System.out.println("Invalid entry. Please try again.");
                 }
@@ -190,7 +195,7 @@ public class Main {
     private static void modifyTrip() {
         System.out.println(line);
         while (true) {
-            System.out.println("Working on trip #" + activeTrip.getUniqueId());
+            System.out.println("\n\n" + line + "\nWorking on trip #" + activeTrip.getUniqueId());
             System.out.println("Current state: " + activeTrip.getState());
             System.out.println(line + "\n");
             System.out.println(activeTrip.getState().getStateInfo());
@@ -199,17 +204,30 @@ public class Main {
             System.out.println("\t2) " + activeTrip.getState().getPastVerb());
             System.out.println("\t3) Save this trip");
             System.out.println("\t4) Quit");
+            System.out.print(line + "\nEnter an option: ");
 
             String userInput = scan.nextLine();
-            if (userInput.equals("1")) {
-                // Call the doAction() method for each state. Pass a ref to our Scanner obj so it can read input
-                activeTrip.getState().doAction(scan);
-            } else if (userInput.equals("2")) {
-                activeTrip.advanceState();
-            } else if (userInput.equals("3")) {
-                writeStrategy.saveTrip(activeTrip);
-            } else if (userInput.equals("4")) {
-                doExit("Thank you for using the reservation system. Goodbye!");
+            switch (userInput) {
+                case "1":
+                    // Call the doAction() method for each state. Pass a ref to our Scanner obj so it can read input
+                    activeTrip.getState().doAction(scan);
+                    break;
+                case "2":
+                    // Advance the trip object to the next state
+                    activeTrip.advanceState();
+                    break;
+                case "3":
+                    // Use writeStrategy to save trip to disk
+                    writeStrategy.saveTrip(activeTrip);
+                    break;
+                case "4":
+                    // Quit
+                    doExit("Thank you for using the reservation system. Goodbye!");
+                    break;
+                default:
+                    // Ask user to try again
+                    System.out.println("Invalid selection. Please try again.");
+                    break;
             }
         }
     }

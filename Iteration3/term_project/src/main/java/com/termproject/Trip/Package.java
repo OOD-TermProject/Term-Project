@@ -97,4 +97,9 @@ public class Package {
     public TransportType getTransport() {
         return transport;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s hour trip from %s to %s", this.getHoursOfTravelTime(), this.getTravelsFrom(), this.getTravelsTo());
+    }
 }

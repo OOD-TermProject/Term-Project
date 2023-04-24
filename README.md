@@ -35,15 +35,15 @@ The first iteration consists of:
 
 ## Iteration 2 - Updated designs
 Second iteration consists of:
-- [ ] Update class design to include design patterns
-- [ ] Updated class design. Must show:
-  - [ ] Pattern implementations
-  - [ ] Non-domain features (persistence, UI, etc.)
+- [X] Update class design to include design patterns
+- [X] Updated class design. Must show:
+  - [X] Pattern implementations
+  - [X] Non-domain features (persistence, UI, etc.)
 - [ ] One-page document describing designs
 
 ## Iteration 3 - Implementation
 Third iteration consists of:
-- [ ] Coding the solution. Items required since this is a team of two:
+- [X] Coding the solution. Items required since this is a team of two:
   - [ ] XML functionality
   - [ ] JUnit testing
   - [ ] Doxygen API documentation

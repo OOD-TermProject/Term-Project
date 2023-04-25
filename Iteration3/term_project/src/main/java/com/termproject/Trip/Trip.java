@@ -85,6 +85,9 @@ public class Trip {
         this.reservations = newReservations;
     }
     public void addReservation(Reservation reservationToAdd) {
+        if (this.reservations == null) {
+            this.reservations = new ArrayList<>();
+        }
         this.reservations.add(reservationToAdd);
     }
     public void removeReservation(Reservation reservationToRemove) {

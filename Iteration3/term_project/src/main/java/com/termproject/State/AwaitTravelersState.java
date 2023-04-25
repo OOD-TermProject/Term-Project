@@ -44,7 +44,7 @@ public class AwaitTravelersState implements State {
 	@Override
 	public State advanceState() {
 		// Do not let user advance the state if they haven't added any travelers
-		if (!(this.travelers.size() > 1)) {
+		if (!(this.travelers.size() > 0)) {
 			System.out.println("You must add at least one traveler before moving on.");
 			return this;
 		}
@@ -69,7 +69,11 @@ public class AwaitTravelersState implements State {
 
 	public String getStateInfo(){
 		if ((travelers != null) && (travelers.size() > 0)) {
-			String completedString = String.format("%s travelers:\n", travelers.size());
+			String completedString = String.format("%s traveler", travelers.size());
+			if (travelers.size() > 1) {
+				completedString += "s";
+			}
+			completedString += ":\n";
 			for (Traveler traveler : travelers) {
 				completedString += "\t" + traveler.getName() + "\n";
 			}

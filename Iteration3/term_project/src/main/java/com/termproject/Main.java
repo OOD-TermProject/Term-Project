@@ -34,8 +34,6 @@ public class Main {
      *
      * @param packages The singleton which provides a list of all packages
      */
-    private static final PackageList packages = PackageList.getInstance();
-    static ArrayList<Package> listOfPackages = packages.getPackageList();
     private final PersonList people = PersonList.getInstance();
     private static final AgentList agents = AgentList.getInstance();
     static ArrayList<TravelAgent> listOfAgents = agents.getAgentList();
@@ -172,6 +170,7 @@ public class Main {
                     // If we found a match, set activeTrip and return
                     if (trip.getUniqueId() == tripInput) {
                         activeTrip = trip;
+                        activeTrip.getState().setThisTrip(activeTrip);
                         return;
                     }
                 }

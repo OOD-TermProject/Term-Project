@@ -1,12 +1,12 @@
-Helicopter,2000,10,London,Paris,14:00,2023-05-01,12:00,2023-05-01
-Limousine,1500,5,Madrid,Barcelona,16:30,2023-05-02,15:00,2023-05-02
-PrivateJet,5000,20,New York,London,10:00,2023-05-03,8:00,2023-05-03
-Yacht,3000,15,Los Angeles,New York,13:30,2023-05-04,10:00,2023-05-04
-Helicopter,2500,12,Rome,Berlin,11:00,2023-05-05,9:00,2023-05-05
-Limousine,1000,8,Barcelona,Madrid,19:00,2023-05-06,17:00,2023-05-06
-PrivateJet,8000,30,Tokyo,New York,7:00,2023-05-07,4:00,2023-05-07
-Yacht,3500,17,Miami,London,18:00,2023-05-08,15:00,2023-05-08
-Limousine,1800,6,Paris,Madrid,10:00,2023-05-09,9:00,2023-05-09
-Helicopter,4000,18,London,Moscow,13:00,2023-05-10,11:00,2023-05-10
-PrivateJet,2000.07,14,San Francisco,Tokyo,16:00,2023-06-23,06:00,2023-06-24
-PrivateJet,2000.05,17,Tokyo,New York,05:30,2023-07-01,23:30,2023-07-01
+Helicopter,2000,10,London,Paris
+Limousine,1500,5,Madrid,Barcelona
+PrivateJet,5000,20,New York,London
+Yacht,3000,15,Los Angeles,New York
+Helicopter,2500,12,Rome,Berlin
+Limousine,1000,8,Barcelona,Madrid
+PrivateJet,8000,30,Tokyo,New York
+Yacht,3500,17,Miami,London
+Limousine,1800,6,Paris,Madrid
+Helicopter,4000,18,London,Moscow
+PrivateJet,2000.07,14,San Francisco,Tokyo
+PrivateJet,2000.05,17,Tokyo,New York

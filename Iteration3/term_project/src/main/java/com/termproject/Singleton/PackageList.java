@@ -47,24 +47,20 @@ public class PackageList {
                 int hoursOfTravelTime = Integer.parseInt(data[2]);
                 Place travelsFrom = new Place(data[3]);
                 Place travelsTo = new Place(data[4]);
-                String arrivalTime = data[5];
-                String arrivalDate = data[6];
-                String departTime = data[7];
-                String departDate = data[8];
 
                 TransportType transport = null;
                 switch (transportName) {
                     case "Helicopter":
-                        transport = new Helicopter(arrivalTime, arrivalDate, travelsTo, departTime, price, travelsFrom, departDate);
+                        transport = new Helicopter();
                         break;
                     case "Limousine":
-                        transport = new Limousine(arrivalTime, arrivalDate, travelsTo, departTime, price, travelsFrom, departDate);
+                        transport = new Limousine();
                         break;
                     case "PrivateJet":
-                        transport = new PrivateJet(arrivalTime, arrivalDate, travelsTo, departTime, price, travelsFrom, departDate);
+                        transport = new PrivateJet();
                         break;
                     case "Yacht":
-                        transport = new Yacht(arrivalTime, arrivalDate, travelsTo, departTime, price, travelsFrom, departDate);
+                        transport = new Yacht();
                         break;
                 }
                 packageList.add(new Package(price, hoursOfTravelTime, travelsFrom, travelsTo, transport));

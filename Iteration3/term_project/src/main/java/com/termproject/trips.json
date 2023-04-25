@@ -1,140 +1,42 @@
 [
   {
     "uniqueId": 1,
-    "thankYouNote": "Thank you for choosing our services!",
+    "thankYouNote": null,
     "agent": {
+      "username": "hkim",
       "name": "Hana Kim",
-      "mobilePhone": "(412) 678-1298",
-      "username": "hkim"
+      "mobilePhone": "555-678-9012"
     },
     "travelers": [
       {
-        "name": "Jane Doe",
-        "mobilePhone": "1234567890",
-        "favoriteDrink": "apple juice"
-      },
-      {
-        "name": "Jack Smith",
-        "mobilePhone": "8690434100",
-        "favoriteDrink": "Coca Cola"
+        "favoriteDrink": "sadadasdasd",
+        "name": "fedfsad",
+        "mobilePhone": "sadasdsadas"
       }
     ],
     "itinerary": null,
     "reservations": [
       {
-        "departingOn": "06/23/23",
-        "arrivingOn": "06/24/23",
+        "arrivingOn": "sada",
+        "departingOn": "asdas",
         "packages": [
           {
-            "price": 2000.07,
-            "hoursOfTravelTime": 14,
+            "price": 5000.0,
+            "hoursOfTravelTime": 20,
             "travelsFrom": {
-              "name": "San Francisco"
-            },
-            "travelsTo": {
-              "name": "Tokyo"
-            },
-            "transport": {
-              "class": "PrivateJet"
-            }
-          },
-          {
-            "price": 2000.05,
-            "hoursOfTravelTime": 17,
-            "travelsFrom": {
-              "name": "Tokyo"
-            },
-            "travelsTo": {
               "name": "New York"
             },
-            "transport": {
-              "class": "PrivateJet"
-            }
+            "travelsTo": {
+              "name": "London"
+            },
+            "transport": {}
           }
         ]
       }
     ],
-    "bill": {
-      "totalPrice": 4000.12,
-      "isPaidInFull": false,
-      "payment": {
-        "class": "CreditCard",
-        "amount": 2000.10,
-        "cardNumber": 478025791023143,
-        "expDate": "05/12/24"
-
-      }
-    },
+    "bill": null,
     "state": {
-      "className": "AwaitPaymentState"
-    }
-  },
-  {
-    "uniqueId": 2,
-    "thankYouNote": "Thank you for choosing our services!",
-    "agent": {
-      "name": "Omar Khan",
-      "mobilePhone": "(644) 984-8675",
-      "username": "okhan"
-    },
-    "travelers": [
-      {
-        "name": "Larry Byrd",
-        "mobilePhone": "1234567890",
-        "favoriteDrink": "champagne"
-      },
-      {
-        "name": "Ruth Chris",
-        "mobilePhone": "8690434100",
-        "favoriteDrink": "red wine"
-      }
-    ],
-    "itinerary": null,
-    "reservations": [
-      {
-        "departingOn": "09/01/23",
-        "arrivingOn": "09/03/23",
-        "packages": [
-          {
-            "price": 2000.07,
-            "hoursOfTravelTime": 14,
-            "travelsFrom": {
-              "name": "San Francisco"
-            },
-            "travelsTo": {
-              "name": "Tokyo"
-            },
-            "transport": {
-              "class": "PrivateJet"
-            }
-          },
-          {
-            "price": 2000.05,
-            "hoursOfTravelTime": 17,
-            "travelsFrom": {
-              "name": "Tokyo"
-            },
-            "travelsTo": {
-              "name": "New York"
-            },
-            "transport": {
-              "class": "PrivateJet"
-            }
-          }
-        ]
-      }
-    ],
-    "bill": {
-      "totalPrice": 4000.12,
-      "isPaidInFull": false,
-      "payment": {
-        "class": "CreditCard",
-        "amount": 2000.10,
-        "cardNumber": 478025791023143,
-        "expDate": "05/12/24"
-      }
-    },
-    "state": {
+      "bill": null,
       "className": "AwaitPaymentState"
     }
   }

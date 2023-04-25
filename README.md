@@ -39,7 +39,7 @@ Second iteration consists of:
 - [X] Updated class design. Must show:
   - [X] Pattern implementations
   - [X] Non-domain features (persistence, UI, etc.)
-- [ ] One-page document describing designs
+- [X] One-page document describing designs
 
 ## Iteration 3 - Implementation
 Third iteration consists of:

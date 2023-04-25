@@ -100,6 +100,6 @@ public class Package {
 
     @Override
     public String toString() {
-        return String.format("%s hour trip from %s to %s", this.getHoursOfTravelTime(), this.getTravelsFrom(), this.getTravelsTo());
+        return String.format("%02d hour trip from %s to %s by %s", this.getHoursOfTravelTime(), this.getTravelsFrom(), this.getTravelsTo(), this.getTransport().toString().toLowerCase());
     }
 }

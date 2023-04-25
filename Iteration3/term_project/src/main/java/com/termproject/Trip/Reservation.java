@@ -14,5 +14,12 @@ public class Reservation {
 
     public void removePackage(Package pkg) {
 
+    @Override
+    public String toString() {
+        String completedString = String.format("Reservation from %s to %s with %s package", this.departingOn, this.arrivingOn, this.packages.size());
+        if (this.packages.size() > 1) {
+            completedString += "s";
+        }
+        return completedString;
     }
 }

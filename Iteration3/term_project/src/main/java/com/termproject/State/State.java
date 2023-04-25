@@ -10,7 +10,6 @@ public interface State {
 	public void doAction(Scanner scanner);
 	
 	public State advanceState();
-
 	public String getStateInfo();
-	
+	public void setThisTrip(Trip trip);
 }

@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 public class AwaitTravelersState implements State {
 
+	public void setThisTrip(Trip thisTrip) {
+		this.thisTrip = thisTrip;
+	}
+
 	private transient Trip thisTrip;
 	private ArrayList<Traveler> travelers;
 	public final String className = "AwaitTravelersState";

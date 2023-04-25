@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class AwaitThankYouState implements State {
 
+	public void setThisTrip(Trip thisTrip) {
+		this.thisTrip = thisTrip;
+	}
 	private transient Trip thisTrip;
 	private String thankYouNote;
 	public final String className = "AwaitThankYouState";

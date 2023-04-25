@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class AwaitPaymentState implements State {
 
+	public void setThisTrip(Trip thisTrip) {
+		this.thisTrip = thisTrip;
+	}
 	private transient Trip thisTrip;
 	private Bill bill;
 	public final String className = "AwaitPaymentState";

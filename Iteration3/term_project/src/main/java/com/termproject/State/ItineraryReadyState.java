@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class ItineraryReadyState implements State {
 
+	public void setThisTrip(Trip thisTrip) {
+		this.thisTrip = thisTrip;
+	}
 	private transient Trip thisTrip;
 	private String itinerary;
 	public final String className = "ItineraryReadyState";

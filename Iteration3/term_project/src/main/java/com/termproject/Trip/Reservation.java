@@ -3,16 +3,40 @@ package com.termproject.Trip;
 import java.util.ArrayList;
 
 public class Reservation {
-    public String departingOn;
-    public String arrivingOn;
-    public ArrayList<Package> packages;
+    private String arrivingOn;
+    private String departingOn;
+    private ArrayList<Package> packages;
 
-    public boolean addPackage(Package pkg) {
-        // Return true if package addition was successful
-        return true;
+    public Reservation(String departingOn, String arrivingOn) {
+        this.departingOn = departingOn;
+        this.arrivingOn = arrivingOn;
     }
 
-    public void removePackage(Package pkg) {
+    public String getArrivingOn() {
+        return arrivingOn;
+    }
+    public void setArrivingOn(String arrivingOn) {
+        this.arrivingOn = arrivingOn;
+    }
+
+    public String getDepartingOn() {
+        return departingOn;
+    }
+    public void setDepartingOn(String departingOn) {
+        this.departingOn = departingOn;
+    }
+    public ArrayList<Package> getPackages() {
+        return packages;
+    }
+    public void addPackage(Package pkg) {
+        if (this.packages == null) {
+            this.packages = new ArrayList<>();
+        }
+        this.packages.add(pkg);
+    }
+    public void removePackage(int index) {
+        this.packages.remove(index);
+    }
 
     @Override
     public String toString() {

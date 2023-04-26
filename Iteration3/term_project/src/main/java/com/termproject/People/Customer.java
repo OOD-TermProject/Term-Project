@@ -1,5 +1,8 @@
 package com.termproject.People;
 
-public class Customer extends Person {
-//    private String favoriteDrink;
+public abstract class Customer extends Person {
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

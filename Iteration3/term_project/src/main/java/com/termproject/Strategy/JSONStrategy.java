@@ -10,8 +10,7 @@ import com.google.gson.*;
 
 import com.google.gson.reflect.TypeToken;
 import com.termproject.State.*;
-import com.termproject.Transport.PrivateJet;
-import com.termproject.Transport.TransportType;
+import com.termproject.Transport.*;
 import com.termproject.Trip.Trip;
 
 public class JSONStrategy extends RWStrategy {
@@ -106,11 +105,16 @@ public class JSONStrategy extends RWStrategy {
         @Override
         public TransportType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject jsonObject = json.getAsJsonObject();
-            String transportClass = jsonObject.get("class").getAsString();
+            String transportClass = jsonObject.get("transportName").getAsString();
             switch (transportClass) {
                 case "PrivateJet":
                     return context.deserialize(json, PrivateJet.class);
-                // add more cases for other subclasses of TransportType as needed
+                case "Helicopter":
+                    return context.deserialize(json, Helicopter.class);
+                case "Limousine":
+                    return context.deserialize(json, Limousine.class);
+                case "Yacht":
+                    return context.deserialize(json, Yacht.class);
                 default:
                     throw new JsonParseException("Unknown transport class: " + transportClass);
             }

@@ -1,7 +1,37 @@
 package com.termproject.Payment;
 
 public class Bill {
-    public float totalPrice;
-    public boolean isPaidInFull;
-    public Payment payment;
+    private float totalPrice;
+    private boolean isPaidInFull;
+    private Payment payment;
+
+    public float getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public boolean isPaidInFull() {
+        return isPaidInFull;
+    }
+
+    public void setPaidInFull(boolean paidInFull) {
+        isPaidInFull = paidInFull;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public Bill(float totalPrice) {
+        this.totalPrice = totalPrice;
+        this.isPaidInFull = false;
+        this.payment = null;
+    }
 }

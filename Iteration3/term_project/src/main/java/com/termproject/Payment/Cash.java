@@ -1,5 +1,9 @@
 package com.termproject.Payment;
 
 public class Cash extends PaymentType {
-    public float Amount;
+
+    @Override
+    public String toString() {
+        return "Cash";
+    }
 }

@@ -10,6 +10,7 @@ public class Reservation {
     public Reservation(String departingOn, String arrivingOn) {
         this.departingOn = departingOn;
         this.arrivingOn = arrivingOn;
+        this.packages = new ArrayList<>();
     }
 
     public String getArrivingOn() {

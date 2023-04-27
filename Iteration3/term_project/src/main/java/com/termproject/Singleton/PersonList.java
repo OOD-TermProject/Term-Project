@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PersonList {
     private static PersonList uniqueInstance = new PersonList();
-    private static final String peopleFile = "term_project/src/main/java/com/termproject/Singleton/people.txt";
+    private static final String peopleFile = "src/main/java/com/termproject/Singleton/people.txt";
     ArrayList<Customer> personList = new ArrayList<>();
 
     private PersonList() {
@@ -34,5 +34,9 @@ public class PersonList {
 
     public static PersonList getInstance() {
         return uniqueInstance;
+    }
+
+    public ArrayList<Customer> getPersonList() {
+        return personList;
     }
 }

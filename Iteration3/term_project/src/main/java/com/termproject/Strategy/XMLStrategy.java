@@ -17,21 +17,6 @@ public class XMLStrategy extends RWStrategy {
 
     }
 
-    /** Loads a specific trip for the given ID
-     * @param tripID
-     * @return Trip object if the trip with matching ID was found. Else, null
-     */
-    @Override
-    public Trip loadTrip(int tripID) {
-        System.out.println("[XMLStrategy] Attempting to load trip #" + tripID);
-        for (Trip trip : tripList) {
-            if (trip.getUniqueId() == tripID) {
-                return trip;
-            }
-        }
-        return null;
-    }
-
     /** Loads all trips from the XML file
      * @return ArrayList of all trips read in
      */

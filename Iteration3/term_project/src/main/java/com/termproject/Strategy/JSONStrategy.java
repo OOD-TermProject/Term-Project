@@ -55,20 +55,6 @@ public class JSONStrategy extends RWStrategy {
 
     }
 
-    /**
-     * @param tripID
-     * @return
-     */
-    @Override
-    public Trip loadTrip(int tripID) {
-        System.out.println("[JSONStrategy] Attempting to load trip #" + tripID);
-        for (Trip trip : tripList) {
-            if (trip.getUniqueId() == tripID) {
-                return trip;
-            }
-        }
-        return null;
-    }
 
     /**
      * @return

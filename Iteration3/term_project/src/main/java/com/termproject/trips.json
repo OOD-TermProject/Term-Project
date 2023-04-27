@@ -9,28 +9,99 @@
     },
     "travelers": [
       {
-        "favoriteDrink": "5r32",
-        "name": "asda",
-        "mobilePhone": "asda"
+        "favoriteDrink": "sadasdasd",
+        "name": "sadas",
+        "mobilePhone": "sdaassdas"
+      },
+      {
+        "favoriteDrink": "sdfsdf",
+        "name": "asdasfds",
+        "mobilePhone": "dsfsdfsd"
+      }
+    ],
+    "itinerary": null,
+    "reservations": null,
+    "bill": null,
+    "state": {
+      "reservations": [
+        {
+          "arrivingOn": "June 1",
+          "departingOn": "May 2",
+          "packages": [
+            {
+              "price": 3000.0,
+              "hoursOfTravelTime": 15,
+              "travelsFrom": {
+                "name": "Los Angeles"
+              },
+              "travelsTo": {
+                "name": "New York"
+              },
+              "transport": {
+                "transportName": "Yacht"
+              }
+            }
+          ]
+        }
+      ],
+      "className": "AwaitPackagesState"
+    }
+  },
+  {
+    "uniqueId": 2,
+    "thankYouNote": null,
+    "agent": {
+      "username": "hkim",
+      "name": "Hana Kim",
+      "mobilePhone": "555-678-9012"
+    },
+    "travelers": null,
+    "itinerary": null,
+    "reservations": null,
+    "bill": null,
+    "state": {
+      "travelers": [
+        {
+          "favoriteDrink": "asd",
+          "name": "asdas",
+          "mobilePhone": "asdasd"
+        }
+      ],
+      "className": "AwaitTravelersState"
+    }
+  },
+  {
+    "uniqueId": 3,
+    "thankYouNote": null,
+    "agent": {
+      "username": "aali",
+      "name": "Amina Ali",
+      "mobilePhone": "555-345-6789"
+    },
+    "travelers": [
+      {
+        "favoriteDrink": "asda",
+        "name": "asdas",
+        "mobilePhone": "asdad"
       }
     ],
     "itinerary": null,
     "reservations": [
       {
-        "arrivingOn": "dasasda",
-        "departingOn": "sdasd",
+        "arrivingOn": "asdas",
+        "departingOn": "asda",
         "packages": [
           {
-            "price": 5000.0,
-            "hoursOfTravelTime": 20,
+            "price": 3000.0,
+            "hoursOfTravelTime": 15,
             "travelsFrom": {
-              "name": "New York"
+              "name": "Los Angeles"
             },
             "travelsTo": {
-              "name": "London"
+              "name": "New York"
             },
             "transport": {
-              "transportName": "PrivateJet"
+              "transportName": "Yacht"
             }
           }
         ]
@@ -39,9 +110,20 @@
     "bill": null,
     "state": {
       "bill": {
-        "totalPrice": 5000.0,
-        "isPaidInFull": false,
-        "payment": null
+        "totalPrice": 3000.0,
+        "isPaidInFull": true,
+        "payment": {
+          "amountPaid": 3000.0,
+          "paidBy": {
+            "name": "asdsd",
+            "mobilePhone": null
+          },
+          "paymentMethod": {
+            "paymentName": "CreditCard",
+            "cardNumber": 12312,
+            "expDate": "sadasd"
+          }
+        }
       },
       "className": "AwaitPaymentState"
     }

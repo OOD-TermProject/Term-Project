@@ -111,7 +111,7 @@ public class AwaitPaymentState implements State {
 		}
 		if (bill.isPaidInFull()) {
 			System.out.println("Verifying payment with payment processor...");
-			for (int k = 0; k < 10; k++) {
+			for (int k = 0; k < 5; k++) {
 				System.out.println(".".repeat(k+1));
 				try {
 					sleep(1200);

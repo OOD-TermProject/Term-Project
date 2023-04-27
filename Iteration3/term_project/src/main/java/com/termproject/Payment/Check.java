@@ -1,6 +1,8 @@
 package com.termproject.Payment;
 
 public class Check extends PaymentType {
+
+    private final String paymentName = "Check";
     public int getCheckNumber() {
         return checkNumber;
     }

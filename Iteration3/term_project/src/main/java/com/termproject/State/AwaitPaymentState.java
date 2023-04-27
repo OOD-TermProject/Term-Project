@@ -9,6 +9,8 @@ import com.termproject.Trip.Package;
 
 import java.util.Scanner;
 
+import static java.lang.Thread.sleep;
+
 public class AwaitPaymentState implements State {
 
 	public void setThisTrip(Trip thisTrip) {
@@ -20,6 +22,7 @@ public class AwaitPaymentState implements State {
 	private static String futureVerb = "Add payment info to trip";
 	private static final String pastVerb = "Done with payment info";
 	private static Scanner scan = null;
+	private static boolean readyForPayment = false;
 
 	public AwaitPaymentState(Trip currentTrip) {
 		thisTrip = currentTrip;
@@ -76,7 +79,7 @@ public class AwaitPaymentState implements State {
 			} else {
 				completedString += bill.getPayment().getPaymentMethod().toString().toLowerCase();
 			}
-			completedString += "\t\tAmount paid: $" + String.format("%.2f", bill.getPayment().getAmountPaid());
+			completedString += "\n\t\tAmount paid: $" + String.format("%.2f", bill.getPayment().getAmountPaid());
 		}
 
 		return completedString;
@@ -106,55 +109,76 @@ public class AwaitPaymentState implements State {
 		if (bill.getPayment() == null) {
 			bill.setPayment(new Payment());
 		}
-		updatePayment();
-		futureVerb = "Update payment info";
+		if (bill.isPaidInFull()) {
+			System.out.println("Verifying payment with payment processor...");
+			for (int k = 0; k < 10; k++) {
+				System.out.println(".".repeat(k+1));
+				try {
+					sleep(1200);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			System.out.println("Payment verified!");
+			return;
+		}
+		if (readyForPayment) {
+			updateAmountPaid();
+		} else {
+			updatePayment();
+		}
+
+	}
+
+	private void updateAmountPaid() {
+		float amountPaid = bill.getPayment().getAmountPaid();
+		float totalBill = bill.getTotalPrice();
+		float amountRemaining = totalBill - amountPaid;
+		System.out.println("Current amount paid: $" + String.format("%.2f", amountPaid) + " of $" + String.format("%.2f", totalBill));
+		System.out.println("Remaining balance: $" + String.format("%.2f", amountRemaining));
+		System.out.print("\nEnter amount to be applied to balance: ");
+		float amountEntered = 0.0f;
+		if (scan.hasNextInt()) {
+			int integerAmountEntered = scan.nextInt();
+			scan.nextLine();
+			amountEntered = (float) integerAmountEntered;
+		} else if (scan.hasNextFloat()) {
+			amountEntered = scan.nextFloat();
+			scan.nextLine();
+		}
+
+		// Update the payment info in the bill
+		bill.getPayment().setAmountPaid(amountPaid + amountEntered);
+		amountPaid = bill.getPayment().getAmountPaid();
+
+		// Check whether the bill is complete
+		if (amountPaid == totalBill) {
+			System.out.println("Bill paid in full!");
+			bill.setPaidInFull(true);
+			futureVerb = "Verify payment is complete";
+		} else if (amountPaid > totalBill) {
+			System.out.println("Bill overpaid. A balance of $" + String.format("%.2f", (amountPaid - totalBill)) + " will be returned via " + bill.getPayment().getPaymentMethod().toString().toLowerCase());
+		}
+
 	}
 
 	private void updatePayment() {
 		if (bill.getPayment().getPaidBy() == null) {
-			System.out.print("Enter the payer's name: ");
-			String payerName = scan.nextLine();
-			Customer payer = new NonTraveler();
-			payer.setName(payerName);
-			bill.getPayment().setPaidBy(payer);
-			System.out.println("Payer's name updated!");
-			futureVerb = "Set payment method";
+			updatePayerName();
 		}
 
 		if (bill.getPayment().getPaymentMethod() == null) {
-			System.out.print("Select a payment method to be used:\n");
-			System.out.println("\t1. Cash");
-			System.out.println("\t2. Check");
-			System.out.println("\t3. Credit Card");
-			System.out.print("Select an option: ");
-			if (scan.hasNextInt()) {
-				int selection = scan.nextInt();
-				scan.nextLine();
-
-				switch (selection) {
-					case 1:
-						bill.getPayment().setPaymentMethod(new Cash());
-						break;
-					case 2:
-						bill.getPayment().setPaymentMethod(new Check());
-						futureVerb = "Add check number";
-						break;
-					case 3:
-						bill.getPayment().setPaymentMethod(new CreditCard());
-						futureVerb = "Add credit card details";
-						break;
-				}
-			} else {
-				System.out.println("Invalid entry. Please try again.");
-			}
+			updatePaymentMethod();
 		} else {
 			switch (bill.getPayment().getPaymentMethod().toString()) {
-				case "Cash":
-					break;
 				case "Check":
 					updateCheckInfo((Check) bill.getPayment().getPaymentMethod());
 				case "Credit Card":
 					updateCreditCardInfo((CreditCard) bill.getPayment().getPaymentMethod());
+				default:
+					futureVerb = "Enter amount paid";
+					readyForPayment = true;
+					break;
 			}
 		}
 
@@ -200,6 +224,44 @@ public class AwaitPaymentState implements State {
 					System.out.println("Invalid entry. Please only use numbers for the check number.");
 				}
 			}
+		}
+	}
+
+	private void updatePayerName() {
+		System.out.print("Enter the payer's name: ");
+		String payerName = scan.nextLine();
+		Customer payer = new NonTraveler();
+		payer.setName(payerName);
+		bill.getPayment().setPaidBy(payer);
+		System.out.println("Payer's name updated!");
+	}
+
+	private void updatePaymentMethod() {
+		System.out.print("Select a payment method to be used:\n");
+		System.out.println("\t1. Cash");
+		System.out.println("\t2. Check");
+		System.out.println("\t3. Credit Card");
+		System.out.print("Select an option: ");
+
+		if (scan.hasNextInt()) {
+			int selection = scan.nextInt();
+			scan.nextLine();
+
+			switch (selection) {
+				case 1:
+					bill.getPayment().setPaymentMethod(new Cash());
+					break;
+				case 2:
+					bill.getPayment().setPaymentMethod(new Check());
+					futureVerb = "Add check number";
+					break;
+				case 3:
+					bill.getPayment().setPaymentMethod(new CreditCard());
+					futureVerb = "Add credit card details";
+					break;
+			}
+		} else {
+			System.out.println("Invalid entry. Please try again.");
 		}
 	}
 }

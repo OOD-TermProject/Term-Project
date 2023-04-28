@@ -28,7 +28,6 @@ public class JSONStrategy extends RWStrategy {
      */
     @Override
     public void saveTrip(Trip tripToSave) {
-        System.out.println("Attempting to save trip!");
         Gson objectParser = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
 
         // Loop over each trip in the tripList
@@ -45,13 +44,11 @@ public class JSONStrategy extends RWStrategy {
 
         // Convert the ArrayList to a string
         String rawJSON = objectParser.toJson(tripList);
-        System.out.println("Created JSON");
 
         // Write the new JSON string to the file
         try {
             FileWriter writer = new FileWriter(filePath);
             writer.write(rawJSON);
-            System.out.println("Wrote JSON to file");
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();

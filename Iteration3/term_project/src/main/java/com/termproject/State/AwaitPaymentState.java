@@ -19,10 +19,11 @@ public class AwaitPaymentState implements State {
 	private transient Trip thisTrip;
 	private Bill bill;
 	public final String className = "AwaitPaymentState";
-	private static String futureVerb = "Add payment info to trip";
-	private static final String pastVerb = "Done with payment info";
+	private String futureVerb = "Add payment info to trip";
+	private final String pastVerb = "Done with payment info";
 	private static Scanner scan = null;
-	private static boolean readyForPayment = false;
+	private boolean readyForPayment = false;
+	private boolean paymentVerified = false;
 
 	public AwaitPaymentState(Trip currentTrip) {
 		thisTrip = currentTrip;
@@ -109,17 +110,13 @@ public class AwaitPaymentState implements State {
 		if (bill.getPayment() == null) {
 			bill.setPayment(new Payment());
 		}
+		if (paymentVerified) {
+			System.out.println("Payment already verified. You may proceed.");
+			return;
+		}
+
 		if (bill.isPaidInFull()) {
-			System.out.println("Verifying payment with payment processor...");
-			for (int k = 0; k < 5; k++) {
-				System.out.println(".".repeat(k+1));
-				try {
-					sleep(1200);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			System.out.println("Payment verified!");
+			verifyPayment();
 			return;
 		}
 		if (readyForPayment) {
@@ -128,6 +125,21 @@ public class AwaitPaymentState implements State {
 			updatePayment();
 		}
 
+	}
+
+	private void verifyPayment() {
+		System.out.println("Verifying payment with payment processor...\n");
+		for (int k = 0; k < 5; k++) {
+			System.out.print(".");
+			try {
+				sleep(1200);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.print("\n");
+		System.out.println("Payment verified!");
+		paymentVerified = true;
 	}
 
 	private void updateAmountPaid() {
@@ -165,6 +177,7 @@ public class AwaitPaymentState implements State {
 	private void updatePayment() {
 		if (bill.getPayment().getPaidBy() == null) {
 			updatePayerName();
+			futureVerb = "Update payment method";
 		}
 
 		if (bill.getPayment().getPaymentMethod() == null) {
@@ -250,6 +263,8 @@ public class AwaitPaymentState implements State {
 			switch (selection) {
 				case 1:
 					bill.getPayment().setPaymentMethod(new Cash());
+					readyForPayment = true;
+					futureVerb = "Enter amount paid";
 					break;
 				case 2:
 					bill.getPayment().setPaymentMethod(new Check());

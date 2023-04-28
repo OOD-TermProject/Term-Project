@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import com.google.gson.*;
@@ -74,6 +75,7 @@ public class JSONStrategy extends RWStrategy {
         builder.registerTypeAdapter(State.class, new StateDeserializer());
         builder.registerTypeAdapter(Customer.class, new CustomerDeserializer());
         builder.registerTypeAdapter(PaymentType.class, new PaymentDeserializer());
+        builder.registerTypeAdapter(LocalTime.class, new TimeDeserializer());
         Gson gsonParser = builder.create();
 
         // Load the data from the JSON file
@@ -163,6 +165,19 @@ public class JSONStrategy extends RWStrategy {
                     return context.deserialize(json, CreditCard.class);
                 default:
                     throw new JsonParseException("Unknown person class: " + customerClass);
+            }
+        }
+    }
+
+    class TimeDeserializer implements JsonDeserializer<LocalTime> {
+        @Override
+        public LocalTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            JsonObject jsonObject = json.getAsJsonObject();
+            String timeClass = jsonObject.get("departTime").getAsString();
+            switch (timeClass) {
+                default:
+                    System.out.println("Here, I guess?");
+                    return context.deserialize(json, LocalTime.class);
             }
         }
     }

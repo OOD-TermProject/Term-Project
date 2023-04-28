@@ -6,6 +6,8 @@ import com.termproject.Trip.Place;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -27,10 +29,13 @@ public class PackageList {
      */
     ArrayList<Package> packageList = new ArrayList<>();
 
+    private static DateTimeFormatter formatter;
+
     /**
      * Private constructor for the singleton instance of the class.
      */
     private PackageList() {
+        formatter = DateTimeFormatter.ofPattern("HH:mm");
         loadPackagesFile();
     }
 
@@ -47,6 +52,8 @@ public class PackageList {
                 int hoursOfTravelTime = Integer.parseInt(data[2]);
                 Place travelsFrom = new Place(data[3]);
                 Place travelsTo = new Place(data[4]);
+                LocalTime departTime = LocalTime.parse(data[5], formatter);
+                LocalTime arrivalTime = LocalTime.parse(data[6], formatter);
 
                 TransportType transport = null;
                 switch (transportName) {
@@ -63,7 +70,7 @@ public class PackageList {
                         transport = new Yacht();
                         break;
                 }
-                packageList.add(new Package(price, hoursOfTravelTime, travelsFrom, travelsTo, transport));
+                packageList.add(new Package(price, hoursOfTravelTime, travelsFrom, travelsTo, transport, departTime, arrivalTime));
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class AgentList {
     private static final AgentList uniqueInstance = new AgentList();
-    private final String agentsFile = "src/main/java/com/termproject/Singleton/agents.txt";
+    private final String agentsFile = "term_project/src/main/java/com/termproject/Singleton/agents.txt";
     ArrayList<TravelAgent> agentList = new ArrayList<>();
 
     private AgentList() {

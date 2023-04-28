@@ -15,7 +15,7 @@ import com.termproject.Trip.Trip;
 
 public class JSONStrategy extends RWStrategy {
     // Path to the JSON file of trips
-    private static final String filePath = "src/main/java/com/termproject/trips.json";
+    private static final String filePath = "term_project/src/main/java/com/termproject/trips.json";
     private static ArrayList<Trip> tripList = new ArrayList<>();
 
     /**Saves trip to disk

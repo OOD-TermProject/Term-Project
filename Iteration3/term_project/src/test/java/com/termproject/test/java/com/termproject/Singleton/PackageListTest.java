@@ -1,5 +1,6 @@
-package com.termproject.Singleton;
+package com.termproject.test.java.com.termproject.Singleton;
 
+import com.termproject.Singleton.PackageList;
 import com.termproject.Trip.Package;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeEach;

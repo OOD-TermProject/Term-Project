@@ -1,6 +1,7 @@
-package com.termproject.Singleton;
+package com.termproject.test.java.com.termproject.Singleton;
 
 import com.termproject.People.Customer;
+import com.termproject.Singleton.PersonList;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,6 @@ class PersonListTest {
 
     @Test
     void getInstance() {
-
         assertFalse(false);
     }
 

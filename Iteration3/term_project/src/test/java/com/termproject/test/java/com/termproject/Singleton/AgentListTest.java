@@ -1,7 +1,8 @@
-package com.termproject.Singleton;
+package com.termproject.test.java.com.termproject.Singleton;
 
 import com.termproject.People.TravelAgent;
 
+import com.termproject.Singleton.AgentList;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

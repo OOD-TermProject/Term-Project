@@ -1,8 +1,9 @@
-package com.termproject.Strategy;
+package com.termproject.test.java.com.termproject.Strategy;
 
 import com.termproject.State.AwaitPackagesState;
 import com.termproject.State.AwaitPaymentState;
 import com.termproject.State.AwaitTravelersState;
+import com.termproject.Strategy.JSONStrategy;
 import com.termproject.Trip.Trip;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;

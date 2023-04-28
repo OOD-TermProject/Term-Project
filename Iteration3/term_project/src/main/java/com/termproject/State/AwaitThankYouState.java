@@ -11,15 +11,18 @@ public class AwaitThankYouState implements State {
 	private transient Trip thisTrip;
 	private String thankYouNote = "";
 	public final String className = "AwaitThankYouState";
-	private static final String futureVerb = "Add Thank You note to trip";
+	private static String futureVerb = "Add 'Thank You' note to trip";
 	private static final String pastVerb = "Done with Thank You note";
+	private static Scanner scan = null;
 
 	public AwaitThankYouState(Trip currentTrip) {
 		this.thisTrip = currentTrip;
 	}
 
-	public void addThankYouNote (String note) {
-		thankYouNote = note;
+	public void addThankYouNote () {
+		System.out.print("Enter 'Thank You' note to attach to itinerary: ");
+		thankYouNote = scan.nextLine();
+		futureVerb = "Change 'Thank You' note";
 	}
 
 	@Override
@@ -42,10 +45,10 @@ public class AwaitThankYouState implements State {
 			thankYouNote = "";
 		}
 		if (thankYouNote.isEmpty()) {
-			return "'Thank You' note currently unset.\n\n";
+			return "'Thank You' note currently empty. Enter a 'Thank You' note to proceed\n\n";
 		}
 		else {
-			return thankYouNote + "\n\n";
+			return "Current 'Thank You' note:\n\t\"" + thankYouNote + "\"\n\n";
 		}
 	}
 
@@ -69,6 +72,10 @@ public class AwaitThankYouState implements State {
 	 */
 	@Override
 	public void doAction(Scanner scanner) {
-
+		scan = scanner;
+		if (thankYouNote == null) {
+			thankYouNote = "";
+		}
+		addThankYouNote();
 	}
 }

@@ -2,6 +2,8 @@ package com.termproject.People;
 
 public class Traveler extends Customer {
 
+    private final String customerType = "Traveler";
+
     /**
      * Traveler's favorite drink
      */

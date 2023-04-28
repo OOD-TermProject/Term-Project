@@ -2,7 +2,7 @@ package com.termproject.Payment;
 
 public class CreditCard extends PaymentType {
 
-    private final String paymentName = "CreditCard";
+    private final String paymentType = "CreditCard";
 
     public int getCardNumber() {
         return cardNumber;

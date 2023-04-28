@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import com.google.gson.*;
 
 import com.google.gson.reflect.TypeToken;
+import com.termproject.Payment.Cash;
+import com.termproject.Payment.Check;
+import com.termproject.Payment.CreditCard;
+import com.termproject.Payment.PaymentType;
+import com.termproject.People.*;
 import com.termproject.State.*;
 import com.termproject.Transport.*;
 import com.termproject.Trip.Trip;
@@ -70,6 +75,8 @@ public class JSONStrategy extends RWStrategy {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(TransportType.class, new TransportTypeDeserializer());
         builder.registerTypeAdapter(State.class, new StateDeserializer());
+        builder.registerTypeAdapter(Customer.class, new CustomerDeserializer());
+        builder.registerTypeAdapter(PaymentType.class, new PaymentDeserializer());
         Gson gsonParser = builder.create();
 
         // Load the data from the JSON file
@@ -125,6 +132,40 @@ public class JSONStrategy extends RWStrategy {
                     return context.deserialize(json, ItineraryReadyState.class);
                 default:
                     throw new JsonParseException("Unknown state class: " + stateClass);
+            }
+        }
+    }
+
+    class CustomerDeserializer implements JsonDeserializer<Customer> {
+        @Override
+        public Customer deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            JsonObject jsonObject = json.getAsJsonObject();
+            String customerClass = jsonObject.get("customerType").getAsString();
+            switch (customerClass) {
+                case "Traveler":
+                    return context.deserialize(json, Traveler.class);
+                case "NonTraveler":
+                    return context.deserialize(json, NonTraveler.class);
+                default:
+                    throw new JsonParseException("Unknown person class: " + customerClass);
+            }
+        }
+    }
+
+    class PaymentDeserializer implements JsonDeserializer<PaymentType> {
+        @Override
+        public PaymentType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            JsonObject jsonObject = json.getAsJsonObject();
+            String customerClass = jsonObject.get("paymentType").getAsString();
+            switch (customerClass) {
+                case "Cash":
+                    return context.deserialize(json, Cash.class);
+                case "Check":
+                    return context.deserialize(json, Check.class);
+                case "CreditCard":
+                    return context.deserialize(json, CreditCard.class);
+                default:
+                    throw new JsonParseException("Unknown person class: " + customerClass);
             }
         }
     }

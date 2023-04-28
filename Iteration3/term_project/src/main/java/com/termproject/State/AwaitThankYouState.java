@@ -9,7 +9,7 @@ public class AwaitThankYouState implements State {
 		this.thisTrip = thisTrip;
 	}
 	private transient Trip thisTrip;
-	private String thankYouNote;
+	private String thankYouNote = "";
 	public final String className = "AwaitThankYouState";
 	private static final String futureVerb = "Add Thank You note to trip";
 	private static final String pastVerb = "Done with Thank You note";
@@ -38,12 +38,20 @@ public class AwaitThankYouState implements State {
 	 */
 	@Override
 	public String getStateInfo() {
-		return null;
+		if (thankYouNote == null) {
+			thankYouNote = "";
+		}
+		if (thankYouNote.isEmpty()) {
+			return "'Thank You' note currently unset.\n\n";
+		}
+		else {
+			return thankYouNote + "\n\n";
+		}
 	}
 
 	@Override
 	public String toString() {
-		return "Awaiting thank you note";
+		return "Awaiting 'Thank You' note";
 	}
 
 	@Override

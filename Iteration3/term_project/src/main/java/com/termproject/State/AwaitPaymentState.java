@@ -111,7 +111,7 @@ public class AwaitPaymentState implements State {
 			bill.setPayment(new Payment());
 		}
 		if (paymentVerified) {
-			System.out.println("Payment already verified. You may proceed.");
+			System.out.println("Payment already verified!");
 			return;
 		}
 
@@ -128,7 +128,7 @@ public class AwaitPaymentState implements State {
 	}
 
 	private void verifyPayment() {
-		System.out.println("Verifying payment with payment processor...\n");
+		System.out.println("Verifying payment with payment processor...");
 		for (int k = 0; k < 5; k++) {
 			System.out.print(".");
 			try {

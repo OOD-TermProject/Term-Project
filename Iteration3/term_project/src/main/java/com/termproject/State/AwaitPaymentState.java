@@ -47,6 +47,14 @@ public class AwaitPaymentState implements State {
 			System.out.println("You must add at payment info before moving on.");
 			return this;
 		}
+		if (this.bill.getPayment() == null) {
+			System.out.println("You must enter payment info before moving on.");
+			return this;
+		}
+		if (!paymentVerified) {
+			System.out.println("You must complete payment verification before proceeding.");
+			return this;
+		}
 		thisTrip.setBill(bill);
 		return new AwaitThankYouState(thisTrip);
 	}

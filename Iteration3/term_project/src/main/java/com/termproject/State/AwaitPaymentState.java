@@ -186,13 +186,15 @@ public class AwaitPaymentState implements State {
 			switch (bill.getPayment().getPaymentMethod().toString()) {
 				case "Check":
 					updateCheckInfo((Check) bill.getPayment().getPaymentMethod());
+					break;
 				case "Credit Card":
 					updateCreditCardInfo((CreditCard) bill.getPayment().getPaymentMethod());
+					break;
 				default:
-					futureVerb = "Enter amount paid";
-					readyForPayment = true;
 					break;
 			}
+			futureVerb = "Enter amount paid";
+			readyForPayment = true;
 		}
 
 	}

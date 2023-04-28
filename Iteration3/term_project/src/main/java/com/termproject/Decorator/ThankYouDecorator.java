@@ -1,21 +1,23 @@
 package com.termproject.Decorator;
 
+import com.termproject.Trip.Trip;
+
 public class ThankYouDecorator extends ItineraryDecorator {
 
 	Itinerary itinerary;
 	String thankYouNote;
 	
-	public ThankYouDecorator(Itinerary itinerary, String thankYouNote) {
+	public ThankYouDecorator(Itinerary itinerary, Trip trip) {
 		
 		this.itinerary = itinerary;
-		this.thankYouNote = thankYouNote;
+		this.thankYouNote = trip.getThankYouNote();
 		
 	}
 	
 	@Override
 	public String getItinerary() {
 		
-		return itinerary.getItinerary() + thankYouNote + "\n";
+		return this.itinerary.getItinerary() + this.thankYouNote + "\n";
 		
 	}
 

@@ -1,5 +1,6 @@
 package com.termproject.State;
 
+import com.termproject.Decorator.*;
 import com.termproject.Trip.Trip;
 
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class ItineraryReadyState implements State {
 		this.thisTrip = thisTrip;
 	}
 	private transient Trip thisTrip;
-	private String itinerary;
+	private Itinerary itinerary;
 	public final String className = "ItineraryReadyState";
 	private static final String futureVerb = "Generate itinerary";
 	private static final String pastVerb = "Mark trip as completed and exit";
@@ -19,13 +20,19 @@ public class ItineraryReadyState implements State {
 		this.thisTrip = currentTrip;
 	}
 
-	public String generateItinerary() {
-		return itinerary;
+	public void generateItinerary() {
+		itinerary = new InProgressItinerary();
+		itinerary = new HeaderDecorator(itinerary, thisTrip);
+		itinerary = new TravelerDecorator(itinerary, thisTrip);
+		itinerary = new TripDetailDecorator(itinerary, thisTrip);
+		itinerary = new BookingDecorator(itinerary, thisTrip);
+		itinerary = new BillingDecorator(itinerary, thisTrip);
+		itinerary = new ThankYouDecorator(itinerary, thisTrip);
 	}
 
 	@Override
 	public State advanceState() {        //Last state, should not advance any further;
-		return this;                    //New trip should be created after reaching this state
+		return this;
 	}
 
 	/**
@@ -33,7 +40,11 @@ public class ItineraryReadyState implements State {
 	 */
 	@Override
 	public String getStateInfo() {
-		return null;
+		if (itinerary == null) {
+			return "Itinerary ready to be generated!\n";
+		} else {
+			return itinerary.getItinerary();
+		}
 	}
 
 	@Override
@@ -56,6 +67,6 @@ public class ItineraryReadyState implements State {
 	 */
 	@Override
 	public void doAction(Scanner scanner) {
-
+		generateItinerary();
 	}
 }

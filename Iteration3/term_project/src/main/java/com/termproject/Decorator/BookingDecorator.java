@@ -1,16 +1,18 @@
 package com.termproject.Decorator;
 
+import com.termproject.Trip.Trip;
+
 public class BookingDecorator extends ItineraryDecorator {
 
 	Itinerary itinerary;
 	String agentName;
 	String agentPhone;
 	
-	public BookingDecorator(Itinerary itinerary, String agentName, String agentPhone) {
+	public BookingDecorator(Itinerary itinerary, Trip trip) {
 		
 		this.itinerary = itinerary;
-		this.agentName = agentName;
-		this.agentPhone = agentPhone;
+		this.agentName = trip.getAgent().getName();
+		this.agentPhone = trip.getAgent().getMobilePhone();
 		
 	}
 	

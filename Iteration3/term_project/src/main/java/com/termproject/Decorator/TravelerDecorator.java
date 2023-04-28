@@ -1,24 +1,29 @@
 package com.termproject.Decorator;
 
+import com.termproject.People.Traveler;
+import com.termproject.Trip.Trip;
+
+import java.util.ArrayList;
+
 public class TravelerDecorator extends ItineraryDecorator {
 
 	Itinerary itinerary;
-	String[] travelerList;
+	ArrayList<Traveler> travelerList;
 	
-	public TravelerDecorator(Itinerary itinerary, String[] travelerList) {
+	public TravelerDecorator(Itinerary itinerary, Trip trip) {
 		
 		this.itinerary = itinerary;
-		this.travelerList = travelerList;
+		this.travelerList = trip.getTravelers();
 		
 	}
 	
-	public String PrintTravelers(String[] travelers) {
+	public String printTravelers() {
 		
-		String result = Integer.toString(travelers.length) + " travelers: \n";
+		String result = this.travelerList.size() + " travelers: \n";
 		int count = 1;	//For numbering the list from 1
 		
-		for (int i = 0; i < travelers.length; i++) {
-			result += count + ". " + travelers[i] + "\n";
+		for (int i = 0; i < travelerList.size(); i++) {
+			result += count + ". " + travelerList.get(i) + "\n";
 			count++;
 		}
 		
@@ -29,7 +34,7 @@ public class TravelerDecorator extends ItineraryDecorator {
 	@Override
 	public String getItinerary() {
 		
-		return itinerary.getItinerary() + PrintTravelers(travelerList);
+		return itinerary.getItinerary() + printTravelers() + "\n";
 		
 	}
 	

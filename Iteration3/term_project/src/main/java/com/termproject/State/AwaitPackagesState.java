@@ -1,6 +1,8 @@
 package com.termproject.State;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 import com.termproject.Singleton.PackageList;
@@ -23,6 +25,7 @@ public class AwaitPackagesState implements State {
 	private static final String futureVerb = "Add packages to a reservation";
 	private static final String pastVerb = "Done adding packages";
 	private static Scanner scan = null;
+	private static final SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
 	public AwaitPackagesState(Trip currentTrip) {
 		this.reservations = new ArrayList<>();
@@ -31,10 +34,26 @@ public class AwaitPackagesState implements State {
 
 	private Reservation newReservation() {
 		System.out.println("Creating a new reservation.");
-		System.out.print("Please enter the departure date for this reservation: ");
+		System.out.print("Please enter the departure date for this reservation (MM/dd/yyyy): ");
 		String reservationStart = scan.nextLine();
-		System.out.print("Please enter the arrival date for this reservation: ");
+		Date startDate;
+		Date endDate = null;
+		try {
+			startDate = format.parse(reservationStart);
+		} catch (Exception e) {
+			System.out.println("Dates must be in the format mm/dd/yyyy");
+			return null;
+		}
+		System.out.print("Please enter the arrival date for this reservation (MM/dd/yyyy): ");
 		String reservationEnd = scan.nextLine();
+		try {
+			endDate = format.parse(reservationEnd);
+		} catch (Exception e) {
+			System.out.println("Dates must be in the format mm/dd/yyyy");
+			return null;
+		}
+		reservationStart = startDate.toString();
+		reservationEnd = endDate.toString();
 		Reservation newReservation = new Reservation(reservationStart, reservationEnd);
 		reservations.add(newReservation);
 		return newReservation;
@@ -44,6 +63,9 @@ public class AwaitPackagesState implements State {
 		Reservation currentReservation = null;
 		if (reservations.size() == 0) {
 			currentReservation = newReservation();
+			if (currentReservation == null) {
+				return null;
+			}
 		} else {
 			System.out.println("Current trip reservations:\n");
 			for (int j = 0; j < reservations.size(); j++) {
@@ -156,6 +178,9 @@ public class AwaitPackagesState implements State {
 			reservations = new ArrayList<>();
 		}
 		Reservation thisReservation = chooseReservation();
+		if (thisReservation == null) {
+			return;
+		}
 		addPackages(thisReservation);
 	}
 

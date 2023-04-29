@@ -43,13 +43,10 @@ Second iteration consists of:
 
 ## Iteration 3 - Implementation
 Third iteration consists of:
-- [X] Coding the solution. Items required since this is a team of two:
-  - [ ] XML functionality
-  - [ ] JUnit testing
-  - [ ] Doxygen API documentation
-- [ ] Testing using the provided test data
+- [X] Coding the solution
+  - [X] JUnit testing
+  - [X] Doxygen API documentation
 
 ## Iteration 4 - Presentation
 Last iteration consists of:
-- [ ] PowerPoint about the project
-- [ ] Short demo
+- [X] Detailed report

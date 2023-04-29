@@ -1,0 +1,27 @@
+Itinerary by Hana Kim, 555-678-9012
+This trip is booked for 1 traveler:
+	1. sadasd
+
+Trip Details, beginning 05/12 at 12:16PM and ending on 06/14 at 5:16PM
+
+This trip consists of 1 reservation:
+
+	Reservation #1 departing on 05/12 with 1 package:
+		Limousine from Madrid to Barcelona, departing at 12:16PM and arriving at 5:16PM
+
+
+
+Booking: 
+
+	Every detail of your trip was booked with care by Hana Kim. If you have any questions or problems, call Hana Kim at 555-678-9012 any time, 24 hours a day.
+
+Billing:
+
+	Total: $1500.00
+	Paid in full by asdasd using cash
+		Amount paid: $1500.00
+
+	Billing Details:
+		Limousine from Madrid to Barcelona, departing at 12:16PM and arriving at 5:16PM -- $1500.00
+
+sdadsd

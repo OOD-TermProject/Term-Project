@@ -1,13 +1,19 @@
 Itinerary by Hana Kim, 555-678-9012
-This trip is booked for 1 traveler:
-	1. sadasd
+This trip is booked for 2 travelers:
+	1. Batman
+	2. Babe Ruth
 
-Trip Details, beginning 05/12 at 12:16PM and ending on 06/14 at 5:16PM
+Trip Details, beginning 05/12 at 12:16PM and ending on 06/07 at 5:16PM
 
-This trip consists of 1 reservation:
+This trip consists of 2 reservations:
 
-	Reservation #1 departing on 05/12 with 1 package:
+	Reservation #1 departing on 05/12 with 2 packages:
 		Limousine from Madrid to Barcelona, departing at 12:16PM and arriving at 5:16PM
+		Yacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM
+
+	Reservation #2 departing on 07/11 with 2 packages:
+		Yacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM
+		Limousine from Barcelona to Madrid, departing at 3:48AM and arriving at 11:48AM
 
 
 
@@ -17,11 +23,16 @@ Booking:
 
 Billing:
 
-	Total: $1500.00
-	Paid in full by asdasd using cash
-		Amount paid: $1500.00
+	Total: $8500.00
+	Paid in full by Steve Richguy using credit card
+		Card number: 1089156815973532
+		Expiration date: 05/24
+		Amount paid: $8500.00
 
 	Billing Details:
 		Limousine from Madrid to Barcelona, departing at 12:16PM and arriving at 5:16PM -- $1500.00
+		Yacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM -- $3000.00
+		Yacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM -- $3000.00
+		Limousine from Barcelona to Madrid, departing at 3:48AM and arriving at 11:48AM -- $1000.00
 
-sdadsd
+Thank you for using our services!

@@ -1,7 +1,7 @@
 [
   {
     "uniqueId": 1,
-    "thankYouNote": null,
+    "thankYouNote": "Thank you for using our services!",
     "agent": {
       "username": "hkim",
       "name": "Hana Kim",
@@ -9,87 +9,59 @@
     },
     "travelers": [
       {
-        "favoriteDrink": "sadasdasd",
-        "name": "sadas",
-        "mobilePhone": "sdaassdas"
+        "customerType": "Traveler",
+        "favoriteDrink": "Champagne",
+        "name": "Batman",
+        "mobilePhone": "(770) 123-4567"
       },
       {
-        "favoriteDrink": "sdfsdf",
-        "name": "asdasfds",
-        "mobilePhone": "dsfsdfsd"
+        "customerType": "Traveler",
+        "favoriteDrink": "Coca Cola",
+        "name": "Babe Ruth",
+        "mobilePhone": "(404) 546-9870"
       }
     ],
-    "itinerary": null,
-    "reservations": null,
-    "bill": null,
-    "state": {
-      "reservations": [
-        {
-          "arrivingOn": "June 1",
-          "departingOn": "May 2",
-          "packages": [
-            {
-              "price": 3000.0,
-              "hoursOfTravelTime": 15,
-              "travelsFrom": {
-                "name": "Los Angeles"
-              },
-              "travelsTo": {
-                "name": "New York"
-              },
-              "transport": {
-                "transportName": "Yacht"
-              }
-            }
-          ]
-        }
-      ],
-      "className": "AwaitPackagesState"
-    }
-  },
-  {
-    "uniqueId": 2,
-    "thankYouNote": null,
-    "agent": {
-      "username": "hkim",
-      "name": "Hana Kim",
-      "mobilePhone": "555-678-9012"
-    },
-    "travelers": null,
-    "itinerary": null,
-    "reservations": null,
-    "bill": null,
-    "state": {
-      "travelers": [
-        {
-          "favoriteDrink": "asd",
-          "name": "asdas",
-          "mobilePhone": "asdasd"
-        }
-      ],
-      "className": "AwaitTravelersState"
-    }
-  },
-  {
-    "uniqueId": 3,
-    "thankYouNote": null,
-    "agent": {
-      "username": "aali",
-      "name": "Amina Ali",
-      "mobilePhone": "555-345-6789"
-    },
-    "travelers": [
-      {
-        "favoriteDrink": "asda",
-        "name": "asdas",
-        "mobilePhone": "asdad"
-      }
-    ],
-    "itinerary": null,
+    "itinerary": "Itinerary by Hana Kim, 555-678-9012\nThis trip is booked for 2 travelers:\n\t1. Batman\n\t2. Babe Ruth\n\nTrip Details, beginning 05/12 at 12:16PM and ending on 06/07 at 5:16PM\n\nThis trip consists of 2 reservations:\n\n\tReservation #1 departing on 05/12 with 2 packages:\n\t\tLimousine from Madrid to Barcelona, departing at 12:16PM and arriving at 5:16PM\n\t\tYacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM\n\n\tReservation #2 departing on 07/11 with 2 packages:\n\t\tYacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM\n\t\tLimousine from Barcelona to Madrid, departing at 3:48AM and arriving at 11:48AM\n\n\n\nBooking: \n\n\tEvery detail of your trip was booked with care by Hana Kim. If you have any questions or problems, call Hana Kim at 555-678-9012 any time, 24 hours a day.\n\nBilling:\n\n\tTotal: $8500.00\n\tPaid in full by Steve Richguy using credit card\n\t\tCard number: 1089156815973532\n\t\tExpiration date: 05/24\n\t\tAmount paid: $8500.00\n\n\tBilling Details:\n\t\tLimousine from Madrid to Barcelona, departing at 12:16PM and arriving at 5:16PM -- $1500.00\n\t\tYacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM -- $3000.00\n\t\tYacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM -- $3000.00\n\t\tLimousine from Barcelona to Madrid, departing at 3:48AM and arriving at 11:48AM -- $1000.00\n\nThank you for using our services!\n",
     "reservations": [
       {
-        "arrivingOn": "asdas",
-        "departingOn": "asda",
+        "arrivingOn": "2023-06-07T17:16",
+        "departingOn": "2023-05-12T12:16",
+        "packages": [
+          {
+            "price": 1500.0,
+            "hoursOfTravelTime": 5,
+            "travelsFrom": {
+              "name": "Madrid"
+            },
+            "travelsTo": {
+              "name": "Barcelona"
+            },
+            "transport": {
+              "transportName": "Limousine"
+            },
+            "departTime": "12:16",
+            "arrivalTime": "17:16"
+          },
+          {
+            "price": 3000.0,
+            "hoursOfTravelTime": 15,
+            "travelsFrom": {
+              "name": "Los Angeles"
+            },
+            "travelsTo": {
+              "name": "New York"
+            },
+            "transport": {
+              "transportName": "Yacht"
+            },
+            "departTime": "10:57",
+            "arrivalTime": "01:57"
+          }
+        ]
+      },
+      {
+        "arrivingOn": "2023-08-05T01:57",
+        "departingOn": "2023-07-11T10:57",
         "packages": [
           {
             "price": 3000.0,
@@ -102,30 +74,48 @@
             },
             "transport": {
               "transportName": "Yacht"
-            }
+            },
+            "departTime": "10:57",
+            "arrivalTime": "01:57"
+          },
+          {
+            "price": 1000.0,
+            "hoursOfTravelTime": 8,
+            "travelsFrom": {
+              "name": "Barcelona"
+            },
+            "travelsTo": {
+              "name": "Madrid"
+            },
+            "transport": {
+              "transportName": "Limousine"
+            },
+            "departTime": "03:48",
+            "arrivalTime": "11:48"
           }
         ]
       }
     ],
-    "bill": null,
-    "state": {
-      "bill": {
-        "totalPrice": 3000.0,
-        "isPaidInFull": true,
-        "payment": {
-          "amountPaid": 3000.0,
-          "paidBy": {
-            "name": "asdsd",
-            "mobilePhone": null
-          },
-          "paymentMethod": {
-            "paymentName": "CreditCard",
-            "cardNumber": 12312,
-            "expDate": "sadasd"
-          }
+    "bill": {
+      "totalPrice": 8500.0,
+      "isPaidInFull": true,
+      "payment": {
+        "amountPaid": 8500.0,
+        "paidBy": {
+          "customerType": "NonTraveler",
+          "name": "Steve Richguy",
+          "mobilePhone": null
+        },
+        "paymentMethod": {
+          "paymentType": "CreditCard",
+          "cardNumber": 1089156815973532,
+          "expDate": "05/24"
         }
-      },
-      "className": "AwaitPaymentState"
-    }
+      }
+    },
+    "state": {
+      "className": "ItineraryReadyState"
+    },
+    "complete": false
   }
 ]

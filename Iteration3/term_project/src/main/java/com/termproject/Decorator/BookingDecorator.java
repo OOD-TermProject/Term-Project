@@ -4,9 +4,9 @@ import com.termproject.Trip.Trip;
 
 public class BookingDecorator extends ItineraryDecorator {
 
-	Itinerary itinerary;
-	String agentName;
-	String agentPhone;
+	transient Itinerary itinerary;
+	transient String agentName;
+	transient String agentPhone;
 	
 	public BookingDecorator(Itinerary itinerary, Trip trip) {
 		

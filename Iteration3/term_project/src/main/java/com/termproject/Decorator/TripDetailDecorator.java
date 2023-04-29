@@ -12,10 +12,10 @@ import java.util.Locale;
 
 public class TripDetailDecorator extends ItineraryDecorator {
 
-	Itinerary itinerary;
-	Trip thisTrip;
-	LocalDateTime departDateTime;
-	LocalDateTime arrivalDateTime;
+	transient Itinerary itinerary;
+	transient Trip thisTrip;
+	transient LocalDateTime departDateTime;
+	transient LocalDateTime arrivalDateTime;
 
 	private static final SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 	

@@ -13,7 +13,7 @@ public class ItineraryReadyState implements State {
 		this.thisTrip = thisTrip;
 	}
 	private transient Trip thisTrip;
-	private Itinerary itinerary;
+	transient private Itinerary itinerary;
 	public final String className = "ItineraryReadyState";
 	private static final String futureVerb = "Generate itinerary";
 	private static final String pastVerb = "Mark trip as completed and exit";

@@ -4,8 +4,8 @@ import com.termproject.Trip.Trip;
 
 public class ThankYouDecorator extends ItineraryDecorator {
 
-	Itinerary itinerary;
-	String thankYouNote;
+	transient Itinerary itinerary;
+	transient String thankYouNote;
 	
 	public ThankYouDecorator(Itinerary itinerary, Trip trip) {
 		

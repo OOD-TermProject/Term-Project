@@ -8,8 +8,8 @@ import com.termproject.Trip.Trip;
 
 public class BillingDecorator extends ItineraryDecorator {
 
-	Itinerary itinerary;
-	Trip thisTrip;
+	transient Itinerary itinerary;
+	transient Trip thisTrip;
 	
 	public BillingDecorator(Itinerary itinerary, Trip trip) {
 		this.itinerary = itinerary;

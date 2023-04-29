@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class TravelerDecorator extends ItineraryDecorator {
 
-	Itinerary itinerary;
-	ArrayList<Traveler> travelerList;
+	transient Itinerary itinerary;
+	transient ArrayList<Traveler> travelerList;
 	
 	public TravelerDecorator(Itinerary itinerary, Trip trip) {
 		

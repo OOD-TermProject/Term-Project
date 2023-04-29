@@ -4,9 +4,9 @@ import com.termproject.Trip.Trip;
 
 public class HeaderDecorator extends ItineraryDecorator {
 
-	Itinerary itinerary;
-	String agentName;
-	String agentPhone;
+	transient Itinerary itinerary;
+	transient String agentName;
+	transient String agentPhone;
 	
 	public HeaderDecorator(Itinerary itinerary, Trip trip) {
 		

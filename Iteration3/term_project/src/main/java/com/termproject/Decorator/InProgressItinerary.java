@@ -2,7 +2,7 @@ package com.termproject.Decorator;
 
 public class InProgressItinerary extends Itinerary {
 
-    String itinerary = "";
+    transient String itinerary = "";
     public String getItinerary() {
         return itinerary;
     }

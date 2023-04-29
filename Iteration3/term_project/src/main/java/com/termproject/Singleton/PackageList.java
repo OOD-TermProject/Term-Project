@@ -23,7 +23,6 @@ public class PackageList {
      * Path to the packages file.
      */
     private static final String packagesFile = "term_project/src/main/java/com/termproject/Singleton/packages.txt";
-    private static DateTimeFormatter formatter;
     /**
      * List of travel packages
      */
@@ -33,7 +32,7 @@ public class PackageList {
      * Private constructor for the singleton instance of the class.
      */
     private PackageList() {
-        formatter = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         loadPackagesFile();
     }
 

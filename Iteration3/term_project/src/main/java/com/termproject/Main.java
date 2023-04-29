@@ -4,7 +4,6 @@ import com.termproject.Factory.ReadFactory;
 import com.termproject.Factory.WriteFactory;
 import com.termproject.People.TravelAgent;
 import com.termproject.Singleton.AgentList;
-import com.termproject.Singleton.PersonList;
 import com.termproject.Strategy.RWStrategy;
 import com.termproject.Trip.Trip;
 
@@ -38,12 +37,6 @@ public class Main {
     private static RWStrategy writeStrategy;
     private static String dataFormat;
     private static ArrayList<Trip> tripList;
-    /**
-     * Singleton for retrieving all current packages available in the system
-     *
-     * @param packages The singleton which provides a list of all packages
-     */
-    private final PersonList people = PersonList.getInstance();
 
     /**
      * Loads the system's config file (config.properties) to determine the file format

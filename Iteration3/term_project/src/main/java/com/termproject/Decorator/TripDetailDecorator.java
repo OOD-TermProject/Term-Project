@@ -4,7 +4,6 @@ import com.termproject.Trip.Package;
 import com.termproject.Trip.Reservation;
 import com.termproject.Trip.Trip;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.Locale;
 
 public class TripDetailDecorator extends ItineraryDecorator {
 
-    private static final SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
     transient Itinerary itinerary;
     transient Trip thisTrip;
     transient LocalDateTime departDateTime;
@@ -54,11 +52,6 @@ public class TripDetailDecorator extends ItineraryDecorator {
                 arrivalDateTime.toLocalDate().format(dateFormatter) + " at " + arrivalDateTime.toLocalTime().format(timeFormatter) + "\n\n";
 
         int count = 1;    //For numbering the list from 1
-
-        ArrayList<Package> allPackages = new ArrayList<>();
-        for (Reservation rsv : thisTrip.getReservations()) {
-            allPackages.addAll(rsv.getPackages());
-        }
 
         result += "This trip consists of " + this.thisTrip.getReservations().size() + " reservation";
         if (this.thisTrip.getReservations().size() > 1) {

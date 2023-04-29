@@ -15,10 +15,6 @@ public class Bill {
         return totalPrice;
     }
 
-    public void setTotalPrice(float totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
     public boolean isPaidInFull() {
         return isPaidInFull;
     }

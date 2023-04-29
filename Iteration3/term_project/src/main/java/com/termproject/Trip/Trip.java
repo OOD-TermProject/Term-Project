@@ -17,7 +17,7 @@ public class Trip {
     public ArrayList<Reservation> reservations;
     public Bill bill;
     private State state;
-    private boolean complete = false;
+    private boolean complete;
 
     public Trip(int uniqueId) {
         this.setState(new AwaitTravelersState(this));
@@ -61,30 +61,6 @@ public class Trip {
         this.travelers = travelers;
     }
 
-    public void addTraveler(Traveler traveler) {
-        // Get the name of the passed-in traveler we'd like to add
-        String thisName = traveler.getName();
-        // Loop over each traveler in the list. If it's already there, return
-        for (Traveler alreadyIncluded : travelers) {
-            if (alreadyIncluded.getName().equalsIgnoreCase(thisName)) {
-                return;
-            }
-        }
-        // If we haven't returned by now, this traveler must not be in the list. Add them and return
-        travelers.add(traveler);
-    }
-
-    public void removeTraveler(Traveler traveler) {
-        // Loop over each traveler in the travelers list and look for a matching name
-        for (Traveler alreadyIncluded : travelers) {
-            if (alreadyIncluded.getName().equalsIgnoreCase(traveler.getName())) {
-                // If we found a matching name, remove it from the list
-                travelers.remove(alreadyIncluded);
-                return;
-            }
-        }
-    }
-
     public String getItinerary() {
         return this.itinerary;
     }
@@ -104,23 +80,11 @@ public class Trip {
         return this.reservations;
     }
 
-    public void setReservations(ArrayList<Reservation> newReservations) {
-        this.reservations = newReservations;
-    }
-
     public void addReservation(Reservation reservationToAdd) {
         if (this.reservations == null) {
             this.reservations = new ArrayList<>();
         }
         this.reservations.add(reservationToAdd);
-    }
-
-    public void removeReservation(Reservation reservationToRemove) {
-        reservations.remove(reservationToRemove);
-    }
-
-    public void clearAllReservations() {
-        this.reservations = null;
     }
 
     public Bill getBill() {
@@ -129,10 +93,6 @@ public class Trip {
 
     public void setBill(Bill newBill) {
         this.bill = newBill;
-    }
-
-    public void removeBill() {
-        this.bill = null;
     }
 
     public State getState() {

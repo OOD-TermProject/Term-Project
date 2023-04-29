@@ -92,13 +92,11 @@ public class JSONStrategy extends RWStrategy {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (tripList != null) {
-            for (Trip trip : parsedTrips) {
-                if (!trip.isComplete()) {
-                    tripList.add(trip);
-                }
-
+        for (Trip trip : parsedTrips) {
+            if (!trip.isComplete()) {
+                tripList.add(trip);
             }
+
         }
         // Return the results
         return tripList;

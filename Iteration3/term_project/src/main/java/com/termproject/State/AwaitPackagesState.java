@@ -34,8 +34,8 @@ public class AwaitPackagesState implements State {
         System.out.println("\nCreating a new reservation.");
         System.out.print("Please enter the departure date for this reservation (MM/dd/yyyy): ");
         String reservationStart = scan.nextLine();
-        LocalDate startDate = null;
-        LocalDate endDate = null;
+        LocalDate startDate;
+        LocalDate endDate;
         try {
             startDate = LocalDate.parse(reservationStart, format);
         } catch (Exception e) {
@@ -61,9 +61,6 @@ public class AwaitPackagesState implements State {
         Reservation currentReservation = null;
         if (reservations.size() == 0) {
             currentReservation = newReservation();
-            if (currentReservation == null) {
-                return null;
-            }
         } else {
             System.out.println("Current trip reservations:\n");
             for (int j = 0; j < reservations.size(); j++) {
@@ -175,7 +172,7 @@ public class AwaitPackagesState implements State {
      */
     @Override
     public void doAction(Scanner scanner) {
-        this.scan = scanner;
+        scan = scanner;
         if (reservations == null) {
             reservations = new ArrayList<>();
         }

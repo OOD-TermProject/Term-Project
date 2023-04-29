@@ -1,0 +1,40 @@
+Itinerary by Kai Wong, 555-789-0123
+This trip is booked for 2 travelers:
+	1. Bruce Wayne
+	2. Bill Nye
+
+Trip Details, beginning 06/07 at 12:16PM and ending on 08/08 at 5:16PM
+
+This trip consists of 2 reservations:
+
+	Reservation #1 departing on 06/07 with 2 packages:
+		Limousine from Madrid to Barcelona, departing at 12:16PM and arriving at 5:16PM
+		Private Jet from New York to London, departing at 5:41PM and arriving at 1:41PM
+
+	Reservation #2 departing on 09/12 with 3 packages:
+		Private Jet from New York to London, departing at 5:41PM and arriving at 1:41PM
+		Yacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM
+		Limousine from Barcelona to Madrid, departing at 3:48AM and arriving at 11:48AM
+
+
+
+Booking: 
+
+	Every detail of your trip was booked with care by Kai Wong. If you have any questions or problems, call Kai Wong at 555-789-0123 any time, 24 hours a day.
+
+Billing:
+
+	Total: $15500.00
+	Paid in full by Charles Moneybags using credit card
+		Card number: 4598523685219875
+		Expiration date: 05/26
+		Amount paid: $15500.00
+
+	Billing Details:
+		Limousine from Madrid to Barcelona, departing at 12:16PM and arriving at 5:16PM -- $1500.00
+		Private Jet from New York to London, departing at 5:41PM and arriving at 1:41PM -- $5000.00
+		Private Jet from New York to London, departing at 5:41PM and arriving at 1:41PM -- $5000.00
+		Yacht from Los Angeles to New York, departing at 10:57AM and arriving at 1:57AM -- $3000.00
+		Limousine from Barcelona to Madrid, departing at 3:48AM and arriving at 11:48AM -- $1000.00
+
+Thank you for using our agency, Mr. Wayne. Enjoy your trip!

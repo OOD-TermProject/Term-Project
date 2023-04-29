@@ -19,11 +19,15 @@ public class TravelerDecorator extends ItineraryDecorator {
 	
 	public String printTravelers() {
 		
-		String result = this.travelerList.size() + " travelers: \n";
+		String result = "This trip is booked for " + this.travelerList.size() + " traveler";
+		if (this.travelerList.size() > 1) {
+			result += "s";
+		}
+		result += ":\n";
 		int count = 1;	//For numbering the list from 1
 		
 		for (int i = 0; i < travelerList.size(); i++) {
-			result += count + ". " + travelerList.get(i) + "\n";
+			result += "\t" + count + ". " + travelerList.get(i) + "\n";
 			count++;
 		}
 		

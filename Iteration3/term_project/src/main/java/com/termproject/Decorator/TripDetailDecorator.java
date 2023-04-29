@@ -74,8 +74,10 @@ public class TripDetailDecorator extends ItineraryDecorator {
 			}
 			result += ":\n";
 			for (Package pkg : rsv.getPackages()) {
-				result += "\t\t" + pkg.getItineraryFormat();
+				result += "\t\t" + pkg.getItineraryFormat() + "\n";
 			}
+			result += "\n";
+			count++;
 		}
 		
 		return result;

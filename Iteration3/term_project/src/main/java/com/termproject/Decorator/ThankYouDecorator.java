@@ -17,7 +17,7 @@ public class ThankYouDecorator extends ItineraryDecorator {
 	@Override
 	public String getItinerary() {
 		
-		return this.itinerary.getItinerary() + this.thankYouNote + "\n";
+		return this.itinerary.getItinerary() + "\n" + this.thankYouNote + "\n";
 		
 	}
 

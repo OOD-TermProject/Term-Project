@@ -25,17 +25,17 @@ public class BillingDecorator extends ItineraryDecorator {
 		completedString += "\n\tBilling Details:";
 		for (Reservation rsv : thisTrip.getReservations()) {
 			for (Package pkg : rsv.getPackages()) {
-				completedString += String.format("\n\t\t%s -- $%.2f\n\n", pkg.getItineraryFormat(), pkg.getPrice());
+				completedString += String.format("\n\t\t%s -- $%.2f", pkg.getItineraryFormat(), pkg.getPrice());
 			}
 		}
-		return completedString;
+		return completedString + "\n";
 	}
 
 	private String firstSection() {
 		String paymentMethod = thisTrip.getBill().getPayment().getPaymentMethod().toString().toLowerCase();
 
 		String completedString = String.format("\n\tTotal: $%.2f", thisTrip.getBill().getTotalPrice());
-		completedString += String.format("\n\tPaid in full by %s using %s", thisTrip.getBill().getPayment().getPaidBy(), paymentMethod);
+		completedString += String.format("\n\tPaid in full by %s using %s\n", thisTrip.getBill().getPayment().getPaidBy(), paymentMethod);
 		switch (paymentMethod) {
 			case "credit card":
 				CreditCard thisCC = (CreditCard) thisTrip.getBill().getPayment().getPaymentMethod();
@@ -49,7 +49,7 @@ public class BillingDecorator extends ItineraryDecorator {
 			default:
 				break;
 		}
-		completedString += String.format("\t\tAmount: %.2f\n", thisTrip.getBill().getPayment().getAmountPaid());
+		completedString += String.format("\t\tAmount paid: $%.2f\n", thisTrip.getBill().getPayment().getAmountPaid());
 
 		return completedString;
 	}

@@ -1,5 +1,9 @@
 package com.termproject.Trip;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import java.util.ArrayList;
 
 public class Reservation {
@@ -33,6 +37,23 @@ public class Reservation {
         if (this.packages == null) {
             this.packages = new ArrayList<>();
         }
+
+        // Get times from package
+        LocalTime departTime = pkg.getDepartTime();
+        LocalTime arrivalTime = pkg.getArrivalTime();
+
+        // Convert this reservation's dates to LocalDate objects
+        LocalDate departDate = LocalDate.parse(departingOn);
+        LocalDate arrivalDate = LocalDate.parse(arrivingOn);
+
+        // Combine both into LocalDateTime objects
+        LocalDateTime tempDepart = LocalDateTime.of(departDate, departTime);
+        LocalDateTime tempArrive = LocalDateTime.of(arrivalDate, arrivalTime);
+
+        // Convert them to Strings and set the fields for this reservation object
+        arrivingOn = tempArrive.toString();
+        departingOn = tempDepart.toString();
+
         this.packages.add(pkg);
     }
     public void removePackage(int index) {

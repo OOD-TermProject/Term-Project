@@ -52,8 +52,8 @@ public class PackageList {
                 int hoursOfTravelTime = Integer.parseInt(data[2]);
                 Place travelsFrom = new Place(data[3]);
                 Place travelsTo = new Place(data[4]);
-                LocalTime departTime = LocalTime.parse(data[5], formatter);
-                LocalTime arrivalTime = LocalTime.parse(data[6], formatter);
+                String departTime = data[5];
+                String arrivalTime = data[6];
 
                 TransportType transport = null;
                 switch (transportName) {

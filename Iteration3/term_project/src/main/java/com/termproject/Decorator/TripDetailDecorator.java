@@ -5,18 +5,17 @@ import com.termproject.Trip.Reservation;
 import com.termproject.Trip.Trip;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Locale;
 
 public class TripDetailDecorator extends ItineraryDecorator {
 
 	Itinerary itinerary;
 	Trip thisTrip;
-	Date departDate;
-	String departTime;
-	Date arrivalDate;
-	String arrivalTime;
+	LocalDateTime departDateTime;
+	LocalDateTime arrivalDateTime;
 
 	private static final SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 	
@@ -25,50 +24,35 @@ public class TripDetailDecorator extends ItineraryDecorator {
 		this.itinerary = itinerary;
 		this.thisTrip = trip;
 		ArrayList<Reservation> reservations = trip.getReservations();
-		try {
-			this.departDate = format.parse(reservations.get(0).getDepartingOn());
-			this.arrivalDate = format.parse(reservations.get(0).getArrivingOn());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		for (Reservation rsv : reservations) {
-			try {
-				Date temp1 = format.parse(rsv.getArrivingOn());
-				Date temp2 = format.parse(rsv.getArrivingOn());
-				if (this.departDate.compareTo(temp1) < 0) {
-					this.departDate = temp1;
-					LocalTime startTime = rsv.getPackages().get(0).getDepartTime();
-					for (Package pkg : rsv.getPackages()) {
-						if (pkg.getDepartTime().isBefore(startTime)) {
-							startTime = pkg.getDepartTime();
-						}
 
-					}
-					this.departTime = startTime.toString();
-				}
-				if (this.arrivalDate.compareTo(temp2) < 0) {
-					this.arrivalDate = temp2;
-					LocalTime endTime = rsv.getPackages().get(0).getArrivalTime();
-					for (Package pkg : rsv.getPackages()) {
-						if (pkg.getArrivalTime().isAfter(endTime)) {
-							endTime = pkg.getArrivalTime();
-						}
-						if (pkg.getArrivalTime().isAfter(endTime)) {
-							endTime = pkg.getArrivalTime();
-						}
-						this.arrivalTime = endTime.toString();
-					}
-				}
-			} catch (Exception f) {
-				f.printStackTrace();
+		// Find the arrival/depart times of the first reservation
+		LocalDateTime earlyDepart = LocalDateTime.parse(reservations.get(0).getDepartingOn());
+		LocalDateTime earlyArrive = LocalDateTime.parse(reservations.get(0).getArrivingOn());
+		// Loop through each reservation
+		for (Reservation rsv : reservations) {
+			// Get the arrival/depart times for this reservation
+			LocalDateTime thisDepart = LocalDateTime.parse(rsv.getDepartingOn());
+			LocalDateTime thisArrive = LocalDateTime.parse(rsv.getArrivingOn());
+			// Find the earliest one
+			if (thisDepart.isBefore(earlyDepart)) {
+				earlyDepart = thisDepart;
+			}
+			if (thisArrive.isBefore(earlyArrive)) {
+				earlyArrive = thisArrive;
 			}
 		}
+
+		// Update the arrival/depart times to be shown on the document
+		this.departDateTime = earlyDepart;
+		this.arrivalDateTime = earlyArrive;
 	}
 	
 	public String printTripDetails() {
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd");
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("h:mma", Locale.ENGLISH);
 		
-		String result = "Trip Details, beginning " + departDate.toString() + " at " + departTime + " and ending on " +
-				arrivalDate.toString() + " at " + arrivalTime + "\n";
+		String result = "Trip Details, beginning " + departDateTime.toLocalDate().format(dateFormatter) + " at " + departDateTime.toLocalTime().format(timeFormatter) + " and ending on " +
+				arrivalDateTime.toLocalDate().format(dateFormatter) + " at " + arrivalDateTime.toLocalTime().format(timeFormatter) + "\n\n";
 		
 		int count = 1;	//For numbering the list from 1
 
@@ -77,9 +61,18 @@ public class TripDetailDecorator extends ItineraryDecorator {
 			allPackages.addAll(rsv.getPackages());
 		}
 		
-		result += "This trip consists of " + this.thisTrip.getReservations().size() + " reservations:\n";
+		result += "This trip consists of " + this.thisTrip.getReservations().size() + " reservation";
+		if (this.thisTrip.getReservations().size() > 1) {
+			result += "s";
+		}
+		result += ":\n\n";
 		for (Reservation rsv : this.thisTrip.getReservations()) {
-			result += "\tReservation #" + count + " departing on " + rsv.getDepartingOn() + " with " + rsv.getPackages().size() + " packages:";
+			String thisDepart = LocalDateTime.parse(rsv.getDepartingOn()).toLocalDate().format(dateFormatter);
+			result += "\tReservation #" + count + " departing on " + thisDepart + " with " + rsv.getPackages().size() + " package";
+			if (rsv.getPackages().size() > 1) {
+				result += "s";
+			}
+			result += ":\n";
 			for (Package pkg : rsv.getPackages()) {
 				result += "\t\t" + pkg.getItineraryFormat();
 			}

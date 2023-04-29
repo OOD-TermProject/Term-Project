@@ -37,16 +37,18 @@ public class Package {
      */
     private final TransportType transport;
 
+    private static DateTimeFormatter timeFormatter;
+
     public LocalTime getDepartTime() {
-        return departTime;
+        return LocalTime.parse(departTime, timeFormatter);
     }
 
     public LocalTime getArrivalTime() {
-        return arrivalTime;
+        return LocalTime.parse(arrivalTime, timeFormatter);
     }
 
-    private LocalTime departTime;
-    private LocalTime arrivalTime;
+    private final String departTime;
+    private final String arrivalTime;
 
     /**
      * Creates a new travel package with the specified price, travel time, origin and destination Places,
@@ -58,7 +60,7 @@ public class Package {
      * @param travelsTo The Place where the travel package is going to.
      * @param transport The mode of transport for the travel package.
      */
-    public Package(float price, int hoursOfTravelTime, Place travelsFrom, Place travelsTo, TransportType transport, LocalTime departTime, LocalTime arrivalTime) {
+    public Package(float price, int hoursOfTravelTime, Place travelsFrom, Place travelsTo, TransportType transport, String departTime, String arrivalTime) {
         this.price = price;
         this.hoursOfTravelTime = hoursOfTravelTime;
         this.travelsFrom = travelsFrom;
@@ -66,6 +68,7 @@ public class Package {
         this.transport = transport;
         this.departTime = departTime;
         this.arrivalTime = arrivalTime;
+        timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
     }
 
     /**
@@ -119,11 +122,13 @@ public class Package {
     }
 
     public String getItineraryFormat() {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("h:mma", Locale.ENGLISH);
+
         return String.format("%s from %s to %s, departing at %s and arriving at %s",
                 this.transport.toString(),
                 this.travelsFrom,
                 this.travelsTo,
-                this.departTime,
-                this.arrivalTime);
+                LocalTime.parse(this.departTime).format(timeFormatter),
+                LocalTime.parse(this.arrivalTime).format(timeFormatter));
     }
 }

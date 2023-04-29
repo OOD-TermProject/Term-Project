@@ -1,8 +1,8 @@
 package com.termproject.State;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 import com.termproject.Singleton.PackageList;
@@ -25,7 +25,7 @@ public class AwaitPackagesState implements State {
 	private static final String futureVerb = "Add packages to a reservation";
 	private static final String pastVerb = "Done adding packages";
 	private static Scanner scan = null;
-	private static final SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+	private static final DateTimeFormatter format = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
 	public AwaitPackagesState(Trip currentTrip) {
 		this.reservations = new ArrayList<>();
@@ -36,10 +36,10 @@ public class AwaitPackagesState implements State {
 		System.out.println("\nCreating a new reservation.");
 		System.out.print("Please enter the departure date for this reservation (MM/dd/yyyy): ");
 		String reservationStart = scan.nextLine();
-		Date startDate;
-		Date endDate = null;
+		LocalDate startDate = null;
+		LocalDate endDate = null;
 		try {
-			startDate = format.parse(reservationStart);
+			startDate = LocalDate.parse(reservationStart, format);
 		} catch (Exception e) {
 			System.out.println("Dates must be in the format mm/dd/yyyy");
 			return null;
@@ -47,7 +47,7 @@ public class AwaitPackagesState implements State {
 		System.out.print("Please enter the arrival date for this reservation (MM/dd/yyyy): ");
 		String reservationEnd = scan.nextLine();
 		try {
-			endDate = format.parse(reservationEnd);
+			endDate = LocalDate.parse(reservationEnd, format);
 		} catch (Exception e) {
 			System.out.println("Dates must be in the format mm/dd/yyyy");
 			return null;

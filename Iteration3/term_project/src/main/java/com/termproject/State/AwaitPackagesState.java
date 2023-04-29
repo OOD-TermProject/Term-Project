@@ -72,7 +72,7 @@ public class AwaitPackagesState implements State {
 				Reservation tempReservation = reservations.get(j);
 				System.out.println("\t" + (j + 1) + ". " + tempReservation);
 			}
-			System.out.print("\nSelect a package or type 'new' to create a new Reservation: ");
+			System.out.print("\nSelect a reservation or type 'new' to create a new Reservation: ");
 			if (scan.hasNextInt()) {
 				int reservationInput = scan.nextInt();
 				scan.nextLine();

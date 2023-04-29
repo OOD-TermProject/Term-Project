@@ -172,12 +172,14 @@ public class AwaitPaymentState implements State {
 		amountPaid = bill.getPayment().getAmountPaid();
 
 		// Check whether the bill is complete
-		if (amountPaid == totalBill) {
+		if (amountPaid >= totalBill) {
 			System.out.println("Bill paid in full!");
 			bill.setPaidInFull(true);
 			futureVerb = "Verify payment is complete";
-		} else if (amountPaid > totalBill) {
+		}
+		if (amountPaid > totalBill) {
 			System.out.println("Bill overpaid. A balance of $" + String.format("%.2f", (amountPaid - totalBill)) + " will be returned via " + bill.getPayment().getPaymentMethod().toString().toLowerCase());
+			bill.getPayment().setAmountPaid(totalBill);
 		}
 
 	}

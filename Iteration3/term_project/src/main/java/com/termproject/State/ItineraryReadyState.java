@@ -3,6 +3,8 @@ package com.termproject.State;
 import com.termproject.Decorator.*;
 import com.termproject.Trip.Trip;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ItineraryReadyState implements State {
@@ -28,6 +30,17 @@ public class ItineraryReadyState implements State {
 		itinerary = new BookingDecorator(itinerary, thisTrip);
 		itinerary = new BillingDecorator(itinerary, thisTrip);
 		itinerary = new ThankYouDecorator(itinerary, thisTrip);
+
+		String fileName = String.format("%s-%s.txt", thisTrip.getAgent().getName(), thisTrip.getUniqueId());
+
+		try {
+			FileWriter writer = new FileWriter(fileName);
+			writer.write(itinerary.getItinerary());
+			writer.close();
+		} catch (IOException e) {
+			System.out.println("File was unable to be saved to disk!");
+			e.printStackTrace();
+		}
 	}
 
 	@Override

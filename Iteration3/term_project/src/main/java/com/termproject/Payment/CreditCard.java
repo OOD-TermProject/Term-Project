@@ -4,11 +4,11 @@ public class CreditCard extends PaymentType {
 
     private final String paymentType = "CreditCard";
 
-    public int getCardNumber() {
+    public long getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
+    public void setCardNumber(long cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -20,7 +20,7 @@ public class CreditCard extends PaymentType {
         this.expDate = expDate;
     }
 
-    private int cardNumber = -999;
+    private long cardNumber = -999;
     private String expDate = null;
 
     @Override

@@ -210,13 +210,19 @@ public class AwaitPaymentState implements State {
 	private void updateCreditCardInfo(CreditCard card) {
 		if (card.getCardNumber() < 0) {
 			// Get credit card number
-			int cardNum = 0;
+			int cardInt = 0;
+			long cardLong = 0;
 			while (true) {
 				System.out.print("Enter credit card number: ");
 				if (scan.hasNextInt()) {
-					cardNum = scan.nextInt();
+					cardInt = scan.nextInt();
 					scan.nextLine();
-					card.setCardNumber(cardNum);
+					card.setCardNumber(cardInt);
+					break;
+				} else if (scan.hasNextLong()) {
+					cardLong = scan.nextLong();
+					scan.nextLine();
+					card.setCardNumber(cardLong);
 					break;
 				} else {
 					scan.nextLine();

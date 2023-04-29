@@ -18,9 +18,20 @@ public class Trip {
     public Bill bill;
     private State state;
 
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void complete() {
+        this.complete = true;
+    }
+
+    private boolean complete = false;
+
     public Trip(int uniqueId) {
         this.setState(new AwaitTravelersState(this));
         this.uniqueId = uniqueId;
+        this.complete = false;
     }
 
     public int getUniqueId() {

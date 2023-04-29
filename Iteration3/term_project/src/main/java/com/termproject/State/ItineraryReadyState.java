@@ -41,10 +41,13 @@ public class ItineraryReadyState implements State {
 			System.out.println("File was unable to be saved to disk!");
 			e.printStackTrace();
 		}
+
+		thisTrip.setItinerary(itinerary.getItinerary());
 	}
 
 	@Override
-	public State advanceState() {        //Last state, should not advance any further;
+	public State advanceState() {
+		thisTrip.complete();
 		return this;
 	}
 

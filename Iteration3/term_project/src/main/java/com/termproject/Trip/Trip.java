@@ -121,7 +121,7 @@ public class Trip {
         // Begin string with unique ID # and agent's name
         String completedString = String.format("%s:\tAgent: %s. ", uniqueId, agent.getName());
         // If the trip has travellers already, display them.
-        if (this.travelers.size() > 0) {
+        if ( (this.travelers != null) && (this.travelers.size() > 0)) {
             // Show the number of travelers
             completedString += String.format("%s traveler", this.travelers.size());
             // Add an 's' to the end of 'traveler' to show it's plural

@@ -13,7 +13,7 @@ public class Trip {
     public String thankYouNote;
     public TravelAgent agent;
     public ArrayList<Traveler> travelers;
-    public Itinerary itinerary;
+    public String itinerary;
     public ArrayList<Reservation> reservations;
     public Bill bill;
     private State state;
@@ -77,10 +77,10 @@ public class Trip {
             }
         }
     }
-    public Itinerary getItinerary() {
+    public String getItinerary() {
         return this.itinerary;
     }
-    public void setItinerary(Itinerary itineraryToAdd) {
+    public void setItinerary(String itineraryToAdd) {
         if (this.itinerary != null) {
             removeItinerary();
         }

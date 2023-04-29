@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -76,6 +78,8 @@ public class JSONStrategy extends RWStrategy {
         builder.registerTypeAdapter(Customer.class, new CustomerDeserializer());
         builder.registerTypeAdapter(PaymentType.class, new PaymentDeserializer());
         builder.registerTypeAdapter(LocalTime.class, new TimeDeserializer());
+        builder.registerTypeAdapter(LocalDate.class, new DateDeserializer());
+        builder.registerTypeAdapter(LocalDateTime.class, new DateTimeDeserializer());
         Gson gsonParser = builder.create();
 
         // Load the data from the JSON file
@@ -86,7 +90,10 @@ public class JSONStrategy extends RWStrategy {
         }
         if (tripList != null) {
             for (Trip trip : parsedTrips) {
-                tripList.add(trip);
+                if (!trip.isComplete()) {
+                    tripList.add(trip);
+                }
+
             }
         }
         // Return the results
@@ -176,8 +183,31 @@ public class JSONStrategy extends RWStrategy {
             String timeClass = jsonObject.get("departTime").getAsString();
             switch (timeClass) {
                 default:
-                    System.out.println("Here, I guess?");
                     return context.deserialize(json, LocalTime.class);
+            }
+        }
+    }
+
+    class DateDeserializer implements JsonDeserializer<LocalDate> {
+        @Override
+        public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            JsonObject jsonObject = json.getAsJsonObject();
+            String dateClass = jsonObject.get("departTime").getAsString();
+            switch (dateClass) {
+                default:
+                    return context.deserialize(json, LocalDate.class);
+            }
+        }
+    }
+
+    class DateTimeDeserializer implements JsonDeserializer<LocalDateTime> {
+        @Override
+        public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            JsonObject jsonObject = json.getAsJsonObject();
+            String dateTimeClass = jsonObject.get("departDateTime").getAsString();
+            switch (dateTimeClass) {
+                default:
+                    return context.deserialize(json, LocalDateTime.class);
             }
         }
     }

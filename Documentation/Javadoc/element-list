@@ -1,0 +1,10 @@
+com.termproject
+com.termproject.Decorator
+com.termproject.Factory
+com.termproject.Payment
+com.termproject.People
+com.termproject.Singleton
+com.termproject.State
+com.termproject.Strategy
+com.termproject.Transport
+com.termproject.Trip

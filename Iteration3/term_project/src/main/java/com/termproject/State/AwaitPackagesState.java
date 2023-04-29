@@ -33,7 +33,7 @@ public class AwaitPackagesState implements State {
 	}
 
 	private Reservation newReservation() {
-		System.out.println("Creating a new reservation.");
+		System.out.println("\nCreating a new reservation.");
 		System.out.print("Please enter the departure date for this reservation (MM/dd/yyyy): ");
 		String reservationStart = scan.nextLine();
 		Date startDate;
@@ -72,7 +72,7 @@ public class AwaitPackagesState implements State {
 				Reservation tempReservation = reservations.get(j);
 				System.out.println("\t" + (j + 1) + ". " + tempReservation);
 			}
-			System.out.print("Select a package or type 'new' to create a new Reservation: ");
+			System.out.print("\nSelect a package or type 'new' to create a new Reservation: ");
 			if (scan.hasNextInt()) {
 				int reservationInput = scan.nextInt();
 				scan.nextLine();
@@ -149,7 +149,7 @@ public class AwaitPackagesState implements State {
 			}
 			return completedString;
 		} else {
-			return "No reservations yet!";
+			return "No reservations yet!\n";
 		}
 	}
 
@@ -160,6 +160,10 @@ public class AwaitPackagesState implements State {
 
 	@Override
 	public String getFutureVerb() {
+		if ((reservations == null) || (reservations.size() < 1)) {
+			return "Create a new reservation";
+		}
+
 		return futureVerb;
 	}
 

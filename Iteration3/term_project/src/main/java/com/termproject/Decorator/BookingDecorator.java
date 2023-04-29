@@ -19,7 +19,7 @@ public class BookingDecorator extends ItineraryDecorator {
 	@Override
 	public String getItinerary() {
 		
-		return itinerary.getItinerary() + "Booking: \nEvery detail of your trip was booked with care by " +
+		return itinerary.getItinerary() + "\nBooking: \n\n\tEvery detail of your trip was booked with care by " +
 				agentName + ". If you have any questions or problems, call " + agentName + " at " + agentPhone + 
 				" any time, 24 hours a day.\n";
 		

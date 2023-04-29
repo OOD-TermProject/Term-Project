@@ -74,7 +74,7 @@ public class AwaitPaymentState implements State {
 		}
 		completedString += "\tPayment info: ";
 		if (bill.getPayment() == null) {
-			completedString += "No payment info added";
+			completedString += "No payment info added\n";
 		} else {
 			completedString += "\n\t\tPayer: ";
 			if (bill.getPayment().getPaidBy() == null) {
@@ -88,7 +88,7 @@ public class AwaitPaymentState implements State {
 			} else {
 				completedString += bill.getPayment().getPaymentMethod().toString().toLowerCase();
 			}
-			completedString += "\n\t\tAmount paid: $" + String.format("%.2f", bill.getPayment().getAmountPaid());
+			completedString += "\n\t\tAmount paid: $" + String.format("%.2f", bill.getPayment().getAmountPaid()) + "\n";
 		}
 
 		return completedString;

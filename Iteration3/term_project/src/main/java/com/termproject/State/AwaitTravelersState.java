@@ -31,11 +31,11 @@ public class AwaitTravelersState implements State {
 	}
 
 	public void addTraveler(Scanner scanner) {
-		System.out.println("Enter the traveler's full name: ");
+		System.out.print("\nEnter the traveler's full name: ");
 		String nameInput = scanner.nextLine();
-		System.out.println("Enter the traveler's phone number: ");
+		System.out.print("Enter the traveler's phone number: ");
 		String phoneInput = scanner.nextLine();
-		System.out.println("Enter the traveler's favorite drink: ");
+		System.out.print("Enter the traveler's favorite drink: ");
 		String drinkInput = scanner.nextLine();
 		Traveler newTraveler = new Traveler(nameInput, phoneInput, drinkInput);
 		travelers.add(newTraveler);
@@ -79,7 +79,7 @@ public class AwaitTravelersState implements State {
 			}
 			return completedString;
 		} else {
-			return "No travelers yet!";
+			return "No travelers yet!\n";
 		}
 	}
 }

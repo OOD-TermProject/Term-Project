@@ -21,11 +21,11 @@ public class TravelAgent extends Person {
     /**
      * Creates a new travel agent with the given name, cell number, and login
      *
-     * @param name The name of the travel agent.
+     * @param name        The name of the travel agent.
      * @param mobilePhone The cellphone number of the travel agent.
-     * @param username The login of the travel agent.
+     * @param username    The login of the travel agent.
      */
-    public TravelAgent(String name, String mobilePhone, String username){
+    public TravelAgent(String name, String mobilePhone, String username) {
         this.name = name;
         this.mobilePhone = mobilePhone;
         this.username = username;

@@ -2,14 +2,13 @@ package com.termproject.Strategy;
 
 import com.termproject.Trip.Trip;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public abstract class RWStrategy {
 
-  public abstract void saveTrip(Trip tripToSave);
+    public abstract void saveTrip(Trip tripToSave);
 
-  public abstract ArrayList<Trip> getAllTrips();
+    public abstract ArrayList<Trip> getAllTrips();
 
-  public abstract int getMaxTripID();
+    public abstract int getMaxTripID();
 }

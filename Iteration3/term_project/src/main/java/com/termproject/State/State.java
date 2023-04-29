@@ -5,11 +5,15 @@ import com.termproject.Trip.Trip;
 import java.util.Scanner;
 
 public interface State {
-	public String getFutureVerb();
-	public String getPastVerb();
-	public void doAction(Scanner scanner);
-	
-	public State advanceState();
-	public String getStateInfo();
-	public void setThisTrip(Trip trip);
+    String getFutureVerb();
+
+    String getPastVerb();
+
+    void doAction(Scanner scanner);
+
+    State advanceState();
+
+    String getStateInfo();
+
+    void setThisTrip(Trip trip);
 }

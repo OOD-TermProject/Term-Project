@@ -9,12 +9,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class PersonList {
-    private static PersonList uniqueInstance = new PersonList();
     private static final String peopleFile = "term_project/src/main/java/com/termproject/Singleton/people.txt";
+    private static final PersonList uniqueInstance = new PersonList();
     ArrayList<Customer> personList = new ArrayList<>();
 
     private PersonList() {
         loadPersonFile();
+    }
+
+    public static PersonList getInstance() {
+        return uniqueInstance;
     }
 
     private void loadPersonFile() {
@@ -30,10 +34,6 @@ public class PersonList {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static PersonList getInstance() {
-        return uniqueInstance;
     }
 
     public ArrayList<Customer> getPersonList() {

@@ -3,6 +3,8 @@ package com.termproject.Payment;
 public class CreditCard extends PaymentType {
 
     private final String paymentType = "CreditCard";
+    private long cardNumber = -999;
+    private String expDate = null;
 
     public long getCardNumber() {
         return cardNumber;
@@ -19,9 +21,6 @@ public class CreditCard extends PaymentType {
     public void setExpDate(String expDate) {
         this.expDate = expDate;
     }
-
-    private long cardNumber = -999;
-    private String expDate = null;
 
     @Override
     public String toString() {

@@ -1,5 +1,18 @@
 package com.termproject.Strategy;
 
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import com.termproject.Payment.Cash;
+import com.termproject.Payment.Check;
+import com.termproject.Payment.CreditCard;
+import com.termproject.Payment.PaymentType;
+import com.termproject.People.Customer;
+import com.termproject.People.NonTraveler;
+import com.termproject.People.Traveler;
+import com.termproject.State.*;
+import com.termproject.Transport.*;
+import com.termproject.Trip.Trip;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,24 +22,14 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import com.google.gson.*;
-
-import com.google.gson.reflect.TypeToken;
-import com.termproject.Payment.Cash;
-import com.termproject.Payment.Check;
-import com.termproject.Payment.CreditCard;
-import com.termproject.Payment.PaymentType;
-import com.termproject.People.*;
-import com.termproject.State.*;
-import com.termproject.Transport.*;
-import com.termproject.Trip.Trip;
-
 public class JSONStrategy extends RWStrategy {
     // Path to the JSON file of trips
     private static final String filePath = "term_project/src/main/java/com/termproject/trips.json";
-    private static ArrayList<Trip> tripList = new ArrayList<>();
+    private static final ArrayList<Trip> tripList = new ArrayList<>();
 
-    /**Saves trip to disk
+    /**
+     * Saves trip to disk
+     *
      * @param tripToSave
      */
     @Override
@@ -37,7 +40,7 @@ public class JSONStrategy extends RWStrategy {
         for (Trip trip : tripList) {
             // If we find a trip with the same unique ID, delete it
             if (trip.getUniqueId() == tripToSave.getUniqueId()) {
-                tripList.remove(tripList.indexOf(trip));
+                tripList.remove(trip);
                 break;
             }
         }
@@ -83,8 +86,9 @@ public class JSONStrategy extends RWStrategy {
         Gson gsonParser = builder.create();
 
         // Load the data from the JSON file
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
-            parsedTrips = gsonParser.fromJson(reader, new TypeToken<ArrayList<Trip>>() {}.getType());
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            parsedTrips = gsonParser.fromJson(reader, new TypeToken<ArrayList<Trip>>() {
+            }.getType());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,6 +102,17 @@ public class JSONStrategy extends RWStrategy {
         }
         // Return the results
         return tripList;
+    }
+
+    public int getMaxTripID() {
+        int x = 0;
+        for (Trip trip : tripList) {
+            int thisTripID = trip.getUniqueId();
+            if (thisTripID > x) {
+                x = thisTripID;
+            }
+        }
+        return x;
     }
 
     class TransportTypeDeserializer implements JsonDeserializer<TransportType> {
@@ -181,10 +196,7 @@ public class JSONStrategy extends RWStrategy {
         public LocalTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject jsonObject = json.getAsJsonObject();
             String timeClass = jsonObject.get("departTime").getAsString();
-            switch (timeClass) {
-                default:
-                    return context.deserialize(json, LocalTime.class);
-            }
+            return context.deserialize(json, LocalTime.class);
         }
     }
 
@@ -193,10 +205,7 @@ public class JSONStrategy extends RWStrategy {
         public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject jsonObject = json.getAsJsonObject();
             String dateClass = jsonObject.get("departTime").getAsString();
-            switch (dateClass) {
-                default:
-                    return context.deserialize(json, LocalDate.class);
-            }
+            return context.deserialize(json, LocalDate.class);
         }
     }
 
@@ -205,22 +214,7 @@ public class JSONStrategy extends RWStrategy {
         public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject jsonObject = json.getAsJsonObject();
             String dateTimeClass = jsonObject.get("departDateTime").getAsString();
-            switch (dateTimeClass) {
-                default:
-                    return context.deserialize(json, LocalDateTime.class);
-            }
+            return context.deserialize(json, LocalDateTime.class);
         }
-    }
-
-
-    public int getMaxTripID() {
-        int x = 0;
-        for (Trip trip : tripList) {
-            int thisTripID = trip.getUniqueId();
-            if (thisTripID > x) {
-                x = thisTripID;
-            }
-        }
-        return x;
     }
 }

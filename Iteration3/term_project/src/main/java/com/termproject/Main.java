@@ -4,10 +4,8 @@ import com.termproject.Factory.ReadFactory;
 import com.termproject.Factory.WriteFactory;
 import com.termproject.People.TravelAgent;
 import com.termproject.Singleton.AgentList;
-import com.termproject.Singleton.PackageList;
 import com.termproject.Singleton.PersonList;
 import com.termproject.Strategy.RWStrategy;
-import com.termproject.Trip.Package;
 import com.termproject.Trip.Trip;
 
 import java.io.FileInputStream;
@@ -18,35 +16,34 @@ import java.util.Scanner;
 
 /**
  * @file Main.java
- *
+ * <p>
  * The main class for the reservation program
- *
  */
 public class Main {
+    private static final AgentList agents = AgentList.getInstance();
+    private static final String configPath = "term_project/src/main/java/com/termproject/config.properties";
+    private static final Scanner scan = new Scanner(System.in);
+    private static final ReadFactory readFactory = new ReadFactory();
+    private static final WriteFactory writeFactory = new WriteFactory();
+    private static final String line = "==============================";
+    static ArrayList<TravelAgent> listOfAgents = agents.getAgentList();
     /**
      * The trip currently being modified
      *
      * @param activeTrip The trip being modified
      */
     private static Trip activeTrip;
+    private static TravelAgent currentAgent = null;
+    private static RWStrategy readStrategy;
+    private static RWStrategy writeStrategy;
+    private static String dataFormat;
+    private static ArrayList<Trip> tripList;
     /**
      * Singleton for retrieving all current packages available in the system
      *
      * @param packages The singleton which provides a list of all packages
      */
     private final PersonList people = PersonList.getInstance();
-    private static final AgentList agents = AgentList.getInstance();
-    static ArrayList<TravelAgent> listOfAgents = agents.getAgentList();
-    private static final String configPath = "term_project/src/main/java/com/termproject/config.properties";
-    private static final Scanner scan = new Scanner(System.in);
-    private static TravelAgent currentAgent = null;
-    private static final ReadFactory readFactory = new ReadFactory();
-    private static final WriteFactory writeFactory = new WriteFactory();
-    private static RWStrategy readStrategy;
-    private static RWStrategy writeStrategy;
-    private static String dataFormat;
-    private static ArrayList<Trip> tripList;
-    private static final String line = "==============================";
 
     /**
      * Loads the system's config file (config.properties) to determine the file format
@@ -70,15 +67,14 @@ public class Main {
 
     /**
      * Allows the user to log into the system by checking their login again a list of travel agents
-     *
      */
-    private static void logIn(){
+    private static void logIn() {
         System.out.println("\n\n" + line + "\nWelcome to the Booking System!\n");
         while (true) {
             System.out.print("Please enter your username or type 'list' to see all users: ");
             String username = scan.nextLine();
-            if (username.equals("list")){
-                for (TravelAgent agent : listOfAgents){
+            if (username.equals("list")) {
+                for (TravelAgent agent : listOfAgents) {
                     System.out.println(agent.getName() + ": " + agent.getUsername());
                 }
             } else {
@@ -127,11 +123,13 @@ public class Main {
             doExit("Active trip improperly set. Aborting.");
         }
     }
+
     private static void doExit(String message) {
         System.out.println(message);
         scan.close();
         System.exit(-1);
     }
+
     private static int mainMenu() {
         while (true) {
             System.out.println("Please select an option below:\n");
@@ -150,6 +148,7 @@ public class Main {
             }
         }
     }
+
     private static void tripSelect() {
         // Update the trip list, just in case something changed
         tripList = readStrategy.getAllTrips();
@@ -186,6 +185,7 @@ public class Main {
             }
         }
     }
+
     private static void modifyTrip() {
         System.out.println(line);
         while (true) {
@@ -234,6 +234,7 @@ public class Main {
             System.out.println("\t" + trip);
         }
     }
+
     private static void startNewTrip() {
         // Create a new Trip object with a unique ID number
         activeTrip = new Trip(readStrategy.getMaxTripID() + 1);

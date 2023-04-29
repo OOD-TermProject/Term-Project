@@ -12,8 +12,8 @@ public class Traveler extends Customer {
     /**
      * Creates a new travel agent with the given name, cell number, and login
      *
-     * @param name The name of the travel agent.
-     * @param mobilePhone The cellphone number of the travel agent.
+     * @param name          The name of the travel agent.
+     * @param mobilePhone   The cellphone number of the travel agent.
      * @param favoriteDrink This traveler's favorite drink
      */
 

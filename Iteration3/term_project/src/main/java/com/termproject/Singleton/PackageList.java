@@ -1,4 +1,5 @@
 package com.termproject.Singleton;
+
 import com.termproject.Transport.*;
 import com.termproject.Trip.Package;
 import com.termproject.Trip.Place;
@@ -6,14 +7,12 @@ import com.termproject.Trip.Place;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
-
- @file PackageList.java
- Represents a list of available travel packages
+ * @file PackageList.java
+ * Represents a list of available travel packages
  */
 public class PackageList {
     /**
@@ -21,15 +20,14 @@ public class PackageList {
      */
     private static final PackageList uniqueInstance = new PackageList();
     /**
-    * Path to the packages file.
-    */
+     * Path to the packages file.
+     */
     private static final String packagesFile = "term_project/src/main/java/com/termproject/Singleton/packages.txt";
+    private static DateTimeFormatter formatter;
     /**
      * List of travel packages
      */
     ArrayList<Package> packageList = new ArrayList<>();
-
-    private static DateTimeFormatter formatter;
 
     /**
      * Private constructor for the singleton instance of the class.
@@ -37,6 +35,15 @@ public class PackageList {
     private PackageList() {
         formatter = DateTimeFormatter.ofPattern("HH:mm");
         loadPackagesFile();
+    }
+
+    /**
+     * Returns the singleton instance of the PackageList class.
+     *
+     * @return The instance of the PackageList class.
+     */
+    public static PackageList getInstance() {
+        return uniqueInstance;
     }
 
     /**
@@ -75,15 +82,6 @@ public class PackageList {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Returns the singleton instance of the PackageList class.
-     *
-     * @return The instance of the PackageList class.
-     */
-    public static PackageList getInstance() {
-        return uniqueInstance;
     }
 
     /**

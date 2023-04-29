@@ -9,7 +9,9 @@ public class XMLStrategy extends RWStrategy {
     private static final String filePath = "term_project/src/main/java/com/termproject/trips.xml";
     private static ArrayList<Trip> tripList;
 
-    /** Saves trip to disk
+    /**
+     * Saves trip to disk
+     *
      * @param tripToSave
      */
     @Override
@@ -17,7 +19,9 @@ public class XMLStrategy extends RWStrategy {
 
     }
 
-    /** Loads all trips from the XML file
+    /**
+     * Loads all trips from the XML file
+     *
      * @return ArrayList of all trips read in
      */
     @Override
@@ -25,7 +29,9 @@ public class XMLStrategy extends RWStrategy {
         return null;
     }
 
-    /** Get the highest numbered trip that we know about
+    /**
+     * Get the highest numbered trip that we know about
+     *
      * @return int Maximum trip ID
      */
     @Override

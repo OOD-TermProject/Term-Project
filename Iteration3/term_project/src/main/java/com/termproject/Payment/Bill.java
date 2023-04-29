@@ -5,6 +5,12 @@ public class Bill {
     private boolean isPaidInFull;
     private Payment payment;
 
+    public Bill(float totalPrice) {
+        this.totalPrice = totalPrice;
+        this.isPaidInFull = false;
+        this.payment = null;
+    }
+
     public float getTotalPrice() {
         return totalPrice;
     }
@@ -27,11 +33,5 @@ public class Bill {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
-    }
-
-    public Bill(float totalPrice) {
-        this.totalPrice = totalPrice;
-        this.isPaidInFull = false;
-        this.payment = null;
     }
 }

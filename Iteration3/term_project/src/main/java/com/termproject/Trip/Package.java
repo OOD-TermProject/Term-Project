@@ -8,47 +8,33 @@ import java.util.Locale;
 
 /**
  * @file Package.java
- *
+ * <p>
  * Represents a travel package that includes a price, hours of travel time, origin and destination Places,
  * and the mode of transport.
  */
 
 public class Package {
+    private static DateTimeFormatter timeFormatter;
     /**
      * The price of the travel package.
      */
     private final float price;
-
     /**
      * The number of hours it takes to travel from the origin Place to the destination Place.
      */
     private final int hoursOfTravelTime;
-
     /**
      * The Place where the travel package originates from.
      */
     private final Place travelsFrom;
-
     /**
      * The Place where the travel package is going to.
      */
     private final Place travelsTo;
-
     /**
      * The mode of transport for the travel package.
      */
     private final TransportType transport;
-
-    private static DateTimeFormatter timeFormatter;
-
-    public LocalTime getDepartTime() {
-        return LocalTime.parse(departTime, timeFormatter);
-    }
-
-    public LocalTime getArrivalTime() {
-        return LocalTime.parse(arrivalTime, timeFormatter);
-    }
-
     private final String departTime;
     private final String arrivalTime;
 
@@ -56,11 +42,11 @@ public class Package {
      * Creates a new travel package with the specified price, travel time, origin and destination Places,
      * and mode of transport.
      *
-     * @param price The price of the travel package.
+     * @param price             The price of the travel package.
      * @param hoursOfTravelTime The number of hours it takes to travel from the origin Place to the destination Place.
-     * @param travelsFrom The Place where the travel package originates from.
-     * @param travelsTo The Place where the travel package is going to.
-     * @param transport The mode of transport for the travel package.
+     * @param travelsFrom       The Place where the travel package originates from.
+     * @param travelsTo         The Place where the travel package is going to.
+     * @param transport         The mode of transport for the travel package.
      */
     public Package(float price, int hoursOfTravelTime, Place travelsFrom, Place travelsTo, TransportType transport, String departTime, String arrivalTime) {
         this.price = price;
@@ -71,6 +57,14 @@ public class Package {
         this.departTime = departTime;
         this.arrivalTime = arrivalTime;
         timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+    }
+
+    public LocalTime getDepartTime() {
+        return LocalTime.parse(departTime, timeFormatter);
+    }
+
+    public LocalTime getArrivalTime() {
+        return LocalTime.parse(arrivalTime, timeFormatter);
     }
 
     /**

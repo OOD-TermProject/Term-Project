@@ -3,7 +3,6 @@ package com.termproject.Trip;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -22,12 +21,15 @@ public class Reservation {
     public String getArrivingOn() {
         return arrivingOn;
     }
+
     public String getDepartingOn() {
         return departingOn;
     }
+
     public ArrayList<Package> getPackages() {
         return packages;
     }
+
     public void addPackage(Package pkg) {
         if (this.packages == null) {
             this.packages = new ArrayList<>();
@@ -40,9 +42,9 @@ public class Reservation {
         }
 
 
-
         this.packages.add(pkg);
     }
+
     @Override
     public String toString() {
         String completedString = String.format("Reservation from %s to %s with %s package",

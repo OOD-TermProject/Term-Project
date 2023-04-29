@@ -1,8 +1,6 @@
 package com.termproject.Transport;
 
-import com.termproject.Trip.Place;
-
-public class PrivateJet extends TransportType{
+public class PrivateJet extends TransportType {
 
     private final String transportName = "PrivateJet";
 

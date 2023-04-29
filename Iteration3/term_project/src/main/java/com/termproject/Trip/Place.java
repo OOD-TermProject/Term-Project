@@ -2,7 +2,7 @@ package com.termproject.Trip;
 
 /**
  * @file Place.java
- *
+ * <p>
  * Represents a place with a name.
  */
 public class Place {

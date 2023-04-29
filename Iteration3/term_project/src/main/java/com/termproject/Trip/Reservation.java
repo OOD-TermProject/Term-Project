@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class Reservation {
@@ -20,15 +22,8 @@ public class Reservation {
     public String getArrivingOn() {
         return arrivingOn;
     }
-    public void setArrivingOn(String arrivingOn) {
-        this.arrivingOn = arrivingOn;
-    }
-
     public String getDepartingOn() {
         return departingOn;
-    }
-    public void setDepartingOn(String departingOn) {
-        this.departingOn = departingOn;
     }
     public ArrayList<Package> getPackages() {
         return packages;
@@ -38,6 +33,30 @@ public class Reservation {
             this.packages = new ArrayList<>();
         }
 
+        try {
+            composeDateTime(pkg);
+        } catch (DateTimeParseException e) {
+            // Do thing
+        }
+
+
+
+        this.packages.add(pkg);
+    }
+    @Override
+    public String toString() {
+        String completedString = String.format("Reservation from %s to %s with %s package",
+                LocalDateTime.parse(this.departingOn).toLocalDate().format(DateTimeFormatter.ofPattern("MM/dd")),
+                LocalDateTime.parse(this.arrivingOn).toLocalDate().format(DateTimeFormatter.ofPattern("MM/dd")),
+                this.packages.size());
+
+        if (this.packages.size() > 1) {
+            completedString += "s";
+        }
+        return completedString;
+    }
+
+    private void composeDateTime(Package pkg) {
         // Get times from package
         LocalTime departTime = pkg.getDepartTime();
         LocalTime arrivalTime = pkg.getArrivalTime();
@@ -53,19 +72,5 @@ public class Reservation {
         // Convert them to Strings and set the fields for this reservation object
         arrivingOn = tempArrive.toString();
         departingOn = tempDepart.toString();
-
-        this.packages.add(pkg);
-    }
-    public void removePackage(int index) {
-        this.packages.remove(index);
-    }
-
-    @Override
-    public String toString() {
-        String completedString = String.format("Reservation from %s to %s with %s package", this.departingOn, this.arrivingOn, this.packages.size());
-        if (this.packages.size() > 1) {
-            completedString += "s";
-        }
-        return completedString;
     }
 }

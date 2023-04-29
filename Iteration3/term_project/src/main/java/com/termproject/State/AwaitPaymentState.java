@@ -234,18 +234,17 @@ public class AwaitPaymentState implements State {
 	}
 
 	private void updateCheckInfo(Check check) {
-		if (check.getCheckNumber() < 0) {
-			while (true) {
-				System.out.print("Enter check number (numbers only): ");
-				if (scan.hasNextInt()) {
-					int checkNum = scan.nextInt();
-					scan.nextLine();
-					check.setCheckNumber(checkNum);
-					bill.getPayment().setPaymentMethod(check);
-					return;
-				} else {
-					System.out.println("Invalid entry. Please only use numbers for the check number.");
-				}
+		while (check.getCheckNumber() < 0) {
+			System.out.print("Enter check number (numbers only): ");
+			if (scan.hasNextInt()) {
+				int checkNum = scan.nextInt();
+				scan.nextLine();
+				check.setCheckNumber(checkNum);
+				bill.getPayment().setPaymentMethod(check);
+				return;
+			} else {
+				scan.nextLine();
+				System.out.println("Invalid entry. Please only use numbers for the check number.");
 			}
 		}
 	}
